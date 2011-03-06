@@ -19,6 +19,7 @@ namespace wing_ding_pong
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+		// I added a comment! -DM
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
