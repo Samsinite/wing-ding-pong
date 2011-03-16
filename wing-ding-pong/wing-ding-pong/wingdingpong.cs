@@ -156,7 +156,7 @@ namespace wing_ding_pong
 		{
 			// Allows the game to exit by pressing the "back" button on the
 			// Xbox controller, OR by pressed the "escape" key on the keyboard.
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 			{
 				this.Exit();
 			}
