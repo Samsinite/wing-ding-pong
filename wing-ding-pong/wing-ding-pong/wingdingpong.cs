@@ -163,6 +163,7 @@ namespace wing_ding_pong
 
 			// Handling keyboard inputs.
 
+			// These will need to be changed for the Xbox controller.
 			// Blue bar ("E" for up, "D" for down).
 			if (Keyboard.GetState().IsKeyDown(Keys.E)) // E key down ?
 			{
