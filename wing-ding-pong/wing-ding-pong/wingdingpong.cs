@@ -176,7 +176,12 @@ namespace wing_ding_pong
 			//
 			// Also note:
 			// Thumbstick movement is vector2 with range of +/- 1.0f on either
-			// the X or Y axis of the stick being polled.
+			// the X or Y axis of the stick being polled. 
+			//
+			// Update:
+			// Triggers (left and right) use a range of 0.0f to 1.0f to determine
+			// the pressure exerted on them; whether this is useful or not will
+			// remain to be seen, but I'm including it here just in case.
 			//
 			// Player one controls (blue).
 			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
