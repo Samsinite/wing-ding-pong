@@ -154,36 +154,32 @@ namespace wing_ding_pong
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
 		{
-			// Allows the game to exit by pressing the "back" button on the
-			// Xbox controller, OR by pressed the "escape" key on the keyboard.
+			// Allows the game to exit by pressing the "back" button on the Xbox controller.
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 			{
 				this.Exit();
 			}
 
-			// Handling keyboard inputs.
-
-			// These will need to be changed for the Xbox controller.
-			// Blue bar ("E" for up, "D" for down).
-			if (Keyboard.GetState().IsKeyDown(Keys.E)) // E key down ?
+			// Player one controls (blue).
+			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed)
 			{
-				blueBar.Y -= 10;		// Move the blue bar up.
+				blueBar.Y += 10;
 			}
-			else if (Keyboard.GetState().IsKeyDown(Keys.D)) // D key down ?
+			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed)
 			{
-				blueBar.Y += 10;	// Move the blue bar down.
+				blueBar.Y -= 10;
 			}
 
-			// Red bar (Keyboard up for up, keyboard down for down).
-			if (Keyboard.GetState().IsKeyDown(Keys.Up)) // Up key down ?
+			// Player two controls (red).
+			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed)
 			{
-				redBar.Y -= 10;		// Move the red bar up.
+				redBar.Y += 10;
 			}
-			else if (Keyboard.GetState().IsKeyDown(Keys.Down)) // Down key down ?
+			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed)
 			{
-				redBar.Y += 10;		// Move the red bar down.
+				redBar.Y -= 10;
 			}
-
+			
 			// Limit the bars' movement to the screen bounds.
 			if (redBar.Y < 0) // Upper bound.
 			{
@@ -211,14 +207,13 @@ namespace wing_ding_pong
 			//ball2.X += (int)ballVelocity2.X;
 			//ball2.Y += (int)ballVelocity2.Y;
 
-			// Handling ball initialization; use spacebar to reset.
-			if (Keyboard.GetState().IsKeyDown(Keys.Space))
+			// Handling ball initialization; use Navigation Button to reset.
+			if (GamePad.GetState(PlayerIndex.One).Buttons.BigButton == ButtonState.Pressed)
 			{
 				InitBall();
 			}
 
-			// Collision handling.
-
+			// Collision handling. //
 			// Wall collisions.
 			if (ball.Y < 0 || // if the ball reach the upper bound of the screen
 				  ball.Y + ball.Height > GraphicsDevice.Viewport.Bounds.Height) // or the lower one
