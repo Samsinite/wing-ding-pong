@@ -150,32 +150,54 @@ namespace wing_ding_pong
 		/// <summary>
 		/// Allows the game to run logic such as updating the world,
 		/// checking for collisions, gathering input, and playing audio.
+		/// 
+		/// "Update" polls the system every clock tick.
 		/// </summary>
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
 		{
+			// Check that both controllers are connected to the game.
+			// If one or more is not, pause the game.
+			if ((GamePad.GetState(PlayerIndex.One).IsConnected == false) 
+				|| (GamePad.GetState(PlayerIndex.Two).IsConnected == false))
+			{
+				// Pause the game.
+			}
+
 			// Allows the game to exit by pressing the "back" button on the Xbox controller.
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 			{
 				this.Exit();
 			}
 
+			// NOTE:
+			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
+			// This can be done by checking that the stick is +/- .5f
+			//
+			// Also note:
+			// Thumbstick movement is vector2 with range of +/- 1.0f on either
+			// the X or Y axis of the stick being polled.
+			//
 			// Player one controls (blue).
-			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed)
+			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == 1.0f)
 			{
 				blueBar.Y += 10;
 			}
-			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed)
+			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == -1.0f)
 			{
 				blueBar.Y -= 10;
 			}
 
 			// Player two controls (red).
-			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed)
+			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
+				|| GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == 1.0f)
 			{
 				redBar.Y += 10;
 			}
-			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed)
+			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
+				|| GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == -1.0f)
 			{
 				redBar.Y -= 10;
 			}
