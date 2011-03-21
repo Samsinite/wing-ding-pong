@@ -7,8 +7,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Bounce.xnb</Output>
-      <Time>2010-04-27T09:34:02-07:00</Time>
+      <Output>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Bounce.xnb</Output>
+      <Time>2011-03-20T16:26:59-07:00</Time>
     </Item>
     <Item>
       <Source>Sounds\Supporters.wav</Source>
@@ -16,8 +16,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Supporters.xnb</Output>
-      <Time>2010-04-27T09:34:02-07:00</Time>
+      <Output>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Supporters.xnb</Output>
+      <Time>2011-03-20T16:26:59-07:00</Time>
     </Item>
     <Item>
       <Source>Textures\Bars.jpg</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Bars.xnb</Output>
-      <Time>2011-02-28T00:45:46.3125-08:00</Time>
+      <Output>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Bars.xnb</Output>
+      <Time>2011-03-20T16:26:58-07:00</Time>
     </Item>
     <Item>
       <Source>Textures\boblewis.jpg</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\boblewis.xnb</Output>
-      <Time>2011-02-27T02:54:15.4375-08:00</Time>
+      <Output>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\boblewis.xnb</Output>
+      <Time>2011-03-20T16:26:58-07:00</Time>
     </Item>
     <Item>
       <Source>Textures\Funky.jpg</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Funky.xnb</Output>
-      <Time>2011-03-06T01:18:24.4375-08:00</Time>
+      <Output>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Funky.xnb</Output>
+      <Time>2011-03-20T16:26:58-07:00</Time>
     </Item>
     <Item>
       <Source>Textures\Grass.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Grass.xnb</Output>
-      <Time>2011-02-27T02:25:11.71875-08:00</Time>
+      <Output>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Grass.xnb</Output>
+      <Time>2011-03-20T16:26:59-07:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects.bak.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Objects.bak.xnb</Output>
-      <Time>2011-02-27T16:32:10.34375-08:00</Time>
+      <Output>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Objects.bak.xnb</Output>
+      <Time>2011-03-20T16:26:59-07:00</Time>
     </Item>
     <Item>
       <Source>Textures\Objects.PNG</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Objects.xnb</Output>
-      <Time>2011-02-28T13:07:08.765625-08:00</Time>
+      <Output>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Objects.xnb</Output>
+      <Time>2011-03-20T16:26:59-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -79,39 +79,39 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>true</CompressContent>
-      <RootDirectory>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pongContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pongContent\obj\Xbox 360\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pongContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pongContent\obj\Xbox 360\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Documents and Settings\Sam\My Documents\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T13:41:18-07:00</Value>
+        <Value>2010-08-23T12:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T13:41:18-07:00</Value>
+        <Value>2010-08-23T12:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T13:41:18-07:00</Value>
+        <Value>2010-08-23T12:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T13:41:18-07:00</Value>
+        <Value>2010-08-23T12:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T13:41:18-07:00</Value>
+        <Value>2010-08-23T12:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T13:41:18-07:00</Value>
+        <Value>2010-08-23T12:41:18-07:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-02-15T22:44:00.265625-08:00</Value>
+        <Value>2011-03-21T07:02:34.8863647-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
