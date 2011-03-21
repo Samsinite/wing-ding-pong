@@ -6,17 +6,21 @@ C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\b
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\GameThumbnail.png
 2011-03-06T05:09:45.7343750Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\wing-ding-pong.exe
-2011-03-21T01:42:09.5781250Z
+2011-03-21T02:39:50.1875000Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\ScoreFont.xnb
 2011-03-21T01:38:14.1250000Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Bounce.xnb
 2011-03-16T19:53:10.7656250Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Supporters.xnb
 2011-03-16T19:53:10.8125000Z
+C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\background.xnb
+2011-03-21T02:09:36.6562500Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Bars.xnb
 2011-03-16T19:53:14.1406250Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\boblewis.xnb
 2011-03-16T19:53:14.2656250Z
+C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\ControllerDetectScreen.xnb
+2011-03-21T02:17:59.0156250Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Funky.xnb
 2011-03-16T19:53:14.4843750Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Grass.xnb

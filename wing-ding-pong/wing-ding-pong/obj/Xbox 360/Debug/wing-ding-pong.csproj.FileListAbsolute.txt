@@ -13,3 +13,5 @@ C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\o
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\obj\Xbox 360\Debug\wing-ding-pong.exe
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\obj\Xbox 360\Debug\wing-ding-pong.pdb
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\ScoreFont.xnb
+C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\background.xnb
+C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\ControllerDetectScreen.xnb

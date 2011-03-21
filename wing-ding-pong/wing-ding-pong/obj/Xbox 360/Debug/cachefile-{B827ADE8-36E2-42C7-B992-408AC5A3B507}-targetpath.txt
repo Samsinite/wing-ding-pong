@@ -7,3 +7,5 @@ Content\Textures\Grass.xnb
 Content\Textures\Objects.bak.xnb
 Content\Textures\Objects.xnb
 Content\ScoreFont.xnb
+Content\Textures\background.xnb
+Content\Textures\ControllerDetectScreen.xnb

@@ -69,6 +69,10 @@ namespace wing_ding_pong
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
+
+			// Ideal resolution for the XBox 360.
+			this.graphics.PreferredBackBufferWidth = 1280;
+			this.graphics.PreferredBackBufferHeight = 720;
 		}
 
 		#endregion
@@ -169,7 +173,7 @@ namespace wing_ding_pong
 			{
 				this.Exit();
 			}
-
+			
 			// NOTE:
 			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
 			// This can be done by checking that the stick is +/- .5f
@@ -252,7 +256,7 @@ namespace wing_ding_pong
 			// Bar collisions.
 			if (ball.Intersects(redBar) || ball.Intersects(blueBar))
 			{
-				ballVelocity.X = -ballVelocity.X; // make if bounce by inverting the X velocity
+				ballVelocity.X = -ballVelocity.X; // Make it bounce by inverting the X velocity.
 				ballBounce.Play(); // Bounce sound.
 
 			}
@@ -287,7 +291,6 @@ namespace wing_ding_pong
 			GraphicsDevice.Clear(Color.Black);
 
 			// Uncomment this section to render the background image.
-
 			// Grass background.
 			//spriteBatch.Begin();
 			//spriteBatch.Draw(
@@ -306,12 +309,12 @@ namespace wing_ding_pong
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
 			spriteBatch.DrawString( // draw our score string
-				  font, // our score font
-				  blueScore.ToString() + " - " + redScore.ToString(), // building the string
-				  new Vector2( // text position
-				  GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // half the screen and a little to the left
+				  font, // Score font.
+				  blueScore.ToString() + " - " + redScore.ToString(), // Build the string.
+				  new Vector2( // Text position.
+				  GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // Half the screen and a little to the left.
 				  10.0f),
-				  Color.Yellow); // yellow text
+				  Color.Yellow); // Text color.
 
 			spriteBatch.End();
 			
@@ -367,5 +370,6 @@ namespace wing_ding_pong
 		}	// End "initball".
 
 		#endregion
-    }
+
+    }	// End "wingdingpong".
 }
