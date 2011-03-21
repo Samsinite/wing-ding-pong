@@ -6,13 +6,15 @@ C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\b
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\GameThumbnail.png
 2011-03-06T05:09:45.7343750Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\wing-ding-pong.exe
-2011-03-21T10:08:15.2812500Z
+2011-03-21T10:11:43.3593750Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\ScoreFont.xnb
 2011-03-21T01:38:14.1250000Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Screens\Background.xnb
 2011-03-21T10:04:02.0937500Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Screens\ControllerDetectScreen.xnb
 2011-03-21T10:05:15.8437500Z
+C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Screens\TitleScreen.xnb
+2011-03-21T10:11:43.1875000Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Bounce.xnb
 2011-03-16T19:53:10.7656250Z
 C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Supporters.xnb
