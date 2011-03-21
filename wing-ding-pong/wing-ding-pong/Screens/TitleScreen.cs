@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace wing_ding_pong
 {
-	class TitleScreen : Screen
+	public class TitleScreen : Screen
 	{
 		//Background texture for the Title screen
 		Texture2D mTitleScreenBackground;

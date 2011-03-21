@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace wing_ding_pong
 {
-	class Screen
+	public class Screen
 	{
 		//Stores the PlayerIndex for the controlling player, i.e. Player One
 		protected static PlayerIndex PlayerOne;
