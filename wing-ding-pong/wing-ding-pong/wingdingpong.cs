@@ -71,14 +71,17 @@ namespace wing_ding_pong
 		#region wingdingpong
 
 		public wingdingpong()
-		{
-			graphics = new GraphicsDeviceManager(this);
-			Content.RootDirectory = "Content";
+        {
+#if WINDOWS
+            GraphicsAdapter.UseReferenceDevice = true;  //Requires DirectX SDK and enables software based DirectX (Slow)
+#endif
+            graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
 
-			// Ideal resolution for the XBox 360.
-			this.graphics.PreferredBackBufferWidth = 1280;
-			this.graphics.PreferredBackBufferHeight = 720;
-		}
+	    // Ideal resolution for the XBox 360.
+	    this.graphics.PreferredBackBufferWidth = 1280;
+	    this.graphics.PreferredBackBufferHeight = 720;
+	}
 
 		#endregion
 
@@ -180,7 +183,8 @@ namespace wing_ding_pong
 			}
 
 			// Allows the game to exit by pressing the "back" button on the Xbox controller.
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Escape))
 			{
 				this.Exit();
 			}
@@ -204,24 +208,28 @@ namespace wing_ding_pong
 			//
 			// Player one controls (blue).
 			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f)
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == 0.5f ||
+                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
 			{
 				blueBar.Y -= 10;
 			}
 			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f)
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == -0.5f ||
+                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
 			{
 				blueBar.Y += 10;
 			}
 
 			// Player two controls (red).
 			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f)
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == 0.5f ||
+                Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
 			{
 				redBar.Y -= 10;
 			}
 			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f)
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == -0.5f ||
+                Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
 			{
 				redBar.Y += 10;
 			}
@@ -254,7 +262,8 @@ namespace wing_ding_pong
 			//ball2.Y += (int)ballVelocity2.Y;
 
 			// Handling ball initialization; use Navigation Button to reset.
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)
+			if (GamePad.GetState(PlayerIndex.One).Buttons.BigButton == ButtonState.Pressed ||
+                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
 			{
 				InitBall();
 			}
@@ -316,13 +325,13 @@ namespace wing_ding_pong
 
 			// Uncomment this section to render the background image.
 			// Grass background.
-			//spriteBatch.Begin();
-			//spriteBatch.Draw(
-			//      grass, // Grass texture.
-			//      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-			//    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-			//      Color.White);
-			//spriteBatch.End();
+			spriteBatch.Begin();
+			spriteBatch.Draw(
+			      grass, // Grass texture.
+			      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
+			    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
+			      Color.White);
+			spriteBatch.End();
 
 			// Draw the score.
 			// The position of this code is important; if it were done

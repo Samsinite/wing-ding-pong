@@ -1,0 +1,7 @@
+*.suo
+*.exe
+*.pdb
+bin/
+obj/
+*.cachefile
+*.user
