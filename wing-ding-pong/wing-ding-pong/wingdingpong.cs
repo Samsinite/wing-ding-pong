@@ -185,26 +185,26 @@ namespace wing_ding_pong
 			//
 			// Player one controls (blue).
 			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == 1.0f)
-			{
-				blueBar.Y += 10;
-			}
-			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == -1.0f)
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f)
 			{
 				blueBar.Y -= 10;
+			}
+			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f)
+			{
+				blueBar.Y += 10;
 			}
 
 			// Player two controls (red).
 			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == 1.0f)
-			{
-				redBar.Y += 10;
-			}
-			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == -1.0f)
+				|| GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f)
 			{
 				redBar.Y -= 10;
+			}
+			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
+				|| GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f)
+			{
+				redBar.Y += 10;
 			}
 			
 			// Limit the bars' movement to the screen bounds.
@@ -235,7 +235,7 @@ namespace wing_ding_pong
 			//ball2.Y += (int)ballVelocity2.Y;
 
 			// Handling ball initialization; use Navigation Button to reset.
-			if (GamePad.GetState(PlayerIndex.One).Buttons.BigButton == ButtonState.Pressed)
+			if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)
 			{
 				InitBall();
 			}
@@ -289,13 +289,13 @@ namespace wing_ding_pong
 			// Uncomment this section to render the background image.
 
 			// Grass background.
-			spriteBatch.Begin();
-			spriteBatch.Draw(
-				  grass, // Grass texture.
-				  GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-				// GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-				  Color.White);
-			spriteBatch.End();
+			//spriteBatch.Begin();
+			//spriteBatch.Draw(
+			//      grass, // Grass texture.
+			//      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
+			//    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
+			//      Color.White);
+			//spriteBatch.End();
 
 			// Draw the score.
 			// The position of this code is important; if it were done

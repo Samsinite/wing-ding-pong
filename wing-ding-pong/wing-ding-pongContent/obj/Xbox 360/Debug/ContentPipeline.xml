@@ -73,6 +73,15 @@
       <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Objects.xnb</Output>
       <Time>2011-02-28T13:07:08.765625-08:00</Time>
     </Item>
+    <Item>
+      <Source>ScoreFont.spritefont</Source>
+      <Name>ScoreFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\ScoreFont.xnb</Output>
+      <Time>2011-03-20T18:37:45.296875-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Xbox360</TargetPlatform>
