@@ -83,21 +83,21 @@
       <Time>2011-03-20T18:37:45.296875-07:00</Time>
     </Item>
     <Item>
-      <Source>Textures\background.png</Source>
-      <Name>Textures\background</Name>
+      <Source>Screens\Background.png</Source>
+      <Name>Screens\Background</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\background.xnb</Output>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Screens\Background.xnb</Output>
       <Time>2010-09-15T13:43:52-07:00</Time>
     </Item>
     <Item>
-      <Source>Textures\ControllerDetectScreen.png</Source>
-      <Name>Textures\ControllerDetectScreen</Name>
+      <Source>Screens\ControllerDetectScreen.png</Source>
+      <Name>Screens\ControllerDetectScreen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\ControllerDetectScreen.xnb</Output>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Screens\ControllerDetectScreen.xnb</Output>
       <Time>2009-03-09T21:58:56-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
