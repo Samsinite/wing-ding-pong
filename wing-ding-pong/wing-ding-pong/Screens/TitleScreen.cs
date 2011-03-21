@@ -17,7 +17,7 @@ namespace wing_ding_pong
 		public TitleScreen(ContentManager theContent, EventHandler theScreenEvent) : base(theScreenEvent)
 		{
 			//Load the background texture for the screen
-			mTitleScreenBackground = theContent.Load<Texture2D>(@"Screens/Background");
+			mTitleScreenBackground = theContent.Load<Texture2D>(@"Screens/TitleScreen");
 		}
 
 		//Update all of the elements that need updating in the Title Screen        

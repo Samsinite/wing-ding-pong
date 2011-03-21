@@ -305,6 +305,7 @@ namespace wing_ding_pong
 		{
 			GraphicsDevice.Clear(Color.Black);
 		
+			// This code draws the menus.
 			//spriteBatch.Begin();
 
 			//// Again, using Polymorphism, we can call draw on the current screen class
