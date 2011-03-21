@@ -68,7 +68,7 @@ namespace wing_ding_pong
 
 		#endregion
 
-		#region wingdingpong
+		#region Constructor
 
 		public wingdingpong()
         {
