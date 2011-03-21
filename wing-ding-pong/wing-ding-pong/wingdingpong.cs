@@ -208,13 +208,13 @@ namespace wing_ding_pong
 			//
 			// Player one controls (blue).
 			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == 0.5f ||
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
 			{
 				blueBar.Y -= 10;
 			}
 			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == -0.5f ||
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
 			{
 				blueBar.Y += 10;
@@ -222,13 +222,13 @@ namespace wing_ding_pong
 
 			// Player two controls (red).
 			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == 0.5f ||
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
 			{
 				redBar.Y -= 10;
 			}
 			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == -0.5f ||
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
 			{
 				redBar.Y += 10;
@@ -323,15 +323,15 @@ namespace wing_ding_pong
 
 			//spriteBatch.End();
 
-			// Uncomment this section to render the background image.
-			// Grass background.
-			spriteBatch.Begin();
-			spriteBatch.Draw(
-			      grass, // Grass texture.
-			      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-			    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-			      Color.White);
-			spriteBatch.End();
+			//// Uncomment this section to render the background image.
+			//// Grass background.
+			//spriteBatch.Begin();
+			//spriteBatch.Draw(
+			//      grass, // Grass texture.
+			//      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
+			//    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
+			//      Color.White);
+			//spriteBatch.End();
 
 			// Draw the score.
 			// The position of this code is important; if it were done
