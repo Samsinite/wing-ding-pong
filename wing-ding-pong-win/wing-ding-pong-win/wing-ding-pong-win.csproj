@@ -109,8 +109,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\AI.cs">
+      <Link>AI.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Ball.cs">
+      <Link>Ball.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Paddle.cs">
+      <Link>Paddle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Physics.cs">
+      <Link>Physics.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Program.cs">
       <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Rules.cs">
+      <Link>Rules.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Sprite.cs">
+      <Link>Sprite.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\wingdingpong.cs">
       <Link>wingdingpong.cs</Link>

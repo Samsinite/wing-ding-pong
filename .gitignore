@@ -3,3 +3,5 @@
 *.pdb
 bin/
 obj/
+*.cachefile
+*.user
