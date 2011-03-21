@@ -1,8 +1,0 @@
-Content\Sounds\Bounce.xnb
-Content\Sounds\Supporters.xnb
-Content\Textures\Bars.xnb
-Content\Textures\boblewis.xnb
-Content\Textures\Funky.xnb
-Content\Textures\Grass.xnb
-Content\Textures\Objects.bak.xnb
-Content\Textures\Objects.xnb

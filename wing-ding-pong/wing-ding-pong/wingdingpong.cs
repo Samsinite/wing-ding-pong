@@ -20,7 +20,7 @@ namespace wing_ding_pong
 
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-		//SpriteFont font;
+		SpriteFont font;
 
 		// Scores.
 		int blueScore = 0;
@@ -71,9 +71,12 @@ namespace wing_ding_pong
             GraphicsAdapter.UseReferenceDevice = true;  //Requires DirectX SDK and enables software based DirectX (Slow)
 #endif
             graphics = new GraphicsDeviceManager(this);
-
             Content.RootDirectory = "Content";
-		}
+
+	    // Ideal resolution for the XBox 360.
+	    this.graphics.PreferredBackBufferWidth = 1280;
+	    this.graphics.PreferredBackBufferHeight = 720;
+	}
 
 		#endregion
 
@@ -130,7 +133,7 @@ namespace wing_ding_pong
 			playerScored = Content.Load<SoundEffect>(@"Sounds/Supporters");
 
 			// Load our score font.
-			//font = Content.Load<SpriteFont>(@"ScoreFont");
+			font = Content.Load<SpriteFont>(@"ScoreFont");
 
 		}
 
@@ -174,7 +177,7 @@ namespace wing_ding_pong
 			{
 				this.Exit();
 			}
-
+			
 			// NOTE:
 			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
 			// This can be done by checking that the stick is +/- .5f
@@ -190,30 +193,30 @@ namespace wing_ding_pong
 			//
 			// Player one controls (blue).
 			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == 1.0f ||
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == 0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
 			{
-				blueBar.Y += 10;
+				blueBar.Y -= 10;
 			}
 			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == -1.0f ||
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == -0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
 			{
-				blueBar.Y -= 10;
+				blueBar.Y += 10;
 			}
 
 			// Player two controls (red).
 			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == 1.0f ||
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == 0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
 			{
-				redBar.Y += 10;
+				redBar.Y -= 10;
 			}
 			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == -1.0f ||
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == -0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
 			{
-				redBar.Y -= 10;
+				redBar.Y += 10;
 			}
 			
 			// Limit the bars' movement to the screen bounds.
@@ -262,7 +265,7 @@ namespace wing_ding_pong
 			// Bar collisions.
 			if (ball.Intersects(redBar) || ball.Intersects(blueBar))
 			{
-				ballVelocity.X = -ballVelocity.X; // make if bounce by inverting the X velocity
+				ballVelocity.X = -ballVelocity.X; // Make it bounce by inverting the X velocity.
 				ballBounce.Play(); // Bounce sound.
 
 			}
@@ -297,14 +300,13 @@ namespace wing_ding_pong
 			GraphicsDevice.Clear(Color.Black);
 
 			// Uncomment this section to render the background image.
-
 			// Grass background.
 			spriteBatch.Begin();
 			spriteBatch.Draw(
-				  grass, // Grass texture.
-				  GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-				// GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-				  Color.White);
+			      grass, // Grass texture.
+			      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
+			    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
+			      Color.White);
 			spriteBatch.End();
 
 			// Draw the score.
@@ -315,13 +317,13 @@ namespace wing_ding_pong
 			// code.
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-			/*spriteBatch.DrawString( // draw our score string
-				  font, // our score font
-				  blueScore.ToString() + " - " + redScore.ToString(), // building the string
-				  new Vector2( // text position
-				  GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // half the screen and a little to the left
+			spriteBatch.DrawString( // draw our score string
+				  font, // Score font.
+				  blueScore.ToString() + " - " + redScore.ToString(), // Build the string.
+				  new Vector2( // Text position.
+				  GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // Half the screen and a little to the left.
 				  10.0f),
-				  Color.Yellow); // yellow text*/
+				  Color.Yellow); // Text color.
 
 			spriteBatch.End();
 			
@@ -377,5 +379,6 @@ namespace wing_ding_pong
 		}	// End "initball".
 
 		#endregion
-    }
+
+    }	// End "wingdingpong".
 }
