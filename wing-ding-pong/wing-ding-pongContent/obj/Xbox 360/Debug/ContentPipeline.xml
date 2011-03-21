@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Sounds\Bounce.wav</Source>
+      <Name>Sounds\Bounce</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Bounce.xnb</Output>
+      <Time>2010-04-27T09:34:02-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Supporters.wav</Source>
+      <Name>Sounds\Supporters</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Sounds\Supporters.xnb</Output>
+      <Time>2010-04-27T09:34:02-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Bars.jpg</Source>
+      <Name>Textures\Bars</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Bars.xnb</Output>
+      <Time>2011-02-28T00:45:46.3125-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\boblewis.jpg</Source>
+      <Name>Textures\boblewis</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\boblewis.xnb</Output>
+      <Time>2011-02-27T02:54:15.4375-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Funky.jpg</Source>
+      <Name>Textures\Funky</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Funky.xnb</Output>
+      <Time>2011-03-06T01:18:24.4375-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Grass.png</Source>
+      <Name>Textures\Grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Grass.xnb</Output>
+      <Time>2011-02-27T02:25:11.71875-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects.bak.png</Source>
+      <Name>Textures\Objects.bak</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Objects.bak.xnb</Output>
+      <Time>2011-02-27T16:32:10.34375-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Objects.PNG</Source>
+      <Name>Textures\Objects</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Textures\Objects.xnb</Output>
+      <Time>2011-02-28T13:07:08.765625-08:00</Time>
+    </Item>
+    <Item>
+      <Source>ScoreFont.spritefont</Source>
+      <Name>ScoreFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\ScoreFont.xnb</Output>
+      <Time>2011-03-20T18:37:45.296875-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Screens\Background.png</Source>
+      <Name>Screens\Background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Screens\Background.xnb</Output>
+      <Time>2010-09-15T13:43:52-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Screens\ControllerDetectScreen.png</Source>
+      <Name>Screens\ControllerDetectScreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Screens\ControllerDetectScreen.xnb</Output>
+      <Time>2009-03-09T21:58:56-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Screens\TitleScreen.png</Source>
+      <Name>Screens\TitleScreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\Screens\TitleScreen.xnb</Output>
+      <Time>2009-03-09T21:59:56-07:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Xbox360</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>true</CompressContent>
+      <RootDirectory>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pongContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pongContent\obj\Xbox 360\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Documents and Settings\Tarsier\wing-ding-pong\wing-ding-pong\wing-ding-pong\bin\Xbox 360\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T13:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T13:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T13:41:18-07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\WINDOWS\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2011-02-15T22:44:00.265625-08:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

@@ -91,15 +91,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Background.png">
+    <Compile Include="Screens\ControllerDetectScreen.png">
+      <Name>ControllerDetectScreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Screens\Background.png">
       <Name>Background</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\ControllerDetectScreen.png">
-      <Name>ControllerDetectScreen</Name>
+    <Compile Include="Screens\TitleScreen.png">
+      <Name>TitleScreen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

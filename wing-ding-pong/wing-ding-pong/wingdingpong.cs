@@ -40,6 +40,11 @@ namespace wing_ding_pong
 		SoundEffect ballBounce;
 		SoundEffect playerScored;
 
+		// Screens.
+		ControllerDetectScreen mControllerScreen;
+		TitleScreen mTitleScreen;
+		Screen mCurrentScreen;
+
 		// Ball speed.
 		Vector2 ballVelocity = Vector2.Zero;
 		//Vector2 ballVelocity2 = Vector2.Zero;
@@ -63,7 +68,7 @@ namespace wing_ding_pong
 
 		#endregion
 
-		#region wingdingpong
+		#region Constructor
 
 		public wingdingpong()
         {
@@ -135,6 +140,12 @@ namespace wing_ding_pong
 			// Load our score font.
 			font = Content.Load<SpriteFont>(@"ScoreFont");
 
+			// Initialize screens.
+			mControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
+			mTitleScreen = new TitleScreen(this.Content, new EventHandler(TitleScreenEvent));
+
+			// Current screen.
+			mCurrentScreen = mControllerScreen;
 		}
 
 		#endregion
@@ -177,6 +188,10 @@ namespace wing_ding_pong
 			{
 				this.Exit();
 			}
+
+			// By taking advantage of Polymorphism, we can call update on the current screen class, 
+			// but the Update in the subclass is the one that will be executed.
+			mCurrentScreen.Update(gameTime);
 			
 			// NOTE:
 			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
@@ -193,13 +208,13 @@ namespace wing_ding_pong
 			//
 			// Player one controls (blue).
 			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == 0.5f ||
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
 			{
 				blueBar.Y -= 10;
 			}
 			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == -0.5f ||
+				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
 			{
 				blueBar.Y += 10;
@@ -207,13 +222,13 @@ namespace wing_ding_pong
 
 			// Player two controls (red).
 			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == 0.5f ||
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
 			{
 				redBar.Y -= 10;
 			}
 			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y == -0.5f ||
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
 			{
 				redBar.Y += 10;
@@ -298,16 +313,25 @@ namespace wing_ding_pong
 		protected override void Draw(GameTime gameTime)
 		{
 			GraphicsDevice.Clear(Color.Black);
+		
+			// This code draws the menus.
+			//spriteBatch.Begin();
 
-			// Uncomment this section to render the background image.
-			// Grass background.
-			spriteBatch.Begin();
-			spriteBatch.Draw(
-			      grass, // Grass texture.
-			      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-			    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-			      Color.White);
-			spriteBatch.End();
+			//// Again, using Polymorphism, we can call draw on the current screen class
+			//// and the Draw in the subclass is the one that will be executed.
+			//mCurrentScreen.Draw(spriteBatch);
+
+			//spriteBatch.End();
+
+			//// Uncomment this section to render the background image.
+			//// Grass background.
+			//spriteBatch.Begin();
+			//spriteBatch.Draw(
+			//      grass, // Grass texture.
+			//      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
+			//    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
+			//      Color.White);
+			//spriteBatch.End();
 
 			// Draw the score.
 			// The position of this code is important; if it were done
@@ -380,5 +404,22 @@ namespace wing_ding_pong
 
 		#endregion
 
-    }	// End "wingdingpong".
+		#region ScreenEvents
+
+		//This event fires when the Controller detect screen is returning control back to the main game class
+		public void ControllerDetectScreenEvent(object obj, EventArgs e)
+		{
+			//Switch to the title screen, the Controller detect screen is finished being displayed
+			mCurrentScreen = mTitleScreen;
+		}
+
+		//This event is fired when the Title screen is returning control back to the main game class
+		public void TitleScreenEvent(object obj, EventArgs e)
+		{
+			//Switch to the controller detect screen, the Title screen is finished being displayed
+			mCurrentScreen = mControllerScreen;
+		}
+
+		#endregion
+	}	// End "wingdingpong".
 }
