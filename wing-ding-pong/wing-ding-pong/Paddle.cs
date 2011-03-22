@@ -9,11 +9,13 @@ namespace wing_ding_pong
 	public class Paddle : Collidable2DBase, IDrawable
 	{
         private Texture2D _sprite;
+        private Rectangle _rec;
 
         public Paddle(Texture2D sprite, Rectangle paddleObj)
             : base(new List<IObjectType>() {paddleObj} )
         {
             _sprite = sprite;
+            _rec = (Rectangle)CollidableObjects[0];
         }
 
 
@@ -25,11 +27,9 @@ namespace wing_ding_pong
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
-            Rectangle rec = (Rectangle)CollidableObjects[0];
-
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)rec.Center.X, (int)rec.Center.Y,
-                (int)rec.Width, (int)rec.Height),
+                (int)_rec.Center.X, (int)_rec.Center.Y,
+                (int)_rec.Width, (int)_rec.Height),
                 Microsoft.Xna.Framework.Color.White);
         }
     }
