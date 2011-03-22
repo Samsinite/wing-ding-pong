@@ -38,5 +38,16 @@ namespace wing_ding_pong.CollidableObjects
         {
             get { return _height; }
         }
+
+        public Rectangle BoundingBox
+        {
+            get { return this; }
+        }
+
+        public bool Intersects(Rectangle other)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

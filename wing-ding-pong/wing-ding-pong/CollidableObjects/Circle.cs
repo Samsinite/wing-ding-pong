@@ -35,5 +35,11 @@ namespace wing_ding_pong.CollidableObjects
         {
             get { return _center; }
         }
+
+        public Rectangle BoundingBox
+        {
+            get { return new Rectangle(Center.X - Radius, 
+                Center.Y + Radius, Center.X + Radius, Center.Y - Radius); }
+        }
     }
 }
