@@ -5,6 +5,7 @@ using System.Text;
 
 namespace wing_ding_pong
 {
+    //Doesn't XNA already have a class for this?
 	class Sprite
 	{
 	}

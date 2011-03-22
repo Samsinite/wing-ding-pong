@@ -5,7 +5,7 @@ using System.Text;
 
 namespace wing_ding_pong
 {
-	class Rules
+	public class Rules
 	{
 	}
 }
