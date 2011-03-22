@@ -72,16 +72,17 @@ namespace wing_ding_pong
 
 		public wingdingpong()
         {
-#if WINDOWS
+			#if WINDOWS
             GraphicsAdapter.UseReferenceDevice = true;  //Requires DirectX SDK and enables software based DirectX (Slow)
-#endif
+			#endif
+
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-	    // Ideal resolution for the XBox 360.
-	    this.graphics.PreferredBackBufferWidth = 1280;
-	    this.graphics.PreferredBackBufferHeight = 720;
-	}
+			// Ideal resolution for the XBox 360.
+			this.graphics.PreferredBackBufferWidth = 1280;
+			this.graphics.PreferredBackBufferHeight = 720;
+		}
 
 		#endregion
 
@@ -258,8 +259,6 @@ namespace wing_ding_pong
 			// Move the ball.
 			ball.X += (int)ballVelocity.X;
 			ball.Y += (int)ballVelocity.Y;
-			//ball2.X += (int)ballVelocity2.X;
-			//ball2.Y += (int)ballVelocity2.Y;
 
 			// Handling ball initialization; use Navigation Button to reset.
 			if (GamePad.GetState(PlayerIndex.One).Buttons.BigButton == ButtonState.Pressed ||
