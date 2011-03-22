@@ -46,7 +46,13 @@ namespace wing_ding_pong.CollidableObjects
 
         public bool Intersects(Rectangle other)
         {
-            throw new NotImplementedException();
+            double thisHalfWidth = Width / 2, thisHalfHeight = Height / 2;
+            double otherHalfWidth = other.Width / 2, otherHalfHeight = other.Height / 2;
+
+            return ((Center.X - thisHalfWidth >= other.Center.X - otherHalfWidth) &&
+                (Center.X + thisHalfWidth < other.Center.X + otherHalfWidth) &&
+                (Center.Y - thisHalfHeight >= other.Center.Y - otherHalfHeight) &&
+                (Center.Y + thisHalfHeight < other.Center.Y + otherHalfHeight));
         }
 
     }
