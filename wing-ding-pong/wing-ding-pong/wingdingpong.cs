@@ -41,9 +41,9 @@ namespace wing_ding_pong
 		SoundEffect playerScored;
 
 		// Screens.
-		ControllerDetectScreen _ControllerScreen;
-		TitleScreen _TitleScreen;
-		Screen _CurrentScreen;
+		ControllerDetectScreen mControllerScreen;
+		TitleScreen mTitleScreen;
+		Screen mCurrentScreen;
 
 		// Ball speed.
 		Vector2 ballVelocity = Vector2.Zero;
@@ -139,11 +139,11 @@ namespace wing_ding_pong
 			font = Content.Load<SpriteFont>(@"ScoreFont");
 
 			// Initialize screens.
-			_ControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
-			_TitleScreen = new TitleScreen(this.Content, new EventHandler(TitleScreenEvent));
+			mControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
+			mTitleScreen = new TitleScreen(this.Content, new EventHandler(TitleScreenEvent));
 
 			// Current screen.
-			_CurrentScreen = _ControllerScreen;
+			mCurrentScreen = mControllerScreen;
 		}
 
 		#endregion
@@ -189,7 +189,7 @@ namespace wing_ding_pong
 
 			// By taking advantage of Polymorphism, we can call update on the current screen class, 
 			// but the Update in the subclass is the one that will be executed.
-			_CurrentScreen.Update(gameTime);
+			mCurrentScreen.Update(gameTime);
 			
 			// NOTE:
 			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
@@ -406,14 +406,14 @@ namespace wing_ding_pong
 		public void ControllerDetectScreenEvent(object obj, EventArgs e)
 		{
 			//Switch to the title screen, the Controller detect screen is finished being displayed
-			_CurrentScreen = _TitleScreen;
+			mCurrentScreen = mTitleScreen;
 		}
 
 		//This event is fired when the Title screen is returning control back to the main game class
 		public void TitleScreenEvent(object obj, EventArgs e)
 		{
 			//Switch to the controller detect screen, the Title screen is finished being displayed
-			_CurrentScreen = _ControllerScreen;
+			mCurrentScreen = mControllerScreen;
 		}
 
 		#endregion
