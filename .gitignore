@@ -1,7 +1,9 @@
 *.suo
 *.exe
 *.pdb
-bin/
-obj/
-*.cachefile
+*/bin/
+*/Debug/
+*/Release/
+*/obj/
+*.Debug.cachefile
 *.user

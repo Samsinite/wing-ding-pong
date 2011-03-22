@@ -90,8 +90,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="2D\Math2D.cs" />
+    <Compile Include="2D\Point.cs" />
+    <Compile Include="2D\Vector.cs" />
     <Compile Include="AI.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="CollidableObjects\Circle.cs" />
+    <Compile Include="CollidableObjects\Collidable2DBase.cs" />
+    <Compile Include="CollidableObjects\IObjectType.cs" />
+    <Compile Include="CollidableObjects\Rectangle.cs" />
+    <Compile Include="2D\Speed.cs" />
+    <Compile Include="CollidableObjects\Triangle.cs" />
+    <Compile Include="IDrawable.cs" />
     <Compile Include="ScreenManager\ControllerDetectScreen.cs" />
     <Compile Include="Paddle.cs" />
     <Compile Include="Physics.cs" />
