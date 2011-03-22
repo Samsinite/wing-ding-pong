@@ -41,13 +41,12 @@ namespace wing_ding_pong
 		SoundEffect playerScored;
 
 		// Screens.
-		ControllerDetectScreen mControllerScreen;
-		TitleScreen mTitleScreen;
-		Screen mCurrentScreen;
+		ControllerDetectScreen _ControllerScreen;
+		TitleScreen _TitleScreen;
+		Screen _CurrentScreen;
 
 		// Ball speed.
 		Vector2 ballVelocity = Vector2.Zero;
-		//Vector2 ballVelocity2 = Vector2.Zero;
 
 		// Source rectangles of our graphics.
 		Rectangle blueSrcRect = new Rectangle( // Blue bar source rectangle.
@@ -95,8 +94,6 @@ namespace wing_ding_pong
 		/// </summary>
 		protected override void Initialize()
 		{
-			// TODO: Add your initialization logic here
-			// initializing our entities
 			blueBar = new Rectangle(
 				  32, // "X" coordinate of the upper left corner of our rectangle
 				  GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
@@ -142,11 +139,11 @@ namespace wing_ding_pong
 			font = Content.Load<SpriteFont>(@"ScoreFont");
 
 			// Initialize screens.
-			mControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
-			mTitleScreen = new TitleScreen(this.Content, new EventHandler(TitleScreenEvent));
+			_ControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
+			_TitleScreen = new TitleScreen(this.Content, new EventHandler(TitleScreenEvent));
 
 			// Current screen.
-			mCurrentScreen = mControllerScreen;
+			_CurrentScreen = _ControllerScreen;
 		}
 
 		#endregion
@@ -192,7 +189,7 @@ namespace wing_ding_pong
 
 			// By taking advantage of Polymorphism, we can call update on the current screen class, 
 			// but the Update in the subclass is the one that will be executed.
-			mCurrentScreen.Update(gameTime);
+			_CurrentScreen.Update(gameTime);
 			
 			// NOTE:
 			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
@@ -409,14 +406,14 @@ namespace wing_ding_pong
 		public void ControllerDetectScreenEvent(object obj, EventArgs e)
 		{
 			//Switch to the title screen, the Controller detect screen is finished being displayed
-			mCurrentScreen = mTitleScreen;
+			_CurrentScreen = _TitleScreen;
 		}
 
 		//This event is fired when the Title screen is returning control back to the main game class
 		public void TitleScreenEvent(object obj, EventArgs e)
 		{
 			//Switch to the controller detect screen, the Title screen is finished being displayed
-			mCurrentScreen = mControllerScreen;
+			_CurrentScreen = _ControllerScreen;
 		}
 
 		#endregion
