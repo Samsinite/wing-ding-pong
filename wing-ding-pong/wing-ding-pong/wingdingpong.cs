@@ -79,8 +79,8 @@ namespace wing_ding_pong
             Content.RootDirectory = "Content";
 
 			// Ideal resolution for the XBox 360.
-			this.graphics.PreferredBackBufferWidth = 1280;
-			this.graphics.PreferredBackBufferHeight = 720;
+			this.graphics.PreferredBackBufferWidth = 800;
+			this.graphics.PreferredBackBufferHeight = 600;
 		}
 
 		#endregion
@@ -319,15 +319,15 @@ namespace wing_ding_pong
 
 			//spriteBatch.End();
 
-			//// Uncomment this section to render the background image.
-			//// Grass background.
-			//spriteBatch.Begin();
-			//spriteBatch.Draw(
-			//      grass, // Grass texture.
-			//      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-			//    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-			//      Color.White);
-			//spriteBatch.End();
+            // Uncomment this section to render the background image.
+            // Grass background.
+            //spriteBatch.Begin();
+            //spriteBatch.Draw(
+            //      grass, // Grass texture.
+            //      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
+            //    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
+            //      Color.White);
+            //spriteBatch.End();
 
 			// Draw the score.
 			// The position of this code is important; if it were done
