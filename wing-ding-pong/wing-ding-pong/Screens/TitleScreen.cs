@@ -27,7 +27,7 @@ namespace wing_ding_pong
 			// Check to see if the Player one controller has pressed the "B" button, if so, then
 			// call the screen event associated with this screen.
 
-			if (GamePad.GetState(PlayerOne).Buttons.B == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.B) == true)
+			if (GamePad.GetState(_playerOne).Buttons.B == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.B) == true)
 			{
 				ScreenEvent.Invoke(this, new EventArgs());
 			}

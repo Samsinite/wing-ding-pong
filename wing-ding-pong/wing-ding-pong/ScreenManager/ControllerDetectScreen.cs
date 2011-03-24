@@ -30,7 +30,7 @@ namespace wing_ding_pong
 			{
 				if (GamePad.GetState((PlayerIndex)aPlayer).Buttons.A == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.A) == true)
 				{
-					PlayerOne = (PlayerIndex)aPlayer;
+					_playerOne = (PlayerIndex)aPlayer;
 					ScreenEvent.Invoke(this, new EventArgs());
 
 					return;

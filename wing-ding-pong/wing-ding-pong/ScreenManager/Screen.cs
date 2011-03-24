@@ -8,7 +8,7 @@ namespace wing_ding_pong
 	public class Screen
 	{
 		// Stores the PlayerIndex for the controlling player, i.e. Player One.
-		protected static PlayerIndex PlayerOne;
+		protected static PlayerIndex _playerOne;
 
 		// The event associated with the Screen. This event is used to raise events
 		// back in the main game class to notify the game that something has changed
