@@ -109,7 +109,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Rules.cs" />
     <Compile Include="ScreenManager\Screen.cs" />
-    <Compile Include="Sprite.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
     <Compile Include="wingdingpong.cs" />
   </ItemGroup>
