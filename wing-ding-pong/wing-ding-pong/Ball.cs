@@ -35,6 +35,7 @@ namespace wing_ding_pong
             this.MemberwiseClone();
         }
 
+        //to know who hit the ball last
         public Player Owner
         {
             set { _owner = value; }

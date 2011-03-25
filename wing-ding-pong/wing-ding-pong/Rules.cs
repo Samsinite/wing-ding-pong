@@ -9,6 +9,9 @@ namespace wing_ding_pong
 {
 	public class Rules
 	{
+        /*change the score if the wall is owned by someone otherwise it would
+        bounce.  If the wall is owned by a player then it is a goal so we check
+        */
         public void changeScore(Player player, Ball ball, List<Wall> walls)
         {
             foreach(Wall wall in walls)
@@ -25,6 +28,8 @@ namespace wing_ding_pong
             }
         }
 
+        //clone the ball and randomize the position, not the way we want to but
+        //throwing code in as a filler
         public void multiball(Ball ball)
         {
             ball.Clone();
@@ -33,6 +38,7 @@ namespace wing_ding_pong
             //ball.xCoord && ball.yCoord = rand();
         }
 
+        //get the paddle owners and change the size randomly 
         public void resizePaddle(List<Paddle> paddles, Ball ball)
         {
             int paddleSizeVal = 0;
@@ -54,6 +60,8 @@ namespace wing_ding_pong
             }
         }
 
+        //need to get the velocity of the wall to change it but have the increase/decrease
+        //random
         public void changeBallSpeed(Ball ball)
         {
             int ballRandVal = 0;

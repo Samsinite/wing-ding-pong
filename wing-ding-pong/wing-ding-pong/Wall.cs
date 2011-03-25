@@ -9,6 +9,7 @@ namespace wing_ding_pong
     {
         private Player _wallOwner = null;
 
+        //so we know if a wall is actually being guarded by a player?
         public Player Owner
         {
             set{_wallOwner =  value;}

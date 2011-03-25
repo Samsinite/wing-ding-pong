@@ -19,6 +19,7 @@ namespace wing_ding_pong
             _rec = (Rectangle)CollidableObjects[0];
         }
 
+        //so resizing the paddle is possible
         public Player Owner
         {
             set { _owner = value; }
