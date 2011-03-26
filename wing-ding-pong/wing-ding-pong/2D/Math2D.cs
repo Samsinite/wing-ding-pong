@@ -31,11 +31,8 @@ namespace wing_ding_pong._2D
 
         static Vector UnitVector(Vector v)
         {
-            Vector unitV = new Vector();
             double normOfV = Norm(v);
-            unitV.X = v.X / normOfV;
-            unitV.Y = v.Y / normOfV;
-            return unitV;
+            return new Vector(v.X / normOfV, v.Y / normOfV);
         }
 
         #endregion
