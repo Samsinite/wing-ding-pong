@@ -157,11 +157,11 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Rules.cs">
       <Link>Rules.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\ControllerDetectScreen.cs">
-      <Link>ScreenManager\ControllerDetectScreen.cs</Link>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\ScreenManager.cs">
+      <Link>ScreenManager\ScreenManager.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\Screen.cs">
-      <Link>ScreenManager\Screen.cs</Link>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\ControllerDetectScreen.cs">
+      <Link>Screens\ControllerDetectScreen.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\TitleScreen.cs">
       <Link>Screens\TitleScreen.cs</Link>
