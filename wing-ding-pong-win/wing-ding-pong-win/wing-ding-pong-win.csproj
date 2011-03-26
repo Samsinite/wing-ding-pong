@@ -166,9 +166,6 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\TitleScreen.cs">
       <Link>Screens\TitleScreen.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Sprite.cs">
-      <Link>Sprite.cs</Link>
-    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\wingdingpong.cs">
       <Link>wingdingpong.cs</Link>
     </Compile>

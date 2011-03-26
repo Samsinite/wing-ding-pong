@@ -43,7 +43,7 @@ namespace wing_ding_pong
 		// Screens.
 		ControllerDetectScreen mControllerScreen;
 		TitleScreen mTitleScreen;
-		Screen mCurrentScreen;
+		ScreenManager mCurrentScreen;
 
 		// Ball speed.
 		Vector2 ballVelocity = Vector2.Zero;

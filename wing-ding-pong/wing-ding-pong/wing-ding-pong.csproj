@@ -101,16 +101,18 @@
     <Compile Include="CollidableObjects\Rectangle.cs" />
     <Compile Include="2D\Speed.cs" />
     <Compile Include="CollidableObjects\Triangle.cs" />
+    <Compile Include="ICloneable.cs" />
     <Compile Include="IDrawable.cs" />
-    <Compile Include="ScreenManager\ControllerDetectScreen.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Screens\ControllerDetectScreen.cs" />
     <Compile Include="Paddle.cs" />
     <Compile Include="Physics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Rules.cs" />
-    <Compile Include="ScreenManager\Screen.cs" />
-    <Compile Include="Sprite.cs" />
+    <Compile Include="ScreenManager\ScreenManager.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
+    <Compile Include="Wall.cs" />
     <Compile Include="wingdingpong.cs" />
   </ItemGroup>
   <ItemGroup>
