@@ -127,6 +127,12 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Ball.cs">
       <Link>Ball.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Builder\GameBuilder.cs">
+      <Link>Builder\GameBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Builder\GameDirector.cs">
+      <Link>Builder\GameDirector.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Circle.cs">
       <Link>CollidableObject\Circle.cs</Link>
     </Compile>

@@ -95,6 +95,9 @@
     <Compile Include="2D\Vector.cs" />
     <Compile Include="AI.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="Builder\SquareLevelBuilder.cs" />
+    <Compile Include="Builder\GameDirector.cs" />
+    <Compile Include="Builder\GameBuilder.cs" />
     <Compile Include="CollidableObjects\Circle.cs" />
     <Compile Include="CollidableObjects\Collidable2DBase.cs" />
     <Compile Include="CollidableObjects\IObjectType.cs" />
