@@ -25,16 +25,16 @@ namespace wing_ding_pong.Builder
 	///		"GameBuilder", which has all of the appropriate
 	///		attributes that we can use in the builder.
 	/// </summary>
-	public class GameBuilder
+	public abstract class GameBuilder
 	{
 		// The new game to be created.
-		protected wingdingpong game;
+		//protected wingdingpong game;
 
 		// Getting an instance of a game.
-		public wingdingpong Game
-		{
-			get{ return game; }
-		}
+		//public wingdingpong Game
+		//{
+		//	get{ return game; }
+		//}
 
 		// Some build methods; feel free to add anything I
 		// missed in here.

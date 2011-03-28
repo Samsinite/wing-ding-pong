@@ -24,7 +24,7 @@ namespace wing_ding_pong.Builder
 			// My assumption is that once we do, it'll be of
 			// whatever type the game itself is; if that ends
 			// up being this type, then cool.
-			game = new wingdingpong();
+			//game = new wingdingpong();
 		}
 
 		// All methods below this point can be called in any
