@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using wing_ding_pong.CollidableObjects;
 using wing_ding_pong._2D;
-using wing_ding_pong.User;
-using wing_ding_pong.Arena;
 
 namespace wing_ding_pong
 {

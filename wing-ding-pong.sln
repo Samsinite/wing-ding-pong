@@ -48,6 +48,7 @@ Global
 		{E1C19E9D-9FB9-45D2-907F-1AB805ACCC9E}.Release|x86.ActiveCfg = Release|x86
 		{E1C19E9D-9FB9-45D2-907F-1AB805ACCC9E}.Release|x86.Build.0 = Release|x86
 		{E1C19E9D-9FB9-45D2-907F-1AB805ACCC9E}.Release|Xbox 360.ActiveCfg = Release|x86
+		{E1C19E9D-9FB9-45D2-907F-1AB805ACCC9E}.Release|Xbox 360.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
