@@ -12,7 +12,10 @@ using Microsoft.Xna.Framework.Media;
 namespace wing_ding_pong
 {
     /// <summary>
-    /// This is the main type for your game
+    ///		Main game type.
+	///		
+	///		Abstracted out a "show" method for later use if
+	///		we want it to check things.
     /// </summary>
     public class wingdingpong : Microsoft.Xna.Framework.Game
     {
@@ -414,6 +417,18 @@ namespace wing_ding_pong
 		{
 			//Switch to the controller detect screen, the Title screen is finished being displayed
 			mCurrentScreen = mControllerScreen;
+		}
+
+		#endregion
+
+		#region Show
+
+		public void show()
+		{
+			// Print stuff out here, such as teams
+			// and whatever. Not sure if it'll be
+			// useful, but I'll just drop this here
+			// anyway.
 		}
 
 		#endregion

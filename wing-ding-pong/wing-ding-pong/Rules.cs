@@ -51,6 +51,7 @@ namespace wing_ding_pong
                     if (paddleSizeVal == 1)
                     {
                         // paddle.size += .5;
+                        
                     }
                     else
                     {

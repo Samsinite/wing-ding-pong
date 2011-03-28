@@ -11,7 +11,7 @@ namespace wing_ding_pong
         private Texture2D _sprite;
         private Speed _speed = new Speed(new Vector(0,0), new TimeSpan(0)); //distance over time
         private Circle _circle;
-        private Player _owner;
+        private Player _owner = new Player();
 
         //sprite is expected to be circular
         public Ball(Texture2D sprite, Point center)
@@ -36,11 +36,11 @@ namespace wing_ding_pong
         }
 
         //to know who hit the ball last
-        public Player Owner
-        {
-            set { _owner = value; }
-            get { return _owner; }
-        }
+		public Player Owner
+		{
+			set { _owner = value; }
+			get { return _owner; }
+		}
 
         /* Collision checking is not handled here... just anything that needs updated
          * with association to time */

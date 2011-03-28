@@ -5,9 +5,15 @@ using System.Text;
 
 namespace wing_ding_pong
 {
-    class Player
+    public class Player
     {
         private int _score = 0;
+
+		// Constructor.
+		public Player()
+		{
+
+		}
 
         public int Score
         {

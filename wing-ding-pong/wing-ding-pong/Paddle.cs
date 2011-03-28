@@ -10,7 +10,7 @@ namespace wing_ding_pong
 	{
         private Texture2D _sprite;
         private Rectangle _rec;
-        private Player _owner;
+        private Player _owner = null;
 
         public Paddle(Texture2D sprite, Rectangle paddleObj)
             : base(new List<IObjectType>() {paddleObj} )
@@ -24,6 +24,12 @@ namespace wing_ding_pong
         {
             set { _owner = value; }
             get { return _owner; }
+        }
+
+        public double RectangleSize
+        {
+            //set{_rec.Height = value;}
+            get{return this._rec.Height;}
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
