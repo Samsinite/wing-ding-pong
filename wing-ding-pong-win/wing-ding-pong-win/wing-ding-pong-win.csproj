@@ -124,6 +124,9 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\AI.cs">
       <Link>AI.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ArenaWall.cs">
+      <Link>ArenaWall.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Ball.cs">
       <Link>Ball.cs</Link>
     </Compile>
@@ -150,6 +153,9 @@
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Triangle.cs">
       <Link>CollidableObject\Triangle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Wall.cs">
+      <Link>CollidableObject\Wall.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ICloneable.cs">
       <Link>ICloneable.cs</Link>
@@ -180,9 +186,6 @@
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\TitleScreen.cs">
       <Link>Screens\TitleScreen.cs</Link>
-    </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Wall.cs">
-      <Link>Wall.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\wingdingpong.cs">
       <Link>wingdingpong.cs</Link>

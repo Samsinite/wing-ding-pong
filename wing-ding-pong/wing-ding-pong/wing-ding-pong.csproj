@@ -94,6 +94,7 @@
     <Compile Include="2D\Point.cs" />
     <Compile Include="2D\Vector.cs" />
     <Compile Include="AI.cs" />
+    <Compile Include="ArenaWall.cs" />
     <Compile Include="Ball.cs" />
     <Compile Include="Builder\SquareLevelBuilder.cs" />
     <Compile Include="Builder\GameDirector.cs" />
@@ -115,7 +116,7 @@
     <Compile Include="Rules.cs" />
     <Compile Include="ScreenManager\ScreenManager.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
-    <Compile Include="Wall.cs" />
+    <Compile Include="CollidableObjects\Wall.cs" />
     <Compile Include="wingdingpong.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,10 +129,7 @@
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Arena\" />
-    <Folder Include="User\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

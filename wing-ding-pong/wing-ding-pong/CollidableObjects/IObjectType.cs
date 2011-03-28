@@ -7,7 +7,8 @@ namespace wing_ding_pong.CollidableObjects
     {
         Triangle = 0,
         Rectangle = 1,
-        Circle = 2
+        Circle = 2,
+        Wall = 3
     }
 
     /* Helps the CollisionDetection determine how to calculate collsisions

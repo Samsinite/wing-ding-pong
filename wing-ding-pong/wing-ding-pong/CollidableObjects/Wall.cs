@@ -8,9 +8,13 @@ using wing_ding_pong._2D;
 
 namespace wing_ding_pong
 {
-	public class Wall : IDrawable // Consider "Collidable2DBase as an inherited structure.
+    /// <summary>
+    ///     The constructor needs adjustment. See any other 2D
+    ///     object for reference.
+    /// </summary>
+	public class Wall : IObjectType // Consider "Collidable2DBase as an inherited structure.
 	{
-		//private Texture2D _sprite;
+		private Texture2D _sprite;
 		private Player _wallOwner = null;
 
 		// You didn't have a constructor here. I've added the basic stuff,
@@ -20,10 +24,12 @@ namespace wing_ding_pong
 		//
 		// If you need additional references, look at the Paddle.cs file
 		// for it's constructor. It demonstrates what you'll need to do.
-		//public Wall(Texture2D sprite, Wall wallObj) : base(new List<IObjectType>() {wallObj} )
-		//{
-		//    _sprite = sprite;
-		//}
+        //
+        // USE THIS FOR THE ARENA WALL CLASS CONSTRUCTOR.
+        public Wall(Texture2D sprite, Wall wallObj) //: base(new List<IObjectType>() { wallObj })
+        {
+            _sprite = sprite;
+        }
 
 		//so we know if a wall is actually being guarded by a player?
 		public Player Owner
@@ -40,11 +46,10 @@ namespace wing_ding_pong
 		//    throw new NotImplementedException();
 		//}
 
-		// This was missing.
-		public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
-		{
-			// Draw code for walls here.
-		}
+        public ObjectType GeometryType
+        {
+            get { return ObjectType.Wall; }
+        }
 
 	}
 }
