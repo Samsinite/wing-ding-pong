@@ -15,11 +15,11 @@ namespace wing_ding_pong.Builder
 		// items are built for the game.
 		public void Construct(GameBuilder gameBuilder)
 		{
-			gameBuilder.buildWall();
-			gameBuilder.buildPaddle();
-			gameBuilder.buildBall();
-			gameBuilder.buildTeam();
-			gameBuilder.buildScore();
+            gameBuilder.buildWall();
+            gameBuilder.buildPaddle();
+            gameBuilder.buildBall();
+            gameBuilder.buildTeam();
+            gameBuilder.buildScore();
 		}
 	}
 }

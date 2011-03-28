@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using wing_ding_pong.CollidableObjects;
 using wing_ding_pong._2D;
+using wing_ding_pong.User;
 
 namespace wing_ding_pong
 {
