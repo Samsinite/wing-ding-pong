@@ -38,10 +38,10 @@ namespace wing_ding_pong.Builder
 
 		// Some build methods; feel free to add anything I
 		// missed in here.
-		public abstract void buildWall();
-		public abstract void buildPaddle();
-		public abstract void buildBall();
-		public abstract void buildTeam();
-		public abstract void buildScore();
+        public abstract void buildWall();
+        public abstract void buildPaddle();
+        public abstract void buildBall();
+        public abstract void buildTeam();
+        public abstract void buildScore();
 	}
 }

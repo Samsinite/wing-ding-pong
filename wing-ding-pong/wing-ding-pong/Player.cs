@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace wing_ding_pong
+namespace wing_ding_pong.User
 {
-    class Player
+    public class Player
     {
         private int _score = 0;
+
+        public Player()
+        {
+        }
 
         public int Score
         {

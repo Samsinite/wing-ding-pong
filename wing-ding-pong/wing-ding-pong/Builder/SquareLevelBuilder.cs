@@ -34,37 +34,37 @@ namespace wing_ding_pong.Builder
 		// in the abstract builder "GameBuilder".
 		//
 		// This applies to all concrete builders.
-		public override void buildWall()
-		{
-			// Build wall code, such as draw and
-			// other settigs.
-			throw new NotImplementedException();
-		}
+        public override void buildWall()
+        {
+            // Build wall code, such as draw and
+            // other settigs.
+            throw new NotImplementedException();
+        }
 
-		public override void buildPaddle()
-		{
-			// Build paddle code, such as draw,
-			// position and owner.
-			throw new NotImplementedException();
-		}
+        public override void buildPaddle()
+        {
+            // Build paddle code, such as draw,
+            // position and owner.
+            throw new NotImplementedException();
+        }
 
-		public override void buildBall()
-		{
-			// Build ball code.
-			throw new NotImplementedException();
-		}
+        public override void buildBall()
+        {
+            // Build ball code.
+            throw new NotImplementedException();
+        }
 
-		public override void buildTeam()
-		{
-			// Build team code, such as setting
-			// members and what-not.
-			throw new NotImplementedException();
-		}
+        public override void buildTeam()
+        {
+            // Build team code, such as setting
+            // members and what-not.
+            throw new NotImplementedException();
+        }
 
-		public override void buildScore()
-		{
-			// Build score code.
-			throw new NotImplementedException();
-		}
+        public override void buildScore()
+        {
+            // Build score code.
+            throw new NotImplementedException();
+        }
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using wing_ding_pong.CollidableObjects;
 using wing_ding_pong._2D;
+using wing_ding_pong.User;
 
 namespace wing_ding_pong
 {
@@ -24,6 +25,12 @@ namespace wing_ding_pong
         {
             set { _owner = value; }
             get { return _owner; }
+        }
+
+        public double RectangleSize
+        {
+            //set{_rec.Height = value;}
+            get{return this._rec.Height;}
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
