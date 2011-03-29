@@ -261,7 +261,7 @@ namespace wing_ding_pong
 			ball.Y += (int)ballVelocity.Y;
 
 			// Handling ball initialization; use Navigation Button to reset.
-			if (GamePad.GetState(PlayerIndex.One).Buttons.BigButton == ButtonState.Pressed ||
+			if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
 			{
 				InitBall();
