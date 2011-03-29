@@ -35,6 +35,8 @@ namespace wing_ding_pong
 		Rectangle ball; // Since there’s no "circle" class in XNA, simulate it with a bounding rectangle box.
 		//Rectangle ball2;
 
+        ArenaWall wall; //creating one wall
+
 		// Clone textures.
 		Texture2D grass;
 		Texture2D spriteSheet;
@@ -51,7 +53,10 @@ namespace wing_ding_pong
 		// Ball speed.
 		Vector2 ballVelocity = Vector2.Zero;
 
-		// Source rectangles of our graphics.
+		//creating wall object
+        CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(0, 0, 40, 40);
+
+        // Source rectangles of our graphics.
 		Rectangle blueSrcRect = new Rectangle( // Blue bar source rectangle.
 			  0,	// Upper-left corner x-coordinate of the blue bar inside the spriteSheet
 			  0,	// Upper-left corner y-coordinate
@@ -113,6 +118,7 @@ namespace wing_ding_pong
 				  32, // Width
 				  32); // Height
 
+            wall = new ArenaWall(spriteSheet, wallRect);
 
 			base.Initialize();
 		}
@@ -352,6 +358,10 @@ namespace wing_ding_pong
 			
 			// Draw the entities (bars and ball).
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
+
+            /***************************************/
+            wall.Draw(gameTime, spriteBatch); //-------testing wall draw
+            /***************************************/
 
 			// Draw the red bar.
 			spriteBatch.Draw(

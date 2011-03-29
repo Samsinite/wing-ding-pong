@@ -26,16 +26,19 @@ namespace wing_ding_pong.CollidableObjects
 
         public Point Center
         {
+            set { _center = value; }
             get { return _center; }
         }
 
         public double Width
         {
+            set { _width = value; }
             get { return _width; }
         }
 
         public double Height
         {
+            set { _height = value; } //used to change height for objects like the paddle
             get { return _height; }
         }
     }
