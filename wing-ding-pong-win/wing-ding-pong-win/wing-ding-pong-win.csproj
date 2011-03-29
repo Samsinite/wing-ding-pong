@@ -154,9 +154,6 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Triangle.cs">
       <Link>CollidableObject\Triangle.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Wall.cs">
-      <Link>CollidableObject\Wall.cs</Link>
-    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ICloneable.cs">
       <Link>ICloneable.cs</Link>
     </Compile>

@@ -12,9 +12,9 @@ namespace wing_ding_pong
         /*change the score if the wall is owned by someone otherwise it would
         bounce.  If the wall is owned by a player then it is a goal so we check
         */
-        public void changeScore(Player player, Ball ball, List<Wall> walls)
+        public void changeScore(Player player, Ball ball, List<ArenaWall> walls)
         {
-            foreach(Wall wall in walls)
+            foreach(ArenaWall wall in walls)
             {
                 if(wall.Owner != null)
                 {

@@ -116,7 +116,6 @@
     <Compile Include="Rules.cs" />
     <Compile Include="ScreenManager\ScreenManager.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
-    <Compile Include="CollidableObjects\Wall.cs" />
     <Compile Include="wingdingpong.cs" />
   </ItemGroup>
   <ItemGroup>
