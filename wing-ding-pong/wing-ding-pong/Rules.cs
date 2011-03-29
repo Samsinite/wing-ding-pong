@@ -50,12 +50,12 @@ namespace wing_ding_pong
                     //rand between 1 and 2
                     if (paddleSizeVal == 1)
                     {
-                        // paddle.size += .5;
+                        paddle.RectangleSize += .5;
                         
                     }
                     else
                     {
-                        //   paddle.size -= .5;
+                        paddle.RectangleSize -= .5;
                     }
                 }
             }
