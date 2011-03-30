@@ -119,6 +119,7 @@ namespace wing_ding_pong
 				  32); // Height
 
             wall = new ArenaWall(spriteSheet, wallRect);
+            
 
 			base.Initialize();
 		}
@@ -357,11 +358,14 @@ namespace wing_ding_pong
 			spriteBatch.End();
 			
 			// Draw the entities (bars and ball).
-			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
 
-            /***************************************/
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+             /***************************************/
             wall.Draw(gameTime, spriteBatch); //-------testing wall draw
-            /***************************************/
+            /*****************************/
+            spriteBatch.End();
+
+			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
 
 			// Draw the red bar.
 			spriteBatch.Draw(
