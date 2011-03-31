@@ -12,7 +12,10 @@ using Microsoft.Xna.Framework.Media;
 namespace wing_ding_pong
 {
     /// <summary>
-    /// This is the main type for your game
+    ///		Main game type.
+	///		
+	///		Abstracted out a "show" method for later use if
+	///		we want it to check things.
     /// </summary>
     public class wingdingpong : Microsoft.Xna.Framework.Game
     {
@@ -32,6 +35,8 @@ namespace wing_ding_pong
 		Rectangle ball; // Since there’s no "circle" class in XNA, simulate it with a bounding rectangle box.
 		//Rectangle ball2;
 
+        ArenaWall wall; //creating one wall
+
 		// Clone textures.
 		Texture2D grass;
 		Texture2D spriteSheet;
@@ -43,13 +48,15 @@ namespace wing_ding_pong
 		// Screens.
 		ControllerDetectScreen mControllerScreen;
 		TitleScreen mTitleScreen;
-		Screen mCurrentScreen;
+		ScreenManager mCurrentScreen;
 
 		// Ball speed.
 		Vector2 ballVelocity = Vector2.Zero;
-		//Vector2 ballVelocity2 = Vector2.Zero;
 
-		// Source rectangles of our graphics.
+		//creating wall object
+        CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(0, 0, 40, 40);
+
+        // Source rectangles of our graphics.
 		Rectangle blueSrcRect = new Rectangle( // Blue bar source rectangle.
 			  0,	// Upper-left corner x-coordinate of the blue bar inside the spriteSheet
 			  0,	// Upper-left corner y-coordinate
@@ -72,16 +79,17 @@ namespace wing_ding_pong
 
 		public wingdingpong()
         {
-#if WINDOWS
+			#if WINDOWS
             GraphicsAdapter.UseReferenceDevice = true;  //Requires DirectX SDK and enables software based DirectX (Slow)
-#endif
+			#endif
+
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-	    // Ideal resolution for the XBox 360.
-	    this.graphics.PreferredBackBufferWidth = 1280;
-	    this.graphics.PreferredBackBufferHeight = 720;
-	}
+			// Ideal resolution for the XBox 360.
+			this.graphics.PreferredBackBufferWidth = 800;
+			this.graphics.PreferredBackBufferHeight = 600;
+		}
 
 		#endregion
 
@@ -94,8 +102,6 @@ namespace wing_ding_pong
 		/// </summary>
 		protected override void Initialize()
 		{
-			// TODO: Add your initialization logic here
-			// initializing our entities
 			blueBar = new Rectangle(
 				  32, // "X" coordinate of the upper left corner of our rectangle
 				  GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
@@ -112,6 +118,8 @@ namespace wing_ding_pong
 				  32, // Width
 				  32); // Height
 
+            wall = new ArenaWall(spriteSheet, wallRect);
+            
 
 			base.Initialize();
 		}
@@ -258,11 +266,9 @@ namespace wing_ding_pong
 			// Move the ball.
 			ball.X += (int)ballVelocity.X;
 			ball.Y += (int)ballVelocity.Y;
-			//ball2.X += (int)ballVelocity2.X;
-			//ball2.Y += (int)ballVelocity2.Y;
 
 			// Handling ball initialization; use Navigation Button to reset.
-			if (GamePad.GetState(PlayerIndex.One).Buttons.BigButton == ButtonState.Pressed ||
+			if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
 			{
 				InitBall();
@@ -323,15 +329,15 @@ namespace wing_ding_pong
 
 			//spriteBatch.End();
 
-			//// Uncomment this section to render the background image.
-			//// Grass background.
-			//spriteBatch.Begin();
-			//spriteBatch.Draw(
-			//      grass, // Grass texture.
-			//      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-			//    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-			//      Color.White);
-			//spriteBatch.End();
+            // Uncomment this section to render the background image.
+            // Grass background.
+            //spriteBatch.Begin();
+            //spriteBatch.Draw(
+            //      grass, // Grass texture.
+            //      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
+            //    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
+            //      Color.White);
+            //spriteBatch.End();
 
 			// Draw the score.
 			// The position of this code is important; if it were done
@@ -352,6 +358,13 @@ namespace wing_ding_pong
 			spriteBatch.End();
 			
 			// Draw the entities (bars and ball).
+
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+             /***************************************/
+            wall.Draw(gameTime, spriteBatch); //-------testing wall draw
+            /*****************************/
+            spriteBatch.End();
+
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
 
 			// Draw the red bar.
@@ -418,6 +431,18 @@ namespace wing_ding_pong
 		{
 			//Switch to the controller detect screen, the Title screen is finished being displayed
 			mCurrentScreen = mControllerScreen;
+		}
+
+		#endregion
+
+		#region Show
+
+		public void show()
+		{
+			// Print stuff out here, such as teams
+			// and whatever. Not sure if it'll be
+			// useful, but I'll just drop this here
+			// anyway.
 		}
 
 		#endregion

@@ -109,11 +109,56 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\2D\Math2D.cs">
+      <Link>2D\Math2D.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\2D\Point.cs">
+      <Link>2D\Point.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\2D\Speed.cs">
+      <Link>2D\Speed.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\2D\Vector.cs">
+      <Link>2D\Vector.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\AI.cs">
       <Link>AI.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ArenaWall.cs">
+      <Link>ArenaWall.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Ball.cs">
       <Link>Ball.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Builder\GameBuilder.cs">
+      <Link>Builder\GameBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Builder\GameDirector.cs">
+      <Link>Builder\GameDirector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Builder\SquareLevelBuilder.cs">
+      <Link>Builder\SquareLevelBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Circle.cs">
+      <Link>CollidableObject\Circle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Collidable2DBase.cs">
+      <Link>CollidableObject\Collidable2DBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\IObjectType.cs">
+      <Link>CollidableObject\IObjectType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Rectangle.cs">
+      <Link>CollidableObject\Rectangle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Triangle.cs">
+      <Link>CollidableObject\Triangle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ICloneable.cs">
+      <Link>ICloneable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\IDrawable.cs">
+      <Link>IDrawable.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Paddle.cs">
       <Link>Paddle.cs</Link>
@@ -121,14 +166,23 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Physics.cs">
       <Link>Physics.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Player.cs">
+      <Link>Player.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Rules.cs">
       <Link>Rules.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Sprite.cs">
-      <Link>Sprite.cs</Link>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\ScreenManager.cs">
+      <Link>ScreenManager\ScreenManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\ControllerDetectScreen.cs">
+      <Link>Screens\ControllerDetectScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\TitleScreen.cs">
+      <Link>Screens\TitleScreen.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\wingdingpong.cs">
       <Link>wingdingpong.cs</Link>
@@ -169,6 +223,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
