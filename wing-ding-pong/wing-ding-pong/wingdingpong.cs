@@ -357,16 +357,17 @@ namespace wing_ding_pong
 
 			spriteBatch.End();
 			
-			// Draw the entities (bars and ball).
-
+			
+            
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
              /***************************************/
             wall.Draw(gameTime, spriteBatch); //-------testing wall draw
             /*****************************/
             spriteBatch.End();
 
-			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
 
+            // Draw the entities (bars and ball).
+			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
 			// Draw the red bar.
 			spriteBatch.Draw(
 				  spriteSheet,	// Use the sprites texture.
