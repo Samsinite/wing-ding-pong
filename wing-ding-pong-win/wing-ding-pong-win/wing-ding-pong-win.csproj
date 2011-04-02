@@ -187,6 +187,14 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\wingdingpong.cs">
       <Link>wingdingpong.cs</Link>
     </Compile>
+    <Compile Include="BallSpeedDecrease.cs" />
+    <Compile Include="BallSpeedIncrease.cs" />
+    <Compile Include="Boblball.cs" />
+    <Compile Include="Boomball.cs" />
+    <Compile Include="Powerups\IPowerupType.cs" />
+    <Compile Include="Multiball.cs" />
+    <Compile Include="PaddleSizeDecrease.cs" />
+    <Compile Include="PaddleSizeIncrease.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

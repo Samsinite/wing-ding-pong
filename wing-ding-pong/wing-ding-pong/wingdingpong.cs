@@ -338,7 +338,7 @@ namespace wing_ding_pong
             //    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
             //      Color.White);
             //spriteBatch.End();
-
+            
 			// Draw the score.
 			// The position of this code is important; if it were done
 			// before the background is drawn, the background would

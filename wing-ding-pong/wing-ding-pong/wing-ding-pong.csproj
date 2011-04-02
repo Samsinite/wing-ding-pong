@@ -96,6 +96,10 @@
     <Compile Include="AI.cs" />
     <Compile Include="ArenaWall.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="BallSpeedDecrease.cs" />
+    <Compile Include="BallSpeedIncrease.cs" />
+    <Compile Include="Boblball.cs" />
+    <Compile Include="Boomball.cs" />
     <Compile Include="Builder\SquareLevelBuilder.cs" />
     <Compile Include="Builder\GameDirector.cs" />
     <Compile Include="Builder\GameBuilder.cs" />
@@ -107,7 +111,12 @@
     <Compile Include="CollidableObjects\Triangle.cs" />
     <Compile Include="ICloneable.cs" />
     <Compile Include="IDrawable.cs" />
+    <Compile Include="Powerups\IPowerupType.cs" />
+    <Compile Include="Multiball.cs" />
+    <Compile Include="PaddleSizeDecrease.cs" />
+    <Compile Include="PaddleSizeIncrease.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="Screens\ControllerDetectScreen.cs" />
     <Compile Include="Paddle.cs" />
     <Compile Include="Physics.cs" />
