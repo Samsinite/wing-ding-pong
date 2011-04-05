@@ -111,7 +111,7 @@
     <Compile Include="CollidableObjects\Triangle.cs" />
     <Compile Include="ICloneable.cs" />
     <Compile Include="IDrawable.cs" />
-    <Compile Include="Powerups\IPowerupType.cs" />
+    <Compile Include="IPowerupType.cs" />
     <Compile Include="Multiball.cs" />
     <Compile Include="PaddleSizeDecrease.cs" />
     <Compile Include="PaddleSizeIncrease.cs" />
