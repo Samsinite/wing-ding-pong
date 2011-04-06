@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using wing_ding_pong.CollidableObjects;
 using wing_ding_pong._2D;
+
 namespace wing_ding_pong
 {
     class Boblball : Collidable2DBase, IDrawable, ICloneable
@@ -14,7 +15,7 @@ namespace wing_ding_pong
         private Speed _speed = new Speed(new Vector(0, 0), new TimeSpan(0)); //distance over time
 
         public Boblball(Texture2D sprite, Point center)
-            : base(new List<IObjectType>(){ new Circle(center, sprite.Width / 2) })
+            : base(new List<IObjectType>() { new Circle(center, sprite.Width / 2) })
         {
             _sprite = sprite;
             _circle = (Circle)CollidableObjects[0];

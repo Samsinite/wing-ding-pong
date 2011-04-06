@@ -14,7 +14,7 @@ namespace wing_ding_pong
         private Speed _speed = new Speed(new Vector(0, 0), new TimeSpan(0)); //distance over time
 
         public Multiball(Texture2D sprite, Point center)
-            : base(new List<IObjectType>(){ new Circle(center, sprite.Width / 2) })
+            : base(new List<IObjectType>() { new Circle(center, sprite.Width / 2) })
         {
             _sprite = sprite;
             _circle = (Circle)CollidableObjects[0];

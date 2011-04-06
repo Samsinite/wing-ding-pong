@@ -18,6 +18,6 @@ namespace wing_ding_pong
 
     public interface IPowerupType
     {
-        PowerupType getpowerup { get; }
+        PowerupType GetPowerup { get; }
     }
 }
