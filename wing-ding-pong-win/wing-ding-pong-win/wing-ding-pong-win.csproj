@@ -160,6 +160,9 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\IDrawable.cs">
       <Link>IDrawable.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\IPowerupType.cs">
+      <Link>IPowerupType.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Paddle.cs">
       <Link>Paddle.cs</Link>
     </Compile>
@@ -168,6 +171,9 @@
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Player.cs">
       <Link>Player.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Powerup.cs">
+      <Link>Powerup.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Program.cs">
       <Link>Program.cs</Link>

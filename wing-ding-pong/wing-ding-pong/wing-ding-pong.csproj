@@ -96,6 +96,7 @@
     <Compile Include="AI.cs" />
     <Compile Include="ArenaWall.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="Powerup.cs" />
     <Compile Include="Builder\SquareLevelBuilder.cs" />
     <Compile Include="Builder\GameDirector.cs" />
     <Compile Include="Builder\GameBuilder.cs" />
@@ -107,7 +108,9 @@
     <Compile Include="CollidableObjects\Triangle.cs" />
     <Compile Include="ICloneable.cs" />
     <Compile Include="IDrawable.cs" />
+    <Compile Include="IPowerupType.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="Screens\ControllerDetectScreen.cs" />
     <Compile Include="Paddle.cs" />
     <Compile Include="Physics.cs" />
