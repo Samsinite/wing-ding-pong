@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using wing_ding_pong.GameStateManagement;
 
 namespace wing_ding_pong
 {
@@ -46,9 +47,9 @@ namespace wing_ding_pong
 		SoundEffect playerScored;
 
 		// Screens.
-		ControllerDetectScreen mControllerScreen;
-		TitleScreen mTitleScreen;
-		ScreenManager mCurrentScreen;
+		//ControllerDetectScreen mControllerScreen;
+		//TitleScreen mTitleScreen;
+		//ScreenManager mCurrentScreen;
 
 		// Ball speed.
 		//Vector2 ballVelocity = Vector2.Zero;
@@ -115,11 +116,11 @@ namespace wing_ding_pong
 			font = Content.Load<SpriteFont>(@"ScoreFont");
 
 			// Initialize screens.
-			mControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
-			mTitleScreen = new TitleScreen(this.Content, new EventHandler(TitleScreenEvent));
+			//mControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
+			//mTitleScreen = new TitleScreen(this.Content, new EventHandler(TitleScreenEvent));
 
 			// Current screen.
-			mCurrentScreen = mControllerScreen;
+			//mCurrentScreen = mControllerScreen;
            
 		}
 
@@ -201,7 +202,7 @@ namespace wing_ding_pong
 
 			// By taking advantage of Polymorphism, we can call update on the current screen class, 
 			// but the Update in the subclass is the one that will be executed.
-			mCurrentScreen.Update(gameTime);
+			//mCurrentScreen.Update(gameTime);
 			
 			// NOTE:
 			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
@@ -424,18 +425,18 @@ namespace wing_ding_pong
 		#region ScreenEvents
 
 		//This event fires when the Controller detect screen is returning control back to the main game class
-		public void ControllerDetectScreenEvent(object obj, EventArgs e)
-		{
-			//Switch to the title screen, the Controller detect screen is finished being displayed
-			mCurrentScreen = mTitleScreen;
-		}
+		//public void ControllerDetectScreenEvent(object obj, EventArgs e)
+		//{
+		//    //Switch to the title screen, the Controller detect screen is finished being displayed
+		//    mCurrentScreen = mTitleScreen;
+		//}
 
 		//This event is fired when the Title screen is returning control back to the main game class
-		public void TitleScreenEvent(object obj, EventArgs e)
-		{
-			//Switch to the controller detect screen, the Title screen is finished being displayed
-			mCurrentScreen = mControllerScreen;
-		}
+		//public void TitleScreenEvent(object obj, EventArgs e)
+		//{
+		//    //Switch to the controller detect screen, the Title screen is finished being displayed
+		//    mCurrentScreen = mControllerScreen;
+		//}
 
 		#endregion
 
