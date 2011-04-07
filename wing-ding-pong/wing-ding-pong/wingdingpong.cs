@@ -25,15 +25,15 @@ namespace wing_ding_pong
 		SpriteBatch spriteBatch;
 		SpriteFont font;
 
-		// Scores.
-		int blueScore = 0;
-		int redScore = 0;
+        //// Scores.
+        //int blueScore = 0;
+        //int redScore = 0;
 
-		// Pong entities.
-		Rectangle blueBar;
-		Rectangle redBar;
-		Rectangle ball; // Since there’s no "circle" class in XNA, simulate it with a bounding rectangle box.
-		//Rectangle ball2;
+        //// Pong entities.
+        //Rectangle blueBar;
+        //Rectangle redBar;
+        //Rectangle ball; // Since there’s no "circle" class in XNA, simulate it with a bounding rectangle box.
+        ////Rectangle ball2;
 
         ArenaWall wall; //creating one wall
 
@@ -51,27 +51,27 @@ namespace wing_ding_pong
 		ScreenManager mCurrentScreen;
 
 		// Ball speed.
-		Vector2 ballVelocity = Vector2.Zero;
+		//Vector2 ballVelocity = Vector2.Zero;
 
 		//creating wall object
-        CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(0, 0, 40, 40);
+        CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(40.0,300.0,80.0,0.0);
 
-        // Source rectangles of our graphics.
-		Rectangle blueSrcRect = new Rectangle( // Blue bar source rectangle.
-			  0,	// Upper-left corner x-coordinate of the blue bar inside the spriteSheet
-			  0,	// Upper-left corner y-coordinate
-			  42,	// Width (original: 32)
-			  115); // Height (original: 128)
-		Rectangle redSrcRect = new Rectangle( // Red bar source rectangle.
-			  42,	// Upper-left corner x-coordinate of the red bar inside the spriteSheet (original: 32)
-			  0,
-			  42,
-			  115);
-		Rectangle ballSrcRect = new Rectangle( // Ball source rectangle.
-			  84,	// Upper-left corner x-coordinate of the ball inside the spriteSheet (original: 64)
-			  0,
-			  32,
-			  32);
+        //// Source rectangles of our graphics.
+        //Rectangle blueSrcRect = new Rectangle( // Blue bar source rectangle.
+        //      0,	// Upper-left corner x-coordinate of the blue bar inside the spriteSheet
+        //      0,	// Upper-left corner y-coordinate
+        //      42,	// Width (original: 32)
+        //      115); // Height (original: 128)
+        //Rectangle redSrcRect = new Rectangle( // Red bar source rectangle.
+        //      42,	// Upper-left corner x-coordinate of the red bar inside the spriteSheet (original: 32)
+        //      0,
+        //      42,
+        //      115);
+        //Rectangle ballSrcRect = new Rectangle( // Ball source rectangle.
+        //      84,	// Upper-left corner x-coordinate of the ball inside the spriteSheet (original: 64)
+        //      0,
+        //      32,
+        //      32);
 
 		#endregion
 
@@ -92,40 +92,6 @@ namespace wing_ding_pong
 		}
 
 		#endregion
-
-		#region Initialize
-		/// <summary>
-		/// Allows the game to perform any initialization it needs to before starting to run.
-		/// This is where it can query for any required services and load any non-graphic
-		/// related content.  Calling base.Initialize will enumerate through any components
-		/// and initialize them as well.
-		/// </summary>
-		protected override void Initialize()
-		{
-			blueBar = new Rectangle(
-				  32, // "X" coordinate of the upper left corner of our rectangle
-				  GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
-				  32, // Width
-				  128); // Height
-			redBar = new Rectangle(
-				  GraphicsDevice.Viewport.Bounds.Width - 64, // "X" coordinate of the upper left corner of our rectangle
-				  GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
-				  32, // Width
-				  128); // Height
-			ball = new Rectangle(
-				  GraphicsDevice.Viewport.Bounds.Width / 2 - 16, // "X" coordinate of the upper left corner of our rectangle
-				  GraphicsDevice.Viewport.Bounds.Height / 2 - 16, // "Y" coordinate of the upper left corner
-				  32, // Width
-				  32); // Height
-
-            wall = new ArenaWall(spriteSheet, wallRect);
-            
-
-			base.Initialize();
-		}
-
-		#endregion
-
 		#region LoadContent
 
 		/// <summary>
@@ -154,9 +120,45 @@ namespace wing_ding_pong
 
 			// Current screen.
 			mCurrentScreen = mControllerScreen;
+           
 		}
 
 		#endregion
+
+		#region Initialize
+		/// <summary>
+		/// Allows the game to perform any initialization it needs to before starting to run.
+		/// This is where it can query for any required services and load any non-graphic
+		/// related content.  Calling base.Initialize will enumerate through any components
+		/// and initialize them as well.
+		/// </summary>
+		protected override void Initialize()
+		{
+            //blueBar = new Rectangle(
+            //      32, // "X" coordinate of the upper left corner of our rectangle
+            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
+            //      32, // Width
+            //      128); // Height
+            //redBar = new Rectangle(
+            //      GraphicsDevice.Viewport.Bounds.Width - 64, // "X" coordinate of the upper left corner of our rectangle
+            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
+            //      32, // Width
+            //      128); // Height
+            //ball = new Rectangle(
+            //      GraphicsDevice.Viewport.Bounds.Width / 2 - 16, // "X" coordinate of the upper left corner of our rectangle
+            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 16, // "Y" coordinate of the upper left corner
+            //      32, // Width
+            //      32); // Height
+
+
+            
+
+			base.Initialize();
+		}
+
+		#endregion
+
+
 
 		#region UnloadContent
 
@@ -182,20 +184,20 @@ namespace wing_ding_pong
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
 		{
-			// Check that both controllers are connected to the game.
-			// If one or more is not, pause the game.
-			if ((GamePad.GetState(PlayerIndex.One).IsConnected == false) 
-				|| (GamePad.GetState(PlayerIndex.Two).IsConnected == false))
-			{
-				// Pause the game.
-			}
+            //// Check that both controllers are connected to the game.
+            //// If one or more is not, pause the game.
+            //if ((GamePad.GetState(PlayerIndex.One).IsConnected == false) 
+            //    || (GamePad.GetState(PlayerIndex.Two).IsConnected == false))
+            //{
+            //    // Pause the game.
+            //}
 
-			// Allows the game to exit by pressing the "back" button on the Xbox controller.
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Escape))
-			{
-				this.Exit();
-			}
+            //// Allows the game to exit by pressing the "back" button on the Xbox controller.
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Escape))
+            //{
+            //    this.Exit();
+            //}
 
 			// By taking advantage of Polymorphism, we can call update on the current screen class, 
 			// but the Update in the subclass is the one that will be executed.
@@ -215,96 +217,96 @@ namespace wing_ding_pong
 			// remain to be seen, but I'm including it here just in case.
 			//
 			// Player one controls (blue).
-			if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
-                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
-			{
-				blueBar.Y -= 10;
-			}
-			else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
-				|| GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f ||
-                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
-			{
-				blueBar.Y += 10;
-			}
+            //if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
+            //    || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
+            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
+            //{
+            //    blueBar.Y -= 10;
+            //}
+            //else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
+            //    || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f ||
+            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
+            //{
+            //    blueBar.Y += 10;
+            //}
 
-			// Player two controls (red).
-			if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
-                Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
-			{
-				redBar.Y -= 10;
-			}
-			else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f ||
-                Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
-			{
-				redBar.Y += 10;
-			}
+            //// Player two controls (red).
+            //if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
+            //    || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
+            //    Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
+            //{
+            //    redBar.Y -= 10;
+            //}
+            //else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
+            //    || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f ||
+            //    Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
+            //{
+            //    redBar.Y += 10;
+            //}
 			
-			// Limit the bars' movement to the screen bounds.
-			if (redBar.Y < 0) // Upper bound.
-			{
-				redBar.Y = 0; // Limit.
-			}
+            //// Limit the bars' movement to the screen bounds.
+            //if (redBar.Y < 0) // Upper bound.
+            //{
+            //    redBar.Y = 0; // Limit.
+            //}
 
-			if (blueBar.Y < 0)
-			{
-				blueBar.Y = 0;
-			}
+            //if (blueBar.Y < 0)
+            //{
+            //    blueBar.Y = 0;
+            //}
 
-			if (redBar.Y + redBar.Height > GraphicsDevice.Viewport.Bounds.Height)
-			{
-				redBar.Y = GraphicsDevice.Viewport.Bounds.Height - redBar.Height;
-			}
+            //if (redBar.Y + redBar.Height > GraphicsDevice.Viewport.Bounds.Height)
+            //{
+            //    redBar.Y = GraphicsDevice.Viewport.Bounds.Height - redBar.Height;
+            //}
 
-			if (blueBar.Y + blueBar.Height > GraphicsDevice.Viewport.Bounds.Height)
-			{
-				blueBar.Y = GraphicsDevice.Viewport.Bounds.Height - blueBar.Height;
-			}
+            //if (blueBar.Y + blueBar.Height > GraphicsDevice.Viewport.Bounds.Height)
+            //{
+            //    blueBar.Y = GraphicsDevice.Viewport.Bounds.Height - blueBar.Height;
+            //}
 
-			// Move the ball.
-			ball.X += (int)ballVelocity.X;
-			ball.Y += (int)ballVelocity.Y;
+            //// Move the ball.
+            //ball.X += (int)ballVelocity.X;
+            //ball.Y += (int)ballVelocity.Y;
 
-			// Handling ball initialization; use Navigation Button to reset.
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
-                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
-			{
-				InitBall();
-			}
+            //// Handling ball initialization; use Navigation Button to reset.
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
+            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
+            //{
+            //    InitBall();
+            //}
 
-			// Collision handling. //
-			// Wall collisions.
-			if (ball.Y < 0 || // if the ball reach the upper bound of the screen
-				  ball.Y + ball.Height > GraphicsDevice.Viewport.Bounds.Height) // or the lower one
-			{
-				ballVelocity.Y = -ballVelocity.Y; // make if bounce by inverting the Y velocity
-				ballBounce.Play(); // Bounce sound.
-			}
+            //// Collision handling. //
+            //// Wall collisions.
+            //if (ball.Y < 0 || // if the ball reach the upper bound of the screen
+            //      ball.Y + ball.Height > GraphicsDevice.Viewport.Bounds.Height) // or the lower one
+            //{
+            //    ballVelocity.Y = -ballVelocity.Y; // make if bounce by inverting the Y velocity
+            //    ballBounce.Play(); // Bounce sound.
+            //}
 
-			// Bar collisions.
-			if (ball.Intersects(redBar) || ball.Intersects(blueBar))
-			{
-				ballVelocity.X = -ballVelocity.X; // Make it bounce by inverting the X velocity.
-				ballBounce.Play(); // Bounce sound.
+            //// Bar collisions.
+            //if (ball.Intersects(redBar) || ball.Intersects(blueBar))
+            //{
+            //    ballVelocity.X = -ballVelocity.X; // Make it bounce by inverting the X velocity.
+            //    ballBounce.Play(); // Bounce sound.
 
-			}
+            //}
 
-			// Scoring.
-			if (ball.X < 0) // Red scores a point.
-			{
-				redScore++;
-				playerScored.Play(); // Play a sound when a point is scored.
-				InitBall(); // Re-init the ball.
-			}
-			else if (ball.X + ball.Width > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
-			{
-				blueScore++;
-				playerScored.Play();
-				InitBall(); // Re-init the ball.
-			}
-			
+            //// Scoring.
+            //if (ball.X < 0) // Red scores a point.
+            //{
+            //    redScore++;
+            //    playerScored.Play(); // Play a sound when a point is scored.
+            //    InitBall(); // Re-init the ball.
+            //}
+            //else if (ball.X + ball.Width > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
+            //{
+            //    blueScore++;
+            //    playerScored.Play();
+            //    InitBall(); // Re-init the ball.
+            //}
+            
 			base.Update(gameTime);
 		}	// End "update".
 
@@ -345,48 +347,49 @@ namespace wing_ding_pong
 			// cover up the score. Due to this, we draw the score on top
 			// of the background by putting this code after the background
 			// code.
-			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-			spriteBatch.DrawString( // draw our score string
-				  font, // Score font.
-				  blueScore.ToString() + " - " + redScore.ToString(), // Build the string.
-				  new Vector2( // Text position.
-				  GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // Half the screen and a little to the left.
-				  10.0f),
-				  Color.Yellow); // Text color.
+            //spriteBatch.DrawString( // draw our score string
+            //      font, // Score font.
+            //      blueScore.ToString() + " - " + redScore.ToString(), // Build the string.
+            //      new Vector2( // Text position.
+            //      GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // Half the screen and a little to the left.
+            //      10.0f),
+            //      Color.Yellow); // Text color.
 
-			spriteBatch.End();
-			
-			
+            //spriteBatch.End();
+
+            wall = new ArenaWall(grass, wallRect);
             
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            
              /***************************************/
-            wall.Draw(gameTime, spriteBatch); //-------testing wall draw
+            wall.Draw(gameTime, spriteBatch);//-------testing wall draw
             /*****************************/
             spriteBatch.End();
 
 
             // Draw the entities (bars and ball).
-			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
-			// Draw the red bar.
-			spriteBatch.Draw(
-				  spriteSheet,	// Use the sprites texture.
-				  redBar,		// The rectangle where to draw the bar on the screen.
-				  redSrcRect,	// The source rectangle of the bar inside the sprite sheet.
-				  Color.White);
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
+            //// Draw the red bar.
+            //spriteBatch.Draw(
+            //      spriteSheet,	// Use the sprites texture.
+            //      redBar,		// The rectangle where to draw the bar on the screen.
+            //      redSrcRect,	// The source rectangle of the bar inside the sprite sheet.
+            //      Color.White);
 
-			// Draw the blue bar.
-			spriteBatch.Draw(spriteSheet, blueBar, blueSrcRect, Color.White);
+            //// Draw the blue bar.
+            //spriteBatch.Draw(spriteSheet, blueBar, blueSrcRect, Color.White);
 
-			// Draw the ball.
-			spriteBatch.Draw(spriteSheet, ball, ballSrcRect, Color.White);
-			//spriteBatch.Draw(spriteSheet, ball2, ballSrcRect, Color.White);
+            //// Draw the ball.
+            //spriteBatch.Draw(spriteSheet, ball, ballSrcRect, Color.White);
+            ////spriteBatch.Draw(spriteSheet, ball2, ballSrcRect, Color.White);
 
-			spriteBatch.End();
+            //spriteBatch.End();
 
 			// TODO: Add your drawing code here
 
-			base.Draw(gameTime);
+			//base.Draw(gameTime);
 		}	// End "draw".
 
 		#endregion
@@ -399,21 +402,21 @@ namespace wing_ding_pong
 		/// </summary>
 		private void InitBall()
 		{
-			int speed = 5;	// Default velocity.
-			Random rand = new Random();
+            //int speed = 5;	// Default velocity.
+            //Random rand = new Random();
 
-			// Randomize the ball orientation.
-			switch (rand.Next(4))
-			{
-				case 0: ballVelocity.X = speed; ballVelocity.Y = speed; break;
-				case 1: ballVelocity.X = -speed; ballVelocity.Y = speed; break;
-				case 2: ballVelocity.X = speed; ballVelocity.Y = -speed; break;
-				case 3: ballVelocity.X = -speed; ballVelocity.Y = -speed; break;
-			}
+            //// Randomize the ball orientation.
+            //switch (rand.Next(4))
+            //{
+            //    case 0: ballVelocity.X = speed; ballVelocity.Y = speed; break;
+            //    case 1: ballVelocity.X = -speed; ballVelocity.Y = speed; break;
+            //    case 2: ballVelocity.X = speed; ballVelocity.Y = -speed; break;
+            //    case 3: ballVelocity.X = -speed; ballVelocity.Y = -speed; break;
+            //}
 
-			// Initialize the ball to the center of the screen.
-			ball.X = GraphicsDevice.Viewport.Bounds.Width / 2 - ball.Width / 2;
-			ball.Y = GraphicsDevice.Viewport.Bounds.Height / 2 - ball.Height / 2;
+            //// Initialize the ball to the center of the screen.
+            //ball.X = GraphicsDevice.Viewport.Bounds.Width / 2 - ball.Width / 2;
+            //ball.Y = GraphicsDevice.Viewport.Bounds.Height / 2 - ball.Height / 2;
 		}	// End "initball".
 
 		#endregion

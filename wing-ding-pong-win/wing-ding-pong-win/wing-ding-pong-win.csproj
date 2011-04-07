@@ -130,18 +130,6 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Ball.cs">
       <Link>Ball.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\BallSpeedDecrease.cs">
-      <Link>BallSpeedDecrease.cs</Link>
-    </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\BallSpeedIncrease.cs">
-      <Link>BallSpeedIncrease.cs</Link>
-    </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Boblball.cs">
-      <Link>Boblball.cs</Link>
-    </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Boomball.cs">
-      <Link>Boomball.cs</Link>
-    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Builder\GameBuilder.cs">
       <Link>Builder\GameBuilder.cs</Link>
     </Compile>
@@ -175,23 +163,17 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\IPowerupType.cs">
       <Link>IPowerupType.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Multiball.cs">
-      <Link>Multiball.cs</Link>
-    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Paddle.cs">
       <Link>Paddle.cs</Link>
-    </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\PaddleSizeDecrease.cs">
-      <Link>PaddleSizeDecrease.cs</Link>
-    </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\PaddleSizeIncrease.cs">
-      <Link>PaddleSizeIncrease.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Physics.cs">
       <Link>Physics.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Player.cs">
       <Link>Player.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Powerup.cs">
+      <Link>Powerup.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Program.cs">
       <Link>Program.cs</Link>

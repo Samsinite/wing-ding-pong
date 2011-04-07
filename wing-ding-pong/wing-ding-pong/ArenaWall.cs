@@ -14,7 +14,8 @@ namespace wing_ding_pong
         private Texture2D _sprite;
         private Rectangle _wall;
 
-        public ArenaWall(Texture2D sprite, Rectangle wallObj) : base(new List<IObjectType>() { wallObj })
+        public ArenaWall(Texture2D sprite, Rectangle wallObj)
+            : base(new List<IObjectType>() { wallObj })
         {
             _sprite = sprite;
             _wall = (Rectangle)CollidableObjects[0];

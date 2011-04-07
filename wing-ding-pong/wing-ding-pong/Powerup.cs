@@ -7,17 +7,17 @@ using wing_ding_pong.CollidableObjects;
 using wing_ding_pong._2D;
 namespace wing_ding_pong
 {
-    class Multiball : Collidable2DBase, IDrawable, ICloneable
+    class Powerup : Collidable2DBase, IDrawable, ICloneable
     {
-        private Circle _circle;
+        private Triangle _triangle;
         private Texture2D _sprite;
         private Speed _speed = new Speed(new Vector(0, 0), new TimeSpan(0)); //distance over time
 
-        public Multiball(Texture2D sprite, Point center)
-            : base(new List<IObjectType>() { new Circle(center, sprite.Width / 2) })
+        public Powerup(Texture2D sprite, Point center)
+            : base(new List<IObjectType>(){ new Triangle(new Point(0.0,0.0),new Point(1.0,1.0),new Point(2.0,2.0))})
         {
             _sprite = sprite;
-            _circle = (Circle)CollidableObjects[0];
+            _triangle = (Triangle)CollidableObjects[0];
         }
 
         public void Clone()
@@ -27,17 +27,12 @@ namespace wing_ding_pong
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_circle.Center.X, (int)_circle.Center.Y,
-                (int)_circle.Radius, (int)_circle.Radius),
-                Microsoft.Xna.Framework.Color.White);
+         
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            Vector dLoc = _speed.GetSpeed(gameTime.ElapsedGameTime);
-            _circle.Center.X += dLoc.X;
-            _circle.Center.Y += dLoc.Y;
+           
         }
     }
 }
