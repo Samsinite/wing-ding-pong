@@ -36,7 +36,7 @@ namespace wing_ding_pong
         //Rectangle ball; // Since there’s no "circle" class in XNA, simulate it with a bounding rectangle box.
         ////Rectangle ball2;
 
-        ArenaWall wall; //creating one wall
+        ArenaWall leftWall, rightWall, topWall, bottomWall; //creating one wall
 
 		// Clone textures.
 		Texture2D grass;
@@ -45,17 +45,18 @@ namespace wing_ding_pong
 		// Sound effects.
 		SoundEffect ballBounce;
 		SoundEffect playerScored;
-
+        CollidableObjects.Rectangle lWallRect;
+        CollidableObjects.Rectangle rWallRect;
 		// Screens.
-		//ControllerDetectScreen mControllerScreen;
-		//TitleScreen mTitleScreen;
-		//ScreenManager mCurrentScreen;
+        //ControllerDetectScreen mControllerScreen;
+        //TitleScreen mTitleScreen;
+        //ScreenManager mCurrentScreen;
 
 		// Ball speed.
 		//Vector2 ballVelocity = Vector2.Zero;
 
 		//creating wall object
-        CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(40.0,300.0,80.0,0.0);
+        
 
         //// Source rectangles of our graphics.
         //Rectangle blueSrcRect = new Rectangle( // Blue bar source rectangle.
@@ -91,7 +92,7 @@ namespace wing_ding_pong
 			this.graphics.PreferredBackBufferWidth = 800;
 			this.graphics.PreferredBackBufferHeight = 600;
 		}
-
+        //CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(1, GraphicsDevice.Viewport.Bounds.Height / 2, 80.0, 0.0);
 		#endregion
 		#region LoadContent
 
@@ -118,7 +119,7 @@ namespace wing_ding_pong
 			// Initialize screens.
 			//mControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
 			//mTitleScreen = new TitleScreen(this.Content, new EventHandler(TitleScreenEvent));
-
+            
 			// Current screen.
 			//mCurrentScreen = mControllerScreen;
            
@@ -135,6 +136,8 @@ namespace wing_ding_pong
 		/// </summary>
 		protected override void Initialize()
 		{
+            lWallRect = new CollidableObjects.Rectangle(0.0, (double)GraphicsDevice.Viewport.Height / 2, 5.0, (double)GraphicsDevice.Viewport.Height);
+            rWallRect = new CollidableObjects.Rectangle((double)GraphicsDevice.Viewport.Width, 0.0, 5.0, (double)GraphicsDevice.Viewport.Height);
             //blueBar = new Rectangle(
             //      32, // "X" coordinate of the upper left corner of our rectangle
             //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
@@ -360,12 +363,19 @@ namespace wing_ding_pong
 
             //spriteBatch.End();
 
-            wall = new ArenaWall(grass, wallRect);
-            
+            leftWall = new ArenaWall(grass, lWallRect);
+            rightWall = new ArenaWall(grass, rWallRect);
+
+
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            leftWall.Draw(gameTime, spriteBatch);//-------testing wall draw
+            /*****************************/
+            spriteBatch.End();
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             
              /***************************************/
-            wall.Draw(gameTime, spriteBatch);//-------testing wall draw
+            rightWall.Draw(gameTime, spriteBatch);
+            
             /*****************************/
             spriteBatch.End();
 
