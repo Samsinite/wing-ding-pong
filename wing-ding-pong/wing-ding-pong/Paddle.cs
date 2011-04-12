@@ -11,6 +11,7 @@ namespace wing_ding_pong
         private Texture2D _sprite;
         private Rectangle _rec;
         private Player _owner = null;
+        
 
         public Paddle(Texture2D sprite, Rectangle paddleObj)
             : base(new List<IObjectType>() {paddleObj} )
@@ -24,6 +25,18 @@ namespace wing_ding_pong
         {
             set { _owner = value; }
             get { return _owner; }
+        }
+
+        public double X
+        {
+            set { _rec.X = value; }
+            get { return _rec.X; }
+        }
+
+        public double Y
+        {
+            set { _rec.Y = value; }
+            get { return _rec.Y; }
         }
 
         public double RectangleSize
@@ -46,7 +59,7 @@ namespace wing_ding_pong
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_rec.Center.X, (int)_rec.Center.Y,
+                (int)_rec.X, (int)_rec.Y,
                 (int)_rec.Width, (int)_rec.Height),
                 Microsoft.Xna.Framework.Color.White);
         }
