@@ -39,10 +39,10 @@ namespace wing_ding_pong
             get { return _rec.Y; }
         }
 
-        public double RectangleSize
+        public double Height
         {
             set{ _rec.Height = value; }
-            get{ return this._rec.Height; }
+            get{ return _rec.Height; }
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)

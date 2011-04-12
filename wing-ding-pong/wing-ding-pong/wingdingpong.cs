@@ -191,145 +191,7 @@ namespace wing_ding_pong
 
 		#endregion
 
-		#region Update
-
-		/// <summary>
-		/// Allows the game to run logic such as updating the world,
-		/// checking for collisions, gathering input, and playing audio.
-		/// 
-		/// "Update" polls the system every clock tick.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
-		protected override void Update(GameTime gameTime)
-		{
-            //// Check that both controllers are connected to the game.
-            //// If one or more is not, pause the game.
-            //if ((GamePad.GetState(PlayerIndex.One).IsConnected == false) 
-            //    || (GamePad.GetState(PlayerIndex.Two).IsConnected == false))
-            //{
-            //    // Pause the game.
-            //}
-
-            //// Allows the game to exit by pressing the "back" button on the Xbox controller.
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Escape))
-            //{
-            //    this.Exit();
-            //}
-
-			// By taking advantage of Polymorphism, we can call update on the current screen class, 
-			// but the Update in the subclass is the one that will be executed.
-			//mCurrentScreen.Update(gameTime);
-			
-			// NOTE:
-			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
-			// This can be done by checking that the stick is +/- .5f
-			//
-			// Also note:
-			// Thumbstick movement is vector2 with range of +/- 1.0f on either
-			// the X or Y axis of the stick being polled. 
-			//
-			// Update:
-			// Triggers (left and right) use a range of 0.0f to 1.0f to determine
-			// the pressure exerted on them; whether this is useful or not will
-			// remain to be seen, but I'm including it here just in case.
-			//
-			// Player one controls (blue).
-            //if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
-            //    || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
-            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
-            //{
-            //    paddle1.Y -= 10;
-            //}
-            //else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
-            //    || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f ||
-            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
-            //{
-            //    paddle1.Y += 10;
-            //}
-
-            ////// Player two controls (red).
-            //if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
-            //    || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
-            //    Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
-            //{
-            //    paddle2.Y -= 10;
-            //}
-            //else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
-            //    || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f ||
-            //    Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
-            //{
-            //    paddle2.Y += 10;
-            //}
-			
-            ////// Limit the bars' movement to the screen bounds.
-            //if (paddle2.Y < 0) // Upper bound.
-            //{
-            //    paddle2.Y = 0; // Limit.
-            //}
-
-            //if (paddle1.Y < 0)
-            //{
-            //    paddle1.Y = 0;
-            //}
-
-            //if (paddle2.Y + paddle2.Height > GraphicsDevice.Viewport.Bounds.Height)
-            //{
-            //    paddle2.Y = GraphicsDevice.Viewport.Bounds.Height - redBar.Height;
-            //}
-
-            //if (blueBar.Y + blueBar.Height > GraphicsDevice.Viewport.Bounds.Height)
-            //{
-            //    blueBar.Y = GraphicsDevice.Viewport.Bounds.Height - blueBar.Height;
-            //}
-
-            //// Move the ball.
-            //ball.X += (int)ballVelocity.X;
-            //ball.Y += (int)ballVelocity.Y;
-
-            //// Handling ball initialization; use Navigation Button to reset.
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
-            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
-            //{
-            //    InitBall();
-            //}
-
-            //// Collision handling. //
-            //// Wall collisions.
-            //if (ball.Y < 0 || // if the ball reach the upper bound of the screen
-            //      ball.Y + ball.Height > GraphicsDevice.Viewport.Bounds.Height) // or the lower one
-            //{
-            //    ballVelocity.Y = -ballVelocity.Y; // make if bounce by inverting the Y velocity
-            //    ballBounce.Play(); // Bounce sound.
-            //}
-
-            //// Bar collisions.
-            //if (ball.Intersects(redBar) || ball.Intersects(blueBar))
-            //{
-            //    ballVelocity.X = -ballVelocity.X; // Make it bounce by inverting the X velocity.
-            //    ballBounce.Play(); // Bounce sound.
-
-            //}
-
-            //// Scoring.
-            //if (ball.X < 0) // Red scores a point.
-            //{
-            //    redScore++;
-            //    playerScored.Play(); // Play a sound when a point is scored.
-            //    InitBall(); // Re-init the ball.
-            //}
-            //else if (ball.X + ball.Width > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
-            //{
-            //    blueScore++;
-            //    playerScored.Play();
-            //    InitBall(); // Re-init the ball.
-            //}
-            
-			base.Update(gameTime);
-		}	// End "update".
-
-		#endregion
-
+	
 		#region Draw
 
 		/// <summary>
@@ -421,7 +283,7 @@ namespace wing_ding_pong
 
 			// TODO: Add your drawing code here
 
-			//base.Draw(gameTime);
+			base.Draw(gameTime);
 		}	// End "draw".
 
 		#endregion
@@ -468,6 +330,144 @@ namespace wing_ding_pong
 		//    //Switch to the controller detect screen, the Title screen is finished being displayed
 		//    mCurrentScreen = mControllerScreen;
 		//}
+
+		#endregion
+        	#region Update
+
+		/// <summary>
+		/// Allows the game to run logic such as updating the world,
+		/// checking for collisions, gathering input, and playing audio.
+		/// 
+		/// "Update" polls the system every clock tick.
+		/// </summary>
+		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		protected override void Update(GameTime gameTime)
+		{
+            //// Check that both controllers are connected to the game.
+            //// If one or more is not, pause the game.
+            //if ((GamePad.GetState(PlayerIndex.One).IsConnected == false) 
+            //    || (GamePad.GetState(PlayerIndex.Two).IsConnected == false))
+            //{
+            //    // Pause the game.
+            //}
+
+            //// Allows the game to exit by pressing the "back" button on the Xbox controller.
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Escape))
+            //{
+            //    this.Exit();
+            //}
+
+			// By taking advantage of Polymorphism, we can call update on the current screen class, 
+			// but the Update in the subclass is the one that will be executed.
+			//mCurrentScreen.Update(gameTime);
+			
+			// NOTE:
+			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
+			// This can be done by checking that the stick is +/- .5f
+			//
+			// Also note:
+			// Thumbstick movement is vector2 with range of +/- 1.0f on either
+			// the X or Y axis of the stick being polled. 
+			//
+			// Update:
+			// Triggers (left and right) use a range of 0.0f to 1.0f to determine
+			// the pressure exerted on them; whether this is useful or not will
+			// remain to be seen, but I'm including it here just in case.
+			//
+			// Player one controls (blue).
+            if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
+                || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
+                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
+            {
+                paddle1.Y -= 10;
+            }
+            else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
+                || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f ||
+                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
+            {
+                paddle1.Y += 10;
+            }
+
+            //// Player two controls (red).
+            if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
+                Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
+            {
+                paddle2.Y -= 10;
+            }
+            else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
+                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f ||
+                Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
+            {
+                paddle2.Y += 10;
+            }
+
+            //// Limit the bars' movement to the screen bounds.
+            if (paddle2.Y < 0) // Upper bound.
+            {
+                paddle2.Y = 0; // Limit.
+            }
+
+            if (paddle1.Y < 0)
+            {
+                paddle1.Y = 0;
+            }
+
+            if (paddle2.Y + paddle2.Height > GraphicsDevice.Viewport.Bounds.Height)
+            {
+                paddle2.Y = GraphicsDevice.Viewport.Bounds.Height - paddle2.Height;
+            }
+
+            if (paddle1.Y + paddle1.Height > GraphicsDevice.Viewport.Bounds.Height)
+            {
+                paddle1.Y = GraphicsDevice.Viewport.Bounds.Height - paddle1.Height;
+            }
+
+            //// Move the ball.
+            //ball.X += (int)ballVelocity.X;
+            //ball.Y += (int)ballVelocity.Y;
+
+            //// Handling ball initialization; use Navigation Button to reset.
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
+            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
+            //{
+            //    InitBall();
+            //}
+
+            //// Collision handling. //
+            //// Wall collisions.
+            //if (ball.Y < 0 || // if the ball reach the upper bound of the screen
+            //      ball.Y + ball.Height > GraphicsDevice.Viewport.Bounds.Height) // or the lower one
+            //{
+            //    ballVelocity.Y = -ballVelocity.Y; // make if bounce by inverting the Y velocity
+            //    ballBounce.Play(); // Bounce sound.
+            //}
+
+            //// Bar collisions.
+            //if (ball.Intersects(redBar) || ball.Intersects(blueBar))
+            //{
+            //    ballVelocity.X = -ballVelocity.X; // Make it bounce by inverting the X velocity.
+            //    ballBounce.Play(); // Bounce sound.
+
+            //}
+
+            //// Scoring.
+            //if (ball.X < 0) // Red scores a point.
+            //{
+            //    redScore++;
+            //    playerScored.Play(); // Play a sound when a point is scored.
+            //    InitBall(); // Re-init the ball.
+            //}
+            //else if (ball.X + ball.Width > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
+            //{
+            //    blueScore++;
+            //    playerScored.Play();
+            //    InitBall(); // Re-init the ball.
+            //}
+            
+			base.Update(gameTime);
+		}	// End "update".
 
 		#endregion
 

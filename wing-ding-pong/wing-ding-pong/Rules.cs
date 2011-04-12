@@ -39,7 +39,7 @@ namespace wing_ding_pong
             {
                 if (paddle.Owner == ball.Owner)
                 {
-                    paddle.RectangleSize += .5;
+                    paddle.Height += .5;
                 }
             }
         }
@@ -50,7 +50,7 @@ namespace wing_ding_pong
             {
                 if (paddle.Owner == ball.Owner)
                 {
-                    paddle.RectangleSize -= .5;
+                    paddle.Height -= .5;
                 }
             }
         }
