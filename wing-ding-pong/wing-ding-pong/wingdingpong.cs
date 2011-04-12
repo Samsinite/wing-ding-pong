@@ -53,7 +53,7 @@ namespace wing_ding_pong
 		// Screens.
         //ControllerDetectScreen mControllerScreen;
         //TitleScreen mTitleScreen;
-        //ScreenManager mCurrentScreen;
+        ScreenManager mCurrentScreen;
 
 		// Ball speed.
 		//Vector2 ballVelocity = Vector2.Zero;
@@ -125,6 +125,13 @@ namespace wing_ding_pong
             
 			// Current screen.
 			//mCurrentScreen = mControllerScreen;
+
+            leftWall = new ArenaWall(grass, lWallRect);
+            rightWall = new ArenaWall(grass, rWallRect);
+            topWall = new ArenaWall(grass, tWallRect);
+            bottomWall = new ArenaWall(grass, bWallRect);
+            paddle1 = new Paddle(grass, pad1Rect);
+            paddle2 = new Paddle(grass, pad2Rect);
            
 		}
 
@@ -147,11 +154,11 @@ namespace wing_ding_pong
                                                         (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
             bWallRect = new CollidableObjects.Rectangle(0.0, 594.0,
                                                         (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
-            pad1Rect = new CollidableObjects.Rectangle(40.0, (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-550,
+            pad1Rect = new CollidableObjects.Rectangle(40.0, (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900,
                                                        40.0, 200.0);
-            pad2Rect = new CollidableObjects.Rectangle(724.0, (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-550,
+            pad2Rect = new CollidableObjects.Rectangle(724.0, (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900,
                                                         40.0, 200.0);
-            ballCircle = new CollidableObjects.Circle(new _2D.Point(300.0, 300.0), 70);
+            //ballCircle = new CollidableObjects.Circle(new _2D.Point(300.0, 300.0), 70);
             //blueBar = new Rectangle(
             //      32, // "X" coordinate of the upper left corner of our rectangle
             //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
@@ -191,158 +198,17 @@ namespace wing_ding_pong
 
 		#endregion
 
-	
-		#region Draw
+        #region Update
 
-		/// <summary>
-		/// This is called when the game should draw itself.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
-		protected override void Draw(GameTime gameTime)
-		{
-			GraphicsDevice.Clear(Color.Black);
-		
-			// This code draws the menus.
-			//spriteBatch.Begin();
-
-			//// Again, using Polymorphism, we can call draw on the current screen class
-			//// and the Draw in the subclass is the one that will be executed.
-			//mCurrentScreen.Draw(spriteBatch);
-
-			//spriteBatch.End();
-
-            // Uncomment this section to render the background image.
-            // Grass background.
-            //spriteBatch.Begin();
-            //spriteBatch.Draw(
-            //      grass, // Grass texture.
-            //      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-            //    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-            //      Color.White);
-            //spriteBatch.End();
-            
-			// Draw the score.
-			// The position of this code is important; if it were done
-			// before the background is drawn, the background would
-			// cover up the score. Due to this, we draw the score on top
-			// of the background by putting this code after the background
-			// code.
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-
-            //spriteBatch.DrawString( // draw our score string
-            //      font, // Score font.
-            //      blueScore.ToString() + " - " + redScore.ToString(), // Build the string.
-            //      new Vector2( // Text position.
-            //      GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // Half the screen and a little to the left.
-            //      10.0f),
-            //      Color.Yellow); // Text color.
-
-            //spriteBatch.End();
-
-            leftWall = new ArenaWall(grass, lWallRect);
-            rightWall = new ArenaWall(grass, rWallRect);
-            topWall = new ArenaWall(grass, tWallRect);
-            bottomWall = new ArenaWall(grass, bWallRect);
-            paddle1 = new Paddle(grass, pad1Rect);
-            paddle2 = new Paddle(grass, pad2Rect);
-            //ball = new Ball(grass, _2D.Point(60.0,60.0));
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            //leftWall.Draw(gameTime, spriteBatch);//-------testing wall draw
-            ///*****************************/
-            //spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            
-             /***************************************/
-            rightWall.Draw(gameTime, spriteBatch);
-            leftWall.Draw(gameTime, spriteBatch);
-            topWall.Draw(gameTime, spriteBatch);
-            bottomWall.Draw(gameTime, spriteBatch);
-            paddle1.Draw(gameTime, spriteBatch);
-            paddle2.Draw(gameTime, spriteBatch);
-            /*****************************/
-            spriteBatch.End();
-
-
-            // Draw the entities (bars and ball).
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
-            //// Draw the red bar.
-            //spriteBatch.Draw(
-            //      spriteSheet,	// Use the sprites texture.
-            //      redBar,		// The rectangle where to draw the bar on the screen.
-            //      redSrcRect,	// The source rectangle of the bar inside the sprite sheet.
-            //      Color.White);
-
-            //// Draw the blue bar.
-            //spriteBatch.Draw(spriteSheet, blueBar, blueSrcRect, Color.White);
-
-            //// Draw the ball.
-            //spriteBatch.Draw(spriteSheet, ball, ballSrcRect, Color.White);
-            ////spriteBatch.Draw(spriteSheet, ball2, ballSrcRect, Color.White);
-
-            //spriteBatch.End();
-
-			// TODO: Add your drawing code here
-
-			base.Draw(gameTime);
-		}	// End "draw".
-
-		#endregion
-
-		#region InitBall
-
-		/// <summary>
-		///		Initializes the ball; called when the game starts and
-		///		when points are scored.
-		/// </summary>
-		private void InitBall()
-		{
-            //int speed = 5;	// Default velocity.
-            //Random rand = new Random();
-
-            //// Randomize the ball orientation.
-            //switch (rand.Next(4))
-            //{
-            //    case 0: ballVelocity.X = speed; ballVelocity.Y = speed; break;
-            //    case 1: ballVelocity.X = -speed; ballVelocity.Y = speed; break;
-            //    case 2: ballVelocity.X = speed; ballVelocity.Y = -speed; break;
-            //    case 3: ballVelocity.X = -speed; ballVelocity.Y = -speed; break;
-            //}
-
-            //// Initialize the ball to the center of the screen.
-            //ball.X = GraphicsDevice.Viewport.Bounds.Width / 2 - ball.Width / 2;
-            //ball.Y = GraphicsDevice.Viewport.Bounds.Height / 2 - ball.Height / 2;
-		}	// End "initball".
-
-		#endregion
-
-		#region ScreenEvents
-
-		//This event fires when the Controller detect screen is returning control back to the main game class
-		//public void ControllerDetectScreenEvent(object obj, EventArgs e)
-		//{
-		//    //Switch to the title screen, the Controller detect screen is finished being displayed
-		//    mCurrentScreen = mTitleScreen;
-		//}
-
-		//This event is fired when the Title screen is returning control back to the main game class
-		//public void TitleScreenEvent(object obj, EventArgs e)
-		//{
-		//    //Switch to the controller detect screen, the Title screen is finished being displayed
-		//    mCurrentScreen = mControllerScreen;
-		//}
-
-		#endregion
-        	#region Update
-
-		/// <summary>
-		/// Allows the game to run logic such as updating the world,
-		/// checking for collisions, gathering input, and playing audio.
-		/// 
-		/// "Update" polls the system every clock tick.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
-		protected override void Update(GameTime gameTime)
-		{
+        /// <summary>
+        /// Allows the game to run logic such as updating the world,
+        /// checking for collisions, gathering input, and playing audio.
+        /// 
+        /// "Update" polls the system every clock tick.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Update(GameTime gameTime)
+        {
             //// Check that both controllers are connected to the game.
             //// If one or more is not, pause the game.
             //if ((GamePad.GetState(PlayerIndex.One).IsConnected == false) 
@@ -358,24 +224,24 @@ namespace wing_ding_pong
             //    this.Exit();
             //}
 
-			// By taking advantage of Polymorphism, we can call update on the current screen class, 
-			// but the Update in the subclass is the one that will be executed.
-			//mCurrentScreen.Update(gameTime);
-			
-			// NOTE:
-			// Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
-			// This can be done by checking that the stick is +/- .5f
-			//
-			// Also note:
-			// Thumbstick movement is vector2 with range of +/- 1.0f on either
-			// the X or Y axis of the stick being polled. 
-			//
-			// Update:
-			// Triggers (left and right) use a range of 0.0f to 1.0f to determine
-			// the pressure exerted on them; whether this is useful or not will
-			// remain to be seen, but I'm including it here just in case.
-			//
-			// Player one controls (blue).
+            // By taking advantage of Polymorphism, we can call update on the current screen class, 
+            // but the Update in the subclass is the one that will be executed.
+            //mCurrentScreen.Update(gameTime);
+
+            // NOTE:
+            // Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
+            // This can be done by checking that the stick is +/- .5f
+            //
+            // Also note:
+            // Thumbstick movement is vector2 with range of +/- 1.0f on either
+            // the X or Y axis of the stick being polled. 
+            //
+            // Update:
+            // Triggers (left and right) use a range of 0.0f to 1.0f to determine
+            // the pressure exerted on them; whether this is useful or not will
+            // remain to be seen, but I'm including it here just in case.
+            //
+            // Player one controls (blue).
             if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
                 || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
@@ -465,11 +331,153 @@ namespace wing_ding_pong
             //    playerScored.Play();
             //    InitBall(); // Re-init the ball.
             //}
+
+            base.Update(gameTime);
+        }	// End "update".
+
+        #endregion
+		#region Draw
+
+		/// <summary>
+		/// This is called when the game should draw itself.
+		/// </summary>
+		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		protected override void Draw(GameTime gameTime)
+		{
+			GraphicsDevice.Clear(Color.Black);
+		
+			// This code draws the menus.
+			//spriteBatch.Begin();
+
+			//// Again, using Polymorphism, we can call draw on the current screen class
+			//// and the Draw in the subclass is the one that will be executed.
+			//mCurrentScreen.Draw(spriteBatch);
+
+			//spriteBatch.End();
+
+            // Uncomment this section to render the background image.
+            // Grass background.
+            //spriteBatch.Begin();
+            //spriteBatch.Draw(
+            //      grass, // Grass texture.
+            //      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
+            //    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
+            //      Color.White);
+            //spriteBatch.End();
             
-			base.Update(gameTime);
-		}	// End "update".
+			// Draw the score.
+			// The position of this code is important; if it were done
+			// before the background is drawn, the background would
+			// cover up the score. Due to this, we draw the score on top
+			// of the background by putting this code after the background
+			// code.
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+
+            //spriteBatch.DrawString( // draw our score string
+            //      font, // Score font.
+            //      blueScore.ToString() + " - " + redScore.ToString(), // Build the string.
+            //      new Vector2( // Text position.
+            //      GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // Half the screen and a little to the left.
+            //      10.0f),
+            //      Color.Yellow); // Text color.
+
+            //spriteBatch.End();
+
+            //leftWall = new ArenaWall(grass, lWallRect);
+            //rightWall = new ArenaWall(grass, rWallRect);
+            //topWall = new ArenaWall(grass, tWallRect);
+            //bottomWall = new ArenaWall(grass, bWallRect);
+            //paddle1 = new Paddle(grass, pad1Rect);
+            //paddle2 = new Paddle(grass, pad2Rect);
+
+            //ball = new Ball(grass, _2D.Point(60.0,60.0));
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            //leftWall.Draw(gameTime, spriteBatch);//-------testing wall draw
+            ///*****************************/
+            //spriteBatch.End();
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            
+             /***************************************/
+            rightWall.Draw(gameTime, spriteBatch);
+            leftWall.Draw(gameTime, spriteBatch);
+            topWall.Draw(gameTime, spriteBatch);
+            bottomWall.Draw(gameTime, spriteBatch);
+            paddle1.Draw(gameTime, spriteBatch);
+            paddle2.Draw(gameTime, spriteBatch);
+            /*****************************/
+            spriteBatch.End();
+
+
+            // Draw the entities (bars and ball).
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
+            //// Draw the red bar.
+            //spriteBatch.Draw(
+            //      spriteSheet,	// Use the sprites texture.
+            //      redBar,		// The rectangle where to draw the bar on the screen.
+            //      redSrcRect,	// The source rectangle of the bar inside the sprite sheet.
+            //      Color.White);
+
+            //// Draw the blue bar.
+            //spriteBatch.Draw(spriteSheet, blueBar, blueSrcRect, Color.White);
+
+            //// Draw the ball.
+            //spriteBatch.Draw(spriteSheet, ball, ballSrcRect, Color.White);
+            ////spriteBatch.Draw(spriteSheet, ball2, ballSrcRect, Color.White);
+
+            //spriteBatch.End();
+
+			// TODO: Add your drawing code here
+
+			base.Draw(gameTime);
+		}	// End "draw".
 
 		#endregion
+
+		#region InitBall
+
+		/// <summary>
+		///		Initializes the ball; called when the game starts and
+		///		when points are scored.
+		/// </summary>
+		private void InitBall()
+		{
+            //int speed = 5;	// Default velocity.
+            //Random rand = new Random();
+
+            //// Randomize the ball orientation.
+            //switch (rand.Next(4))
+            //{
+            //    case 0: ballVelocity.X = speed; ballVelocity.Y = speed; break;
+            //    case 1: ballVelocity.X = -speed; ballVelocity.Y = speed; break;
+            //    case 2: ballVelocity.X = speed; ballVelocity.Y = -speed; break;
+            //    case 3: ballVelocity.X = -speed; ballVelocity.Y = -speed; break;
+            //}
+
+            //// Initialize the ball to the center of the screen.
+            //ball.X = GraphicsDevice.Viewport.Bounds.Width / 2 - ball.Width / 2;
+            //ball.Y = GraphicsDevice.Viewport.Bounds.Height / 2 - ball.Height / 2;
+		}	// End "initball".
+
+		#endregion
+
+		#region ScreenEvents
+
+		//This event fires when the Controller detect screen is returning control back to the main game class
+		//public void ControllerDetectScreenEvent(object obj, EventArgs e)
+		//{
+		//    //Switch to the title screen, the Controller detect screen is finished being displayed
+		//    mCurrentScreen = mTitleScreen;
+		//}
+
+		//This event is fired when the Title screen is returning control back to the main game class
+		//public void TitleScreenEvent(object obj, EventArgs e)
+		//{
+		//    //Switch to the controller detect screen, the Title screen is finished being displayed
+		//    mCurrentScreen = mControllerScreen;
+		//}
+
+		#endregion
+      
 
 		#region Show
 
