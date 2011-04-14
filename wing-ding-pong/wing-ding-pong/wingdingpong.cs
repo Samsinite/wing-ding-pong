@@ -27,15 +27,16 @@ namespace wing_ding_pong
 		SpriteFont font;
 
         //// Scores.
-        //int blueScore = 0;
-        //int redScore = 0;
+        Score gameScore;
 
         //// Pong entities.
         //Rectangle blueBar;
         //Rectangle redBar;
         //Rectangle ball; // Since there’s no "circle" class in XNA, simulate it with a bounding rectangle box.
         ////Rectangle ball2;
-
+        TimeSpan dTime;
+        _2D.Vector ballVector;
+        _2D.Speed ballSpeed;
         ArenaWall leftWall, rightWall, topWall, bottomWall; //creating one wall
         Ball ball;
         Paddle paddle1, paddle2;
@@ -135,6 +136,10 @@ namespace wing_ding_pong
             paddle1 = new Paddle(grass, pad1Rect);
             paddle2 = new Paddle(grass, pad2Rect);
             ball = new Ball(spriteSheet, center);
+
+            gameScore = new Score(font);
+            gameScore.RightScore = 0;
+            gameScore.LeftScore = 0;
 		}
 
 		#endregion
@@ -293,9 +298,11 @@ namespace wing_ding_pong
                 paddle1.Y = GraphicsDevice.Viewport.Bounds.Height - paddle1.Height;
             }
 
+            ballVector = new _2D.Vector(-5.0, 5.0);
+
             // Move the ball.
-            //ball.X += ball.BallSpeed;
-            //ball.Y += (int)ballVelocity.Y;
+            ball.X += ballVector.X;
+            ball.Y += ballVector.Y;
 
             // Handling ball initialization; use Navigation Button to reset.
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
@@ -306,34 +313,35 @@ namespace wing_ding_pong
 
             // Collision handling. //
             // Wall collisions.
-            //if (ball.Y < 0 || // if the ball reach the upper bound of the screen
-            //      ball.Y + ball.Radius > GraphicsDevice.Viewport.Bounds.Height) // or the lower one
-            //{
-            //    ballVelocity.Y = -ballVelocity.Y; // make if bounce by inverting the Y velocity
-            //    ballBounce.Play(); // Bounce sound.
-            //}
+            if (ball.Y < 0.0 || // if the ball reach the upper bound of the screen
+                  ball.Y + ball.Radius > 750.0) // or the lower one
+            {
+                ballVector.X = -ballVector.X; // make if bounce by inverting the Y velocity
+                ballSpeed = new _2D.Speed(ballVector, dTime);
+               // ballBounce.Play(); // Bounce sound.
+            }
 
-            //// Bar collisions.
-            //if (ball.Intersects(paddle1) || ball.Intersects(paddle2))
-            //{
-            //    ballVelocity.X = -ballVelocity.X; // Make it bounce by inverting the X velocity.
-            //    ballBounce.Play(); // Bounce sound.
+            // Bar collisions.
+            if((ball.X == paddle1.X) || (ball.X == paddle1.Y))
+            {
+                ballVector.X = -ballVector.X; // Make it bounce by inverting the X velocity.
+               // ballBounce.Play(); // Bounce sound.
 
-            //}
+            }
 
             // Scoring.
-            //if (ball.X < 0) // Red scores a point.
-            //{
-            //    redScore++;
-            //    playerScored.Play(); // Play a sound when a point is scored.
-            //    InitBall(); // Re-init the ball.
-            //}
-            //else if (ball.X + ball.Width > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
-            //{
-            //    blueScore++;
-            //    playerScored.Play();
-            //    InitBall(); // Re-init the ball.
-            //}
+            if (ball.X < 0) // Red scores a point.
+            {
+                gameScore.RightScore++;
+                //playerScored.Play(); // Play a sound when a point is scored.
+                InitBall(); // Re-init the ball.
+            }
+            else if (ball.X + ball.Radius > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
+            {
+                gameScore.LeftScore++;
+                //playerScored.Play();
+                InitBall(); // Re-init the ball.
+            }
 
             base.Update(gameTime);
         }	// End "update".
@@ -401,17 +409,20 @@ namespace wing_ding_pong
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             
              /***************************************/
-            rightWall.Draw(gameTime, spriteBatch);
-            leftWall.Draw(gameTime, spriteBatch);
-            topWall.Draw(gameTime, spriteBatch);
-            bottomWall.Draw(gameTime, spriteBatch);
+            //rightWall.Draw(gameTime, spriteBatch);
+            //leftWall.Draw(gameTime, spriteBatch);
+            //topWall.Draw(gameTime, spriteBatch);
+            //bottomWall.Draw(gameTime, spriteBatch);
             paddle1.Draw(gameTime, spriteBatch);
             paddle2.Draw(gameTime, spriteBatch);
             ball.Draw(gameTime, spriteBatch);
+            
             /*****************************/
             spriteBatch.End();
 
-
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            gameScore.Draw(gameTime, spriteBatch);
+            spriteBatch.End();
             // Draw the entities (bars and ball).
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
             //// Draw the red bar.
@@ -445,17 +456,39 @@ namespace wing_ding_pong
 		/// </summary>
 		private void InitBall()
 		{
-            //int speed = 5;	// Default velocity.
-            //Random rand = new Random();
-
+            int speed = 5;	// Default velocity.
+            Random rand = new Random();
+            ballVector = new _2D.Vector(90.0, 100.0);
+            dTime = new TimeSpan();
+            
             //// Randomize the ball orientation.
-            //switch (rand.Next(4))
-            //{
-            //    case 0: ballVelocity.X = speed; ballVelocity.Y = speed; break;
-            //    case 1: ballVelocity.X = -speed; ballVelocity.Y = speed; break;
-            //    case 2: ballVelocity.X = speed; ballVelocity.Y = -speed; break;
-            //    case 3: ballVelocity.X = -speed; ballVelocity.Y = -speed; break;
-            //}
+            switch (rand.Next(4))
+            {
+                case 0: 
+                    ballVector.X = speed; 
+                    ballVector.Y = speed; 
+                    ballSpeed = new _2D.Speed(ballVector, dTime);
+                    ball.BallSpeed = ballSpeed;
+                    break;
+                case 1: 
+                    ballVector.X = -speed; 
+                    ballVector.Y = speed;
+                    ballSpeed = new _2D.Speed(ballVector, dTime);
+                    ball.BallSpeed = ballSpeed;
+                    break;
+                case 2: 
+                    ballVector.X = speed; 
+                    ballVector.Y = -speed;
+                    ballSpeed = new _2D.Speed(ballVector, dTime);
+                    ball.BallSpeed = ballSpeed;
+                    break;
+                case 3: 
+                    ballVector.X = -speed;
+                    ballVector.Y = -speed;
+                    ballSpeed = new _2D.Speed(ballVector, dTime);
+                    ball.BallSpeed = ballSpeed;
+                    break;
+            }
 
             //// Initialize the ball to the center of the screen.
             ball.X = GraphicsDevice.Viewport.Bounds.Width / 2 - ball.Radius / 2;

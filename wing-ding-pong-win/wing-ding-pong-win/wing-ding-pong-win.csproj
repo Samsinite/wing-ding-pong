@@ -181,6 +181,9 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Rules.cs">
       <Link>Rules.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Score.cs">
+      <Link>Score.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\GameScreen.cs">
       <Link>ScreenManager\GameScreen.cs</Link>
     </Compile>
