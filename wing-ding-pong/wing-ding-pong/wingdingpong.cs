@@ -136,6 +136,7 @@ namespace wing_ding_pong
             paddle1 = new Paddle(grass, pad1Rect);
             paddle2 = new Paddle(grass, pad2Rect);
             ball = new Ball(spriteSheet, center);
+            InitBall();
 
             gameScore = new Score(font);
             gameScore.RightScore = 0;
@@ -298,11 +299,12 @@ namespace wing_ding_pong
                 paddle1.Y = GraphicsDevice.Viewport.Bounds.Height - paddle1.Height;
             }
 
-            ballVector = new _2D.Vector(-5.0, 5.0);
+            //ballVector = new _2D.Vector(-5.0, 5.0);
 
-            // Move the ball.
-            ball.X += ballVector.X;
-            ball.Y += ballVector.Y;
+            //// Move the ball.
+            //ball.X += ballVector.X;
+            //ball.Y += ballVector.Y;
+            ball.Update(gameTime);
 
             // Handling ball initialization; use Navigation Button to reset.
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
@@ -458,16 +460,16 @@ namespace wing_ding_pong
 		{
             int speed = 5;	// Default velocity.
             Random rand = new Random();
-            ballVector = new _2D.Vector(90.0, 100.0);
-            dTime = new TimeSpan();
+            ballVector = new _2D.Vector(5.0, 100.0);
+            dTime = new TimeSpan(100000);
             
             //// Randomize the ball orientation.
             switch (rand.Next(4))
             {
                 case 0: 
-                    ballVector.X = speed; 
-                    ballVector.Y = speed; 
                     ballSpeed = new _2D.Speed(ballVector, dTime);
+                    ballVector.X = speed;
+                    ballVector.Y = speed;
                     ball.BallSpeed = ballSpeed;
                     break;
                 case 1: 
