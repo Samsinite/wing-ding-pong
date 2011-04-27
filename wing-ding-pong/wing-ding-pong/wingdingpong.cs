@@ -167,6 +167,7 @@ namespace wing_ding_pong
             pad2Rect = new CollidableObjects.Rectangle(724.0, (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900,
                                                        40.0, 150.0);
             ballCircle = new CollidableObjects.Circle(center, 5.0);
+            
             //ballCircle = new CollidableObjects.Circle(new _2D.Point(300.0, 300.0), 70);
             //blueBar = new Rectangle(
             //      32, // "X" coordinate of the upper left corner of our rectangle
@@ -418,13 +419,13 @@ namespace wing_ding_pong
             paddle1.Draw(gameTime, spriteBatch);
             paddle2.Draw(gameTime, spriteBatch);
             ball.Draw(gameTime, spriteBatch);
-            
+            gameScore.Draw(gameTime, spriteBatch);
             /*****************************/
             spriteBatch.End();
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            gameScore.Draw(gameTime, spriteBatch);
-            spriteBatch.End();
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            //gameScore.Draw(gameTime, spriteBatch);
+            //spriteBatch.End();
             // Draw the entities (bars and ball).
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
             //// Draw the red bar.
