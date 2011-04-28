@@ -20,13 +20,13 @@ namespace wing_ding_pong
     /// </summary>
     public class wingdingpong : Microsoft.Xna.Framework.Game
     {
-       #region ClassMemberData
+		#region ClassMemberData
 
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		SpriteFont font;
 
-        //// Scores.
+        // Scores.
         Score gameScore;
 
         //// Pong entities.
@@ -37,13 +37,17 @@ namespace wing_ding_pong
         TimeSpan dTime;
         _2D.Vector ballVector;
         _2D.Speed ballSpeed;
-        ArenaWall leftWall, rightWall, topWall, bottomWall; //creating one wall
+        ArenaWall leftWall, rightWall, topWall, bottomWall; // Creating the walls.
         Ball ball;
         Paddle paddle1, paddle2;
+
 		// Clone textures.
-		Texture2D grass;
-		Texture2D spriteSheet;
+		Texture2D grass;		// Texture used for whatever.
+		Texture2D wallTexture;	// Texture used for walls.
+		Texture2D ballTexture;	// Texture used for the ball.
+		Texture2D spriteSheet;	// General texture sheet.
         _2D.Point center = new _2D.Point(375.0, 225.0);
+
 		// Sound effects.
 		SoundEffect ballBounce;
 		SoundEffect playerScored;
@@ -95,11 +99,12 @@ namespace wing_ding_pong
             Content.RootDirectory = "Content";
 
 			// Ideal resolution for the XBox 360.
-			this.graphics.PreferredBackBufferWidth = 800;
-			this.graphics.PreferredBackBufferHeight = 600;
+			this.graphics.PreferredBackBufferWidth = 1360;
+			this.graphics.PreferredBackBufferHeight = 768;
 		}
         //CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(1, GraphicsDevice.Viewport.Bounds.Height / 2, 80.0, 0.0);
 		#endregion
+
 		#region LoadContent
 
 		/// <summary>
@@ -113,6 +118,8 @@ namespace wing_ding_pong
 
 			// Load textures from the Content Pipeline
 			grass = Content.Load<Texture2D>(@"Textures/Funky");
+			wallTexture = Content.Load<Texture2D>(@"Textures/stonewall");
+			ballTexture = Content.Load<Texture2D>(@"Textures/Ball1");
 			spriteSheet = Content.Load<Texture2D>(@"Textures/Objects");
 
 			// Load sound effects from the Content Pipeline
@@ -129,13 +136,14 @@ namespace wing_ding_pong
 			// Current screen.
 			//mCurrentScreen = mControllerScreen;
 
-            leftWall = new ArenaWall(grass, lWallRect);
-            rightWall = new ArenaWall(grass, rWallRect);
-            topWall = new ArenaWall(grass, tWallRect);
-            bottomWall = new ArenaWall(grass, bWallRect);
+			// Walls for the arena.
+            leftWall = new ArenaWall(wallTexture, lWallRect);
+            rightWall = new ArenaWall(wallTexture, rWallRect);
+            topWall = new ArenaWall(wallTexture, tWallRect);
+            bottomWall = new ArenaWall(wallTexture, bWallRect);
             paddle1 = new Paddle(grass, pad1Rect);
             paddle2 = new Paddle(grass, pad2Rect);
-            ball = new Ball(spriteSheet, center);
+            ball = new Ball(ballTexture, center);
             InitBall();
 
             gameScore = new Score(font);
@@ -154,18 +162,26 @@ namespace wing_ding_pong
 		/// </summary>
 		protected override void Initialize()
 		{
+			#if WINDOWS
             lWallRect = new CollidableObjects.Rectangle(0.0, 0.0, 5.0, 
-                                                        (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+
             rWallRect = new CollidableObjects.Rectangle(794.0, 0.0, 5.0, 
-                                                       (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+
             tWallRect = new CollidableObjects.Rectangle(0.0, 0.0,
-                                                        (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
+			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
+
             bWallRect = new CollidableObjects.Rectangle(0.0, 594.0,
-                                                        (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
-            pad1Rect = new CollidableObjects.Rectangle(40.0, (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900,
-                                                       40.0, 150.0);
-            pad2Rect = new CollidableObjects.Rectangle(724.0, (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900,
-                                                       40.0, 150.0);
+			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
+
+            pad1Rect = new CollidableObjects.Rectangle(40.0, 
+			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900, 40.0, 150.0);
+
+            pad2Rect = new CollidableObjects.Rectangle(724.0, 
+			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900, 40.0, 150.0);
+			#endif
+
             ballCircle = new CollidableObjects.Circle(center, 5.0);
             
             //ballCircle = new CollidableObjects.Circle(new _2D.Point(300.0, 300.0), 70);
@@ -184,17 +200,12 @@ namespace wing_ding_pong
             //      GraphicsDevice.Viewport.Bounds.Height / 2 - 16, // "Y" coordinate of the upper left corner
             //      32, // Width
             //      32); // Height
-
-
-            
-
+			
 			base.Initialize();
 		}
 
 		#endregion
-
-
-
+				
 		#region UnloadContent
 
 		/// <summary>
@@ -350,6 +361,7 @@ namespace wing_ding_pong
         }	// End "update".
 
         #endregion
+
 		#region Draw
 
 		/// <summary>
@@ -412,10 +424,10 @@ namespace wing_ding_pong
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             
              /***************************************/
-            //rightWall.Draw(gameTime, spriteBatch);
-            //leftWall.Draw(gameTime, spriteBatch);
-            //topWall.Draw(gameTime, spriteBatch);
-            //bottomWall.Draw(gameTime, spriteBatch);
+			//rightWall.Draw(gameTime, spriteBatch);
+			//leftWall.Draw(gameTime, spriteBatch);
+			//topWall.Draw(gameTime, spriteBatch);
+			//bottomWall.Draw(gameTime, spriteBatch);
             paddle1.Draw(gameTime, spriteBatch);
             paddle2.Draw(gameTime, spriteBatch);
             ball.Draw(gameTime, spriteBatch);
@@ -443,8 +455,6 @@ namespace wing_ding_pong
             ////spriteBatch.Draw(spriteSheet, ball2, ballSrcRect, Color.White);
 
             //spriteBatch.End();
-
-			// TODO: Add your drawing code here
 
 			base.Draw(gameTime);
 		}	// End "draw".
@@ -518,7 +528,6 @@ namespace wing_ding_pong
 
 		#endregion
       
-
 		#region Show
 
 		public void show()
@@ -530,5 +539,6 @@ namespace wing_ding_pong
 		}
 
 		#endregion
+
 	}	// End "wingdingpong".
 }
