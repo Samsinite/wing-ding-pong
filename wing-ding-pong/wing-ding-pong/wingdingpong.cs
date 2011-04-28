@@ -59,6 +59,7 @@ namespace wing_ding_pong
         CollidableObjects.Rectangle _lWallRect, _rWallRect, _tWallRect, _bWallRect;
         CollidableObjects.Circle _ballCircle;
         CollidableObjects.Rectangle _pad1Rect, _pad2Rect;
+        Rules rules = new Rules();
 
 
         // Screens.
@@ -181,8 +182,8 @@ namespace wing_ding_pong
             _rightWall = new ArenaWall(_wallTexture, _rWallRect);
             _topWall = new ArenaWall(_wallTexture, _tWallRect);
             _bottomWall = new ArenaWall(_wallTexture, _bWallRect);
-            _paddle1 = new Paddle(_paddel1Texture, _pad1Rect);
-            _paddle2 = new Paddle(_paddel2Texture, _pad2Rect);
+            _paddle1 = new Paddle(_paddel1Texture, _pad1Rect, new Player(PlayerIndex.One));
+            _paddle2 = new Paddle(_paddel2Texture, _pad2Rect, new Player(PlayerIndex.Two));
             _ball = new Ball(_ballTexture, _center);
 
             _collidableObjects.Add(_leftWall);
@@ -196,10 +197,16 @@ namespace wing_ding_pong
             _drawObjects.Add(_ball);
             _drawObjects.Add(_paddle1);
             _drawObjects.Add(_paddle2);
+<<<<<<< HEAD
             _drawObjects.Add(_leftWall);
             _drawObjects.Add(_rightWall);
             _drawObjects.Add(_topWall);
             _drawObjects.Add(_bottomWall);
+=======
+
+            
+
+>>>>>>> ea9fde661cf3b7693f62bdade1871a7ca4ae04b2
             InitBall();
 		}
 
@@ -229,131 +236,10 @@ namespace wing_ding_pong
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            //// Check that both controllers are connected to the game.
-            //// If one or more is not, pause the game.
-            //if ((GamePad.GetState(PlayerIndex.One).IsConnected == false) 
-            //    || (GamePad.GetState(PlayerIndex.Two).IsConnected == false))
-            //{
-            //    // Pause the game.
-            //}
-
-            //// Allows the game to exit by pressing the "back" button on the Xbox controller.
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            //    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Escape))
-            //{
-            //    this.Exit();
-            //}
-
-            // By taking advantage of Polymorphism, we can call update on the current screen class, 
-            // but the Update in the subclass is the one that will be executed.
-            //mCurrentScreen.Update(gameTime);
-
-            // NOTE:
-            // Consider adding half-values (blueBar.Y += 5) for slower paddle speed.
-            // This can be done by checking that the stick is +/- .5f
-            //
-            // Also note:
-            // Thumbstick movement is vector2 with range of +/- 1.0f on either
-            // the X or Y axis of the stick being polled. 
-            //
-            // Update:
-            // Triggers (left and right) use a range of 0.0f to 1.0f to determine
-            // the pressure exerted on them; whether this is useful or not will
-            // remain to be seen, but I'm including it here just in case.
-            //
-            // Player one controls (blue).
-            if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
-                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
+            foreach (CollidableObjects.Collidable2DBase obj in _collidableObjects)
             {
-                _paddle1.Y -= 10;
+                obj.Update(gameTime);   
             }
-            else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f ||
-                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
-            {
-                _paddle1.Y += 10;
-            }
-
-            // Player two controls (red).
-            if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
-                Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
-            {
-                _paddle2.Y -= 10;
-            }
-            else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
-                || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f ||
-                Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
-            {
-                _paddle2.Y += 10;
-            }
-
-            // Limit the bars' movement to the screen bounds.
-            if (_paddle2.Y < 0) // Upper bound.
-            {
-                _paddle2.Y = 0; // Limit.
-            }
-
-            if (_paddle1.Y < 0)
-            {
-                _paddle1.Y = 0;
-            }
-
-            if (_paddle2.Y + _paddle2.Height > GraphicsDevice.Viewport.Bounds.Height)
-            {
-                _paddle2.Y = GraphicsDevice.Viewport.Bounds.Height - _paddle2.Height;
-            }
-
-            if (_paddle1.Y + _paddle1.Height > GraphicsDevice.Viewport.Bounds.Height)
-            {
-                _paddle1.Y = GraphicsDevice.Viewport.Bounds.Height - _paddle1.Height;
-            }
-
-            //ballVector = new _2D.Vector(-5.0, 5.0);
-
-            // Move the ball.
-            _ball.Update(gameTime);
-
-            // Handling ball initialization; use Navigation Button to reset.
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
-                Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
-            {
-                InitBall();
-            }
-
-            // Collision handling. //
-            // Wall collisions.
-            if (_ball.Y < 0.0 || // if the ball reach the upper bound of the screen
-                  _ball.Y + _ball.Radius > 750.0) // or the lower one
-            {
-                _ballVector.X = -_ballVector.X; // make if bounce by inverting the Y velocity
-                _ballSpeed = new _2D.Speed(_ballVector, _dTime);
-               // ballBounce.Play(); // Bounce sound.
-            }
-
-            // Bar collisions.
-            if((_ball.X == _paddle1.X) || (_ball.X == _paddle1.Y))
-            {
-                _ballVector.X = -_ballVector.X; // Make it bounce by inverting the X velocity.
-               // ballBounce.Play(); // Bounce sound.
-
-            }
-
-            // Scoring.
-            if (_ball.X < 0) // Red scores a point.
-            {
-                _gameScore.RightScore++;
-                //playerScored.Play(); // Play a sound when a point is scored.
-                InitBall(); // Re-init the ball.
-            }
-            else if (_ball.X + _ball.Radius > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
-            {
-                _gameScore.LeftScore++;
-                //playerScored.Play();
-                InitBall(); // Re-init the ball.
-            }
-
             base.Update(gameTime);
         }	// End "update".
 

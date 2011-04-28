@@ -12,7 +12,7 @@ namespace wing_ding_pong
 	{
         private IDictionary<string, object> _collisionRulesRegister;
         
-        public void RegisterCollisionTrait<T1, T2>(ObjectCollisionRulesTraits trait)
+        public void RegisterRule<T1, T2>(ObjectCollisionRulesTraits trait)
         {
           if (_collisionRulesRegister == null)
           {
