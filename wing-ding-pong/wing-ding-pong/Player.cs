@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace wing_ding_pong
 {
     public class Player
     {
         private int _score = 0;
-        Microsoft.Xna.Framework.PlayerIndex _playerIndex;
+        PlayerIndex _playerIndex;
 
 		// Constructor.
-		public Player(Microsoft.Xna.Framework.PlayerIndex playerIndex)
+		public Player(PlayerIndex playerIndex)
 		{
             _playerIndex = playerIndex;
 		}
@@ -20,6 +19,11 @@ namespace wing_ding_pong
         {
             set {_score = value;}
             get {return _score;}
+        }
+
+        public PlayerIndex Player_Index
+        {
+            get { return _playerIndex; }
         }
     }
 }
