@@ -21,6 +21,11 @@ namespace wing_ding_pong
             _wall = (Rectangle)CollidableObjects[0];
         }
 
+        public bool HasOwner
+        {
+            get { return this.Owner == null; }
+        }
+
         public Player Owner
         {
             set { _wallOwner = value; }

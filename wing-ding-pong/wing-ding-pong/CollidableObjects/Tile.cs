@@ -85,7 +85,7 @@ namespace wing_ding_pong.CollidableObjects
             get { return _sy; }
         }
 
-        public void MoveNoOldUpdate(double dx, double dy)
+        public void MoveNoOldPosUpdate(double dx, double dy)
         {
             this.Pos = new Point(this.Pos.X + dx, this.Pos.Y + dy);
             this.Min.X += dx;

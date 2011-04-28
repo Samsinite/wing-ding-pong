@@ -159,7 +159,7 @@ namespace CollisionTests
                                                                                         out obj2Direction))
                     {
                         movementDistance = Math.Sqrt(wing_ding_pong._2D.Math2D.DistanceSquared(_objectSpeeds[i].Distance));
-                        _collidableObjects[i].MoveNoOldUpdate(obj1Dp.X, obj1Dp.Y);
+                        _collidableObjects[i].MoveNoOldPosUpdate(obj1Dp.X, obj1Dp.Y);
                         _objectSpeeds[i].Distance.X = obj1Direction.X * movementDistance;
                         _objectSpeeds[i].Distance.Y = obj1Direction.Y * movementDistance;
                         /*_collidableObjects[j].MoveNoOldUpdate(obj2Dp.X, obj2Dp.Y);
