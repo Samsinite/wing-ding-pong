@@ -13,9 +13,10 @@ namespace wing_ding_pong
         private Player _owner = null;
         
 
-        public Paddle(Texture2D sprite, Rectangle paddleObj)
+        public Paddle(Texture2D sprite, Rectangle paddleObj, Player player)
             : base(new List<Tile>() {paddleObj} )
         {
+            _player = player;
             _sprite = sprite;
             _rec = (Rectangle)CollidableObjects[0];
         }
