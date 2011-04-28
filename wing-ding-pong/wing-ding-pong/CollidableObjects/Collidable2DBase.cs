@@ -30,10 +30,6 @@ namespace wing_ding_pong.CollidableObjects
             set { _speed = Speed; }
         }
 
-        public void Move(double dx, double dy)
-        {
-        }
-
         public virtual void Move(double dx, double dy)
         {
             foreach (Tile tile in _objects)

@@ -75,5 +75,10 @@ namespace wing_ding_pong
         {
             throw new NotImplementedException();
         }
+
+        public override string ObjectName
+        {
+            get { return typeof(Ball).Name; }
+        }
     }
 }

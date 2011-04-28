@@ -46,5 +46,10 @@ namespace wing_ding_pong
                 (int)_wall.Width, (int)_wall.Height),
                 Microsoft.Xna.Framework.Color.White);
         }
+
+        public override string ObjectName
+        {
+            get { return typeof(ArenaWall).Name; }
+        }
     }
 }
