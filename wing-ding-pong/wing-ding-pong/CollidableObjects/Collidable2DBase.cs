@@ -30,6 +30,28 @@ namespace wing_ding_pong.CollidableObjects
             set { _speed = Speed; }
         }
 
+        public void Move(double dx, double dy)
+        {
+        }
+
+        public virtual void Move(double dx, double dy)
+        {
+            foreach (Tile tile in _objects)
+            {
+                tile.Move(dx, dy);
+            }
+        }
+
+        public virtual void MoveNoOldPosUpdate(double dx, double dy)
+        {
+            foreach (Tile tile in _objects)
+            {
+                tile.MoveNoOldPosUpdate(dx, dy);
+            }
+        }
+
         public abstract void Update(GameTime gameTime);
+
+        public abstract string ObjectName { get; }
     }
 }

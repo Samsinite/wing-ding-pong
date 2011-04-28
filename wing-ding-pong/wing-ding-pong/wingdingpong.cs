@@ -368,45 +368,8 @@ namespace wing_ding_pong
 		protected override void Draw(GameTime gameTime)
 		{
 			GraphicsDevice.Clear(Color.Black);
-		
-			// This code draws the menus.
-			//spriteBatch.Begin();
-
-			//// Again, using Polymorphism, we can call draw on the current screen class
-			//// and the Draw in the subclass is the one that will be executed.
-			//mCurrentScreen.Draw(spriteBatch);
-
-			//spriteBatch.End();
-
-            // Uncomment this section to render the background image.
-            // Grass background.
-            //spriteBatch.Begin();
-            //spriteBatch.Draw(
-            //      grass, // Grass texture.
-            //      GraphicsDevice.Viewport.Bounds, // Stretch the texture to the whole screen.
-            //    // GraphicsDevice.Viewport.Bounds is Rectangle corresponding to the actual viewport (meaning the entire screen no matter the resolution), only available as of XNA 4.0
-            //      Color.White);
-            //spriteBatch.End();
-            
-			//leftWall = new ArenaWall(grass, lWallRect);
-            //rightWall = new ArenaWall(grass, rWallRect);
-            //topWall = new ArenaWall(grass, tWallRect);
-            //bottomWall = new ArenaWall(grass, bWallRect);
-            //paddle1 = new Paddle(grass, pad1Rect);
-            //paddle2 = new Paddle(grass, pad2Rect);
-
-            //ball = new Ball(grass, _2D.Point(60.0,60.0));
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            //leftWall.Draw(gameTime, spriteBatch);//-------testing wall draw
-            ///*****************************/
-            //spriteBatch.End();
             _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             
-             /***************************************/
-			//rightWall.Draw(gameTime, spriteBatch);
-			//leftWall.Draw(gameTime, spriteBatch);
-			//topWall.Draw(gameTime, spriteBatch);
-			//bottomWall.Draw(gameTime, spriteBatch);
             foreach (IDrawable item in _drawObjects)
             {
                 item.Draw(gameTime, _spriteBatch);

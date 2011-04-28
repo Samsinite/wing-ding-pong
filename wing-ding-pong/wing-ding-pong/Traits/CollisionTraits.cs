@@ -59,6 +59,42 @@ namespace wing_ding_pong.Traits
 
     }
 
+    public class RecRecCollisionCheckTraits : CollisionCheckTraits
+    {
+        public bool CheckAndResolveStaticTileStaticTileCollision(Tile obj1, Tile obj2, double px, double py, double dx, double dy,
+                                                        out Vector obj1PosDp, out Vector obj1CollDirection,
+                                                        out Vector obj2PosDp, out Vector obj2CollDirection)
+        {
+            Rectangle rec1 = (Rectangle)obj1;
+            Rectangle rec2 = (Rectangle)obj2;
+          
+            double gridVert = 0;
+            double gridHorz = 0;
+    
+            if (dx < (obj2.XW * -1))
+            {
+                gridHorz = -1; //circle1 is on left side of circle2
+            }
+            else if (obj2.XW < dx)
+            {
+                gridHorz = 1; //circle1 is on right side of circle2
+            }
+   
+            if (dy < (obj2.YW * -1))
+            {
+                gridVert = -1; //circle1 is on top side of circle2
+            }
+            else if (obj2.YW < dy)
+            {
+                gridVert = 1; //circle1 is on bottom side of circle2
+            }
+			
+            return CollisionDetection.ProjRecRec(rec1, rec2, px, py, gridHorz, gridVert,
+                  out obj1PosDp, out obj1CollDirection, out obj2PosDp, out obj2CollDirection);
+      }
+
+    }
+
     public class CircleRecCollisionCheckTraits : CollisionCheckTraits
     {
         public bool CheckAndResolveStaticTileStaticTileCollision(Tile obj1, Tile obj2, double px, double py, double dx, double dy,
