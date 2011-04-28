@@ -100,12 +100,14 @@
     <Compile Include="Builder\SquareLevelBuilder.cs" />
     <Compile Include="Builder\GameDirector.cs" />
     <Compile Include="Builder\GameBuilder.cs" />
+    <Compile Include="CollidableObjects\AABB.cs" />
     <Compile Include="CollidableObjects\Circle.cs" />
     <Compile Include="CollidableObjects\Collidable2DBase.cs" />
-    <Compile Include="CollidableObjects\IObjectType.cs" />
     <Compile Include="CollidableObjects\Rectangle.cs" />
     <Compile Include="2D\Speed.cs" />
+    <Compile Include="CollidableObjects\Tile.cs" />
     <Compile Include="CollidableObjects\Triangle.cs" />
+    <Compile Include="CollisionDetection.cs" />
     <Compile Include="ICloneable.cs" />
     <Compile Include="IDrawable.cs" />
     <Compile Include="IPowerupType.cs" />
@@ -119,6 +121,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Rules.cs" />
+    <Compile Include="Screens\TitleScreen.cs" />
+    <Compile Include="Traits\CollisionTraits.cs" />
     <Compile Include="Screens\BackgroundScreen.cs" />
     <Compile Include="Screens\GameplayScreen.cs" />
     <Compile Include="Screens\LoadingScreen.cs" />

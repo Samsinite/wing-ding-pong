@@ -9,33 +9,57 @@ namespace wing_ding_pong._2D
 
         //Sqrt is slow so we don't want to use it
         //returns the distance^2
-        static double DoubleDistance(Point p1, Point p2)
+        public static double DistanceSquared(Point p1, Point p2)
         {
-            return (p2.X - p1.X) * (p2.X = p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y);
+            double ret = (p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y);
+            return ret;
         }
 
-        static double DotProduct(Vector v1, Vector v2)
+        public static double DistanceSquared(Vector v)
+        {
+            return (v.X * v.X) + (v.Y * v.Y);
+        }
+
+        public static double DotProduct(Vector v1, Vector v2)
         {
             return (v1.X * v1.X) + (v2.Y * v2.Y);
         }
 
-        static double Norm(Point p1, Point p2)
+        public static Vector Normal(Point p1, Point p2)
         {
-            return Math.Sqrt(((p2.X - p1.X) * (p2.X - p1.X)) + ((p2.Y - p1.Y) * (p2.Y - p1.Y)));
+            return new Vector(-1 * (p2.Y - p1.Y), (p2.X - p1.X));
         }
 
-        static double Norm(Vector v)
+        public static Vector Normal(Vector v)
         {
-            return Math.Sqrt(v.X * v.X + v.Y * v.Y);
+            return new Vector(-1 * v.Y, v.X);
         }
 
-        static Vector UnitVector(Vector v)
+        public static double NormSquared(Vector v)
         {
-            Vector unitV = new Vector();
-            double normOfV = Norm(v);
-            unitV.X = v.X / normOfV;
-            unitV.Y = v.Y / normOfV;
-            return unitV;
+            return (v.X * v.X) + (v.Y + v.Y);
+        }
+
+        public static double NormSquared(Point p1, Point p2)
+        {
+            return (p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y);
+        }
+
+        public static Vector UnitVector(Vector v)
+        {
+            if (DistanceSquared(v) != 0)
+            {
+                return new Vector((v.X / Math.Sqrt(DistanceSquared(v))), (v.Y / Math.Sqrt(DistanceSquared(v))));
+            }
+            else
+            {
+                return new Vector(0, 0);
+            }
+        }
+
+        public static double Determinate(_2D.Vector v1, _2D.Vector v2)
+        {
+            return v1.X * v2.Y - v1.Y * v2.X;
         }
 
         #endregion

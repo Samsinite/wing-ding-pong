@@ -27,39 +27,42 @@ namespace wing_ding_pong
             "gradient",
         };
 
-		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
-		SpriteFont font;
+        IList<CollidableObjects.Collidable2DBase> _collidableObjects; //objects that can collide with each other will exist here
+        IList<IDrawable> _drawObjects; //Anything drawn on the screen will exist here
+
+		GraphicsDeviceManager _graphics;
+		SpriteBatch _spriteBatch;
+		SpriteFont _font;
 
         // Scores.
-        Score gameScore;
+        Score _gameScore;
 
-        TimeSpan dTime;
-        _2D.Vector ballVector;
-        _2D.Speed ballSpeed;
-        ArenaWall leftWall, rightWall, topWall, bottomWall; // Creating the walls.
-        Ball ball;
-        Paddle paddle1, paddle2;
+        TimeSpan _dTime;
+        _2D.Vector _ballVector;
+        _2D.Speed _ballSpeed;
+        ArenaWall _leftWall, _rightWall, _topWall, _bottomWall; // Creating the walls.
+        Ball _ball;
+        Paddle _paddle1, _paddle2;
 
 		// Clone textures.
-		Texture2D grass;		// Texture used for whatever.
-		Texture2D wallTexture;	// Texture used for walls.
-		Texture2D ballTexture;	// Texture used for the ball.
-		Texture2D spriteSheet;	// General texture sheet.
-        _2D.Point center = new _2D.Point(375.0, 225.0);
+		Texture2D _grass;		// Texture used for whatever.
+		Texture2D _wallTexture;	// Texture used for walls.
+		Texture2D _ballTexture;	// Texture used for the ball.
+		Texture2D _spriteSheet;	// General texture sheet.
+        _2D.Point _center = new _2D.Point(375.0, 225.0);
 
 		// Sound effects.
-		SoundEffect ballBounce;
-		SoundEffect playerScored;
-        CollidableObjects.Rectangle lWallRect, rWallRect,tWallRect,bWallRect;
-        CollidableObjects.Circle ballCircle;
-        CollidableObjects.Rectangle pad1Rect, pad2Rect;
+		SoundEffect _ballBounce;
+		SoundEffect _playerScored;
+        CollidableObjects.Rectangle _lWallRect, _rWallRect, _tWallRect, _bWallRect;
+        CollidableObjects.Circle _ballCircle;
+        CollidableObjects.Rectangle _pad1Rect, _pad2Rect;
 
 
         // Screens.
         //ControllerDetectScreen mControllerScreen;
         //TitleScreen mTitleScreen;
-        ScreenManager screenManager;
+        ScreenManager _screenManager;
 
 		#endregion
 
@@ -71,21 +74,21 @@ namespace wing_ding_pong
             GraphicsAdapter.UseReferenceDevice = true;  //Requires DirectX SDK and enables software based DirectX (Slow)
 			#endif
 
-            graphics = new GraphicsDeviceManager(this);
+            _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
 			// Ideal resolution for the XBox 360.
-			this.graphics.PreferredBackBufferWidth = 1360;
-			this.graphics.PreferredBackBufferHeight = 768;
+			this._graphics.PreferredBackBufferWidth = 1360;
+			this._graphics.PreferredBackBufferHeight = 768;
 			
 			// Create the screen manager component.
-			screenManager = new ScreenManager(this);
+			_screenManager = new ScreenManager(this);
 
-			Components.Add(screenManager);
+			Components.Add(_screenManager);
 
 			// Activate the first screens.
-			screenManager.AddScreen(new BackgroundScreen(), null);
-			screenManager.AddScreen(new MainMenuScreen(), null);
+			_screenManager.AddScreen(new BackgroundScreen(), null);
+			_screenManager.AddScreen(new MainMenuScreen(), null);
 		}
         //CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(1, GraphicsDevice.Viewport.Bounds.Height / 2, 80.0, 0.0);
 		#endregion
@@ -104,20 +107,20 @@ namespace wing_ding_pong
 			}
 
 			// Create a new SpriteBatch, which can be used to draw textures.
-			spriteBatch = new SpriteBatch(GraphicsDevice);
+			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			// Load textures from the Content Pipeline
-			grass = Content.Load<Texture2D>(@"Textures/Funky");
-			wallTexture = Content.Load<Texture2D>(@"Textures/stonewall");
-			ballTexture = Content.Load<Texture2D>(@"Textures/Ball1");
-			spriteSheet = Content.Load<Texture2D>(@"Textures/Objects");
+			_grass = Content.Load<Texture2D>(@"Textures/Funky");
+			_wallTexture = Content.Load<Texture2D>(@"Textures/stonewall");
+			_ballTexture = Content.Load<Texture2D>(@"Textures/Ball1");
+			_spriteSheet = Content.Load<Texture2D>(@"Textures/Objects");
 
 			// Load sound effects from the Content Pipeline
-			ballBounce = Content.Load<SoundEffect>(@"Sounds/Bounce");
-			playerScored = Content.Load<SoundEffect>(@"Sounds/Supporters");
+			_ballBounce = Content.Load<SoundEffect>(@"Sounds/Bounce");
+			_playerScored = Content.Load<SoundEffect>(@"Sounds/Supporters");
 
 			// Load our score font.
-			font = Content.Load<SpriteFont>(@"ScoreFont");
+			_font = Content.Load<SpriteFont>(@"ScoreFont");
 
 			// Initialize screens.
 			//mControllerScreen = new ControllerDetectScreen(this.Content, new EventHandler(ControllerDetectScreenEvent));
@@ -127,18 +130,18 @@ namespace wing_ding_pong
 			//mCurrentScreen = mControllerScreen;
 
 			// Walls for the arena.
-            leftWall = new ArenaWall(wallTexture, lWallRect);
-            rightWall = new ArenaWall(wallTexture, rWallRect);
-            topWall = new ArenaWall(wallTexture, tWallRect);
-            bottomWall = new ArenaWall(wallTexture, bWallRect);
-            paddle1 = new Paddle(grass, pad1Rect);
-            paddle2 = new Paddle(grass, pad2Rect);
-            ball = new Ball(ballTexture, center);
+            _leftWall = new ArenaWall(_wallTexture, _lWallRect);
+            _rightWall = new ArenaWall(_wallTexture, _rWallRect);
+            _topWall = new ArenaWall(_wallTexture, _tWallRect);
+            _bottomWall = new ArenaWall(_wallTexture, _bWallRect);
+            _paddle1 = new Paddle(_grass, _pad1Rect);
+            _paddle2 = new Paddle(_grass, _pad1Rect);
+            _ball = new Ball(_ballTexture, _center);
             InitBall();
 
-            gameScore = new Score(font);
-            gameScore.RightScore = 0;
-            gameScore.LeftScore = 0;
+            _gameScore = new Score(_font);
+            _gameScore.RightScore = 0;
+            _gameScore.LeftScore = 0;
 		}
 
 		#endregion
@@ -152,6 +155,29 @@ namespace wing_ding_pong
 		/// </summary>
 		protected override void Initialize()
 		{
+            
+            //ballCircle = new CollidableObjects.Circle(new _2D.Point(300.0, 300.0), 70);
+            //blueBar = new Rectangle(
+            //      32, // "X" coordinate of the upper left corner of our rectangle
+            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
+            //      32, // Width
+            //      128); // Height
+            //redBar = new Rectangle(
+            //      GraphicsDevice.Viewport.Bounds.Width - 64, // "X" coordinate of the upper left corner of our rectangle
+            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
+            //      32, // Width
+            //      128); // Height
+            //ball = new Rectangle(
+            //      GraphicsDevice.Viewport.Bounds.Width / 2 - 16, // "X" coordinate of the upper left corner of our rectangle
+            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 16, // "Y" coordinate of the upper left corner
+            //      32, // Width
+            //      32); // Height
+			
+			base.Initialize();
+
+            _center.X = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
+            _center.Y = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
+
 			#if WINDOWS
             lWallRect = new CollidableObjects.Rectangle(0.0, 0.0, 5.0, 
 			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
@@ -172,26 +198,7 @@ namespace wing_ding_pong
 			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900, 40.0, 150.0);
 			#endif
 
-            ballCircle = new CollidableObjects.Circle(center, 5.0);
-            
-            //ballCircle = new CollidableObjects.Circle(new _2D.Point(300.0, 300.0), 70);
-            //blueBar = new Rectangle(
-            //      32, // "X" coordinate of the upper left corner of our rectangle
-            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
-            //      32, // Width
-            //      128); // Height
-            //redBar = new Rectangle(
-            //      GraphicsDevice.Viewport.Bounds.Width - 64, // "X" coordinate of the upper left corner of our rectangle
-            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
-            //      32, // Width
-            //      128); // Height
-            //ball = new Rectangle(
-            //      GraphicsDevice.Viewport.Bounds.Width / 2 - 16, // "X" coordinate of the upper left corner of our rectangle
-            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 16, // "Y" coordinate of the upper left corner
-            //      32, // Width
-            //      32); // Height
-			
-			base.Initialize();
+            _ballCircle = new CollidableObjects.Circle(_center.X, _center.Y, 5.0);
 		}
 
 		#endregion
@@ -257,13 +264,13 @@ namespace wing_ding_pong
                 || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Up))
             {
-                paddle1.Y -= 10;
+                _paddle1.Y -= 10;
             }
             else if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed
                 || GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y <= -0.5f ||
                 Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Down))
             {
-                paddle1.Y += 10;
+                _paddle1.Y += 10;
             }
 
             // Player two controls (red).
@@ -271,40 +278,40 @@ namespace wing_ding_pong
                 || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
             {
-                paddle2.Y -= 10;
+                _paddle2.Y -= 10;
             }
             else if (GamePad.GetState(PlayerIndex.Two).DPad.Down == ButtonState.Pressed
                 || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y <= -0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Down))
             {
-                paddle2.Y += 10;
+                _paddle2.Y += 10;
             }
 
             // Limit the bars' movement to the screen bounds.
-            if (paddle2.Y < 0) // Upper bound.
+            if (_paddle2.Y < 0) // Upper bound.
             {
-                paddle2.Y = 0; // Limit.
+                _paddle2.Y = 0; // Limit.
             }
 
-            if (paddle1.Y < 0)
+            if (_paddle1.Y < 0)
             {
-                paddle1.Y = 0;
+                _paddle1.Y = 0;
             }
 
-            if (paddle2.Y + paddle2.Height > GraphicsDevice.Viewport.Bounds.Height)
+            if (_paddle2.Y + _paddle2.Height > GraphicsDevice.Viewport.Bounds.Height)
             {
-                paddle2.Y = GraphicsDevice.Viewport.Bounds.Height - paddle2.Height;
+                _paddle2.Y = GraphicsDevice.Viewport.Bounds.Height - _paddle2.Height;
             }
 
-            if (paddle1.Y + paddle1.Height > GraphicsDevice.Viewport.Bounds.Height)
+            if (_paddle1.Y + _paddle1.Height > GraphicsDevice.Viewport.Bounds.Height)
             {
-                paddle1.Y = GraphicsDevice.Viewport.Bounds.Height - paddle1.Height;
+                _paddle1.Y = GraphicsDevice.Viewport.Bounds.Height - _paddle1.Height;
             }
 
             //ballVector = new _2D.Vector(-5.0, 5.0);
 
             // Move the ball.
-            ball.Update(gameTime);
+            _ball.Update(gameTime);
 
             // Handling ball initialization; use Navigation Button to reset.
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
@@ -315,32 +322,32 @@ namespace wing_ding_pong
 
             // Collision handling. //
             // Wall collisions.
-            if (ball.Y < 0.0 || // if the ball reach the upper bound of the screen
-                  ball.Y + ball.Radius > 750.0) // or the lower one
+            if (_ball.Y < 0.0 || // if the ball reach the upper bound of the screen
+                  _ball.Y + _ball.Radius > 750.0) // or the lower one
             {
-                ballVector.X = -ballVector.X; // make if bounce by inverting the Y velocity
-                ballSpeed = new _2D.Speed(ballVector, dTime);
+                _ballVector.X = -_ballVector.X; // make if bounce by inverting the Y velocity
+                _ballSpeed = new _2D.Speed(_ballVector, _dTime);
                // ballBounce.Play(); // Bounce sound.
             }
 
             // Bar collisions.
-            if((ball.X == paddle1.X) || (ball.X == paddle1.Y))
+            if((_ball.X == _paddle1.X) || (_ball.X == _paddle1.Y))
             {
-                ballVector.X = -ballVector.X; // Make it bounce by inverting the X velocity.
+                _ballVector.X = -_ballVector.X; // Make it bounce by inverting the X velocity.
                // ballBounce.Play(); // Bounce sound.
 
             }
 
             // Scoring.
-            if (ball.X < 0) // Red scores a point.
+            if (_ball.X < 0) // Red scores a point.
             {
-                gameScore.RightScore++;
+                _gameScore.RightScore++;
                 //playerScored.Play(); // Play a sound when a point is scored.
                 InitBall(); // Re-init the ball.
             }
-            else if (ball.X + ball.Radius > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
+            else if (_ball.X + _ball.Radius > GraphicsDevice.Viewport.Bounds.Width) // Blue scores a point.
             {
-                gameScore.LeftScore++;
+                _gameScore.LeftScore++;
                 //playerScored.Play();
                 InitBall(); // Re-init the ball.
             }
@@ -391,19 +398,19 @@ namespace wing_ding_pong
             //leftWall.Draw(gameTime, spriteBatch);//-------testing wall draw
             ///*****************************/
             //spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             
              /***************************************/
 			//rightWall.Draw(gameTime, spriteBatch);
 			//leftWall.Draw(gameTime, spriteBatch);
 			//topWall.Draw(gameTime, spriteBatch);
 			//bottomWall.Draw(gameTime, spriteBatch);
-            paddle1.Draw(gameTime, spriteBatch);
-            paddle2.Draw(gameTime, spriteBatch);
-            ball.Draw(gameTime, spriteBatch);
-            gameScore.Draw(gameTime, spriteBatch);
+            _paddle1.Draw(gameTime, _spriteBatch);
+            _paddle2.Draw(gameTime, _spriteBatch);
+            _ball.Draw(gameTime, _spriteBatch);
+            _gameScore.Draw(gameTime, _spriteBatch);
             /*****************************/
-            spriteBatch.End();
+            _spriteBatch.End();
 
             
 
@@ -422,41 +429,41 @@ namespace wing_ding_pong
 		{
             int speed = 5;	// Default velocity.
             Random rand = new Random();
-            ballVector = new _2D.Vector(5.0, 100.0);
-            dTime = new TimeSpan(100000);
+            _ballVector = new _2D.Vector(5.0, 100.0);
+            _dTime = new TimeSpan(100000);
             
             //// Randomize the ball orientation.
             switch (rand.Next(4))
             {
                 case 0: 
-                    ballSpeed = new _2D.Speed(ballVector, dTime);
-                    ballVector.X = speed;
-                    ballVector.Y = speed;
-                    ball.BallSpeed = ballSpeed;
+                    _ballSpeed = new _2D.Speed(_ballVector, _dTime);
+                    _ballVector.X = speed;
+                    _ballVector.Y = speed;
+                    _ball.BallSpeed = _ballSpeed;
                     break;
                 case 1: 
-                    ballVector.X = -speed; 
-                    ballVector.Y = speed;
-                    ballSpeed = new _2D.Speed(ballVector, dTime);
-                    ball.BallSpeed = ballSpeed;
+                    _ballVector.X = -speed; 
+                    _ballVector.Y = speed;
+                    _ballSpeed = new _2D.Speed(_ballVector, _dTime);
+                    _ball.BallSpeed = _ballSpeed;
                     break;
                 case 2: 
-                    ballVector.X = speed; 
-                    ballVector.Y = -speed;
-                    ballSpeed = new _2D.Speed(ballVector, dTime);
-                    ball.BallSpeed = ballSpeed;
+                    _ballVector.X = speed; 
+                    _ballVector.Y = -speed;
+                    _ballSpeed = new _2D.Speed(_ballVector, _dTime);
+                    _ball.BallSpeed = _ballSpeed;
                     break;
                 case 3: 
-                    ballVector.X = -speed;
-                    ballVector.Y = -speed;
-                    ballSpeed = new _2D.Speed(ballVector, dTime);
-                    ball.BallSpeed = ballSpeed;
+                    _ballVector.X = -speed;
+                    _ballVector.Y = -speed;
+                    _ballSpeed = new _2D.Speed(_ballVector, _dTime);
+                    _ball.BallSpeed = _ballSpeed;
                     break;
             }
 
             //// Initialize the ball to the center of the screen.
-            ball.X = GraphicsDevice.Viewport.Bounds.Width / 2 - ball.Radius / 2;
-            ball.Y = GraphicsDevice.Viewport.Bounds.Height / 2 - ball.Radius / 2;
+            _ball.X = GraphicsDevice.Viewport.Bounds.Width / 2 - _ball.Radius / 2;
+            _ball.Y = GraphicsDevice.Viewport.Bounds.Height / 2 - _ball.Radius / 2;
 		}	// End "initball".
 
 		#endregion

@@ -6,7 +6,7 @@ using wing_ding_pong._2D;
 
 namespace wing_ding_pong
 {
-	public class Paddle : Collidable2DBase, IDrawable, ICloneable
+	public class Paddle : Collidable2DBase, IDrawable, ICloneable<Paddle>
 	{
         private Texture2D _sprite;
         private Rectangle _rec;
@@ -14,7 +14,7 @@ namespace wing_ding_pong
         
 
         public Paddle(Texture2D sprite, Rectangle paddleObj)
-            : base(new List<IObjectType>() {paddleObj} )
+            : base(new List<Tile>() {paddleObj} )
         {
             _sprite = sprite;
             _rec = (Rectangle)CollidableObjects[0];
@@ -29,20 +29,26 @@ namespace wing_ding_pong
 
         public double X
         {
-            set { _rec.X = value; }
-            get { return _rec.X; }
+            set { _rec.Pos.X = value; }
+            get { return _rec.Pos.X; }
         }
 
         public double Y
         {
-            set { _rec.Y = value; }
-            get { return _rec.Y; }
+            set { _rec.Pos.Y = value; }
+            get { return _rec.Pos.Y; }
         }
 
         public double Height
         {
             set{ _rec.Height = value; }
             get{ return _rec.Height; }
+        }
+
+        public double Width
+        {
+            set { _rec.Width = value; }
+            get { return _rec.Width; }
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -59,9 +65,14 @@ namespace wing_ding_pong
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_rec.X, (int)_rec.Y,
-                (int)_rec.Width, (int)_rec.Height),
+                (int)_rec.Min.X, (int)_rec.Min.Y,
+                (int)this.Width, (int)this.Height),
                 Microsoft.Xna.Framework.Color.White);
+        }
+
+        Paddle ICloneable<Paddle>.Clone()
+        {
+            throw new NotImplementedException();
         }
     }
 }
