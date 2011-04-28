@@ -64,8 +64,9 @@ namespace wing_ding_pong
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
+
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_rec.Min.X, (int)_rec.Min.Y,
+                (int)_rec.Pos.X, (int)_rec.Pos.Y,
                 (int)this.Width, (int)this.Height),
                 Microsoft.Xna.Framework.Color.White);
         }

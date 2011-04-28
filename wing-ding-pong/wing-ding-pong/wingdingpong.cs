@@ -27,8 +27,8 @@ namespace wing_ding_pong
             @"Textures/gradient",
         };
 
-        IList<CollidableObjects.Collidable2DBase> _collidableObjects; //objects that can collide with each other will exist here
-        IList<IDrawable> _drawObjects; //Anything drawn on the screen will exist here
+        IList<CollidableObjects.Collidable2DBase> _collidableObjects = new List<CollidableObjects.Collidable2DBase>(); //objects that can collide with each other will exist here
+        IList<IDrawable> _drawObjects = new List<IDrawable>(); //Anything drawn on the screen will exist here
 
 		GraphicsDeviceManager _graphics;
 		SpriteBatch _spriteBatch;
@@ -49,6 +49,8 @@ namespace wing_ding_pong
 		Texture2D _wallTexture;	// Texture used for walls.
 		Texture2D _ballTexture;	// Texture used for the ball.
 		Texture2D _spriteSheet;	// General texture sheet.
+        Texture2D _paddel1Texture;
+        Texture2D _paddel2Texture;
         _2D.Point _center = new _2D.Point(375.0, 225.0);
 
 		// Sound effects.
@@ -79,8 +81,11 @@ namespace wing_ding_pong
 
 			// Ideal resolution for the XBox 360.
             this._graphics.IsFullScreen = true;
+<<<<<<< HEAD
 			this._graphics.PreferredBackBufferWidth = 1360;
 			this._graphics.PreferredBackBufferHeight = 768;
+=======
+>>>>>>> 036c6d8babe7cef9385ba1ae43e553d672212be4
 			
 			// Create the screen manager component.
 			//_screenManager = new ScreenManager(this);
@@ -115,6 +120,8 @@ namespace wing_ding_pong
 			_wallTexture = Content.Load<Texture2D>(@"Textures/stonewall");
 			_ballTexture = Content.Load<Texture2D>(@"Textures/Ball1");
 			_spriteSheet = Content.Load<Texture2D>(@"Textures/Objects");
+            _paddel1Texture = Content.Load<Texture2D>(@"Textures/paddle_red");
+            _paddel2Texture = Content.Load<Texture2D>(@"Textures/paddle_blue");
 
 			// Load sound effects from the Content Pipeline
 			_ballBounce = Content.Load<SoundEffect>(@"Sounds/Bounce");
@@ -166,9 +173,9 @@ namespace wing_ding_pong
 
             _bWallRect = new CollidableObjects.Rectangle(height, _center.Y, width / 2, height / 2);
             
-            _pad1Rect = new CollidableObjects.Rectangle(40.0, height + 40, 40.0 / 2, 150.0 / 2);
+            _pad1Rect = new CollidableObjects.Rectangle(40, _center.Y, _paddel1Texture.Width / 2, _paddel1Texture.Height / 2);
 
-            _pad2Rect = new CollidableObjects.Rectangle(724.0, 40, 40.0 / 2, 150.0 / 2);
+            _pad2Rect = new CollidableObjects.Rectangle(width - 40, _center.Y, _paddel2Texture.Width / 2, _paddel2Texture.Height / 2);
 
             _ballCircle = new CollidableObjects.Circle(_center.X, _center.Y, 5.0);
 
@@ -176,9 +183,21 @@ namespace wing_ding_pong
             _rightWall = new ArenaWall(_wallTexture, _rWallRect);
             _topWall = new ArenaWall(_wallTexture, _tWallRect);
             _bottomWall = new ArenaWall(_wallTexture, _bWallRect);
-            _paddle1 = new Paddle(_grass, _pad1Rect);
-            _paddle2 = new Paddle(_grass, _pad1Rect);
+            _paddle1 = new Paddle(_paddel1Texture, _pad1Rect);
+            _paddle2 = new Paddle(_paddel2Texture, _pad2Rect);
             _ball = new Ball(_ballTexture, _center);
+
+            _collidableObjects.Add(_leftWall);
+            _collidableObjects.Add(_rightWall);
+            _collidableObjects.Add(_topWall);
+            _collidableObjects.Add(_bottomWall);
+            _collidableObjects.Add(_paddle1);
+            _collidableObjects.Add(_paddle2);
+            _collidableObjects.Add(_ball);
+
+            _drawObjects.Add(_ball);
+            _drawObjects.Add(_paddle1);
+            _drawObjects.Add(_paddle2);
             InitBall();
 		}
 
@@ -386,10 +405,10 @@ namespace wing_ding_pong
 			//leftWall.Draw(gameTime, spriteBatch);
 			//topWall.Draw(gameTime, spriteBatch);
 			//bottomWall.Draw(gameTime, spriteBatch);
-            _paddle1.Draw(gameTime, _spriteBatch);
-            _paddle2.Draw(gameTime, _spriteBatch);
-            _ball.Draw(gameTime, _spriteBatch);
-            _gameScore.Draw(gameTime, _spriteBatch);
+            foreach (IDrawable item in _drawObjects)
+            {
+                item.Draw(gameTime, _spriteBatch);
+            }
             /*****************************/
             _spriteBatch.End();
 
