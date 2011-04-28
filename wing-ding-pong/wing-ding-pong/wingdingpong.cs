@@ -78,6 +78,7 @@ namespace wing_ding_pong
             Content.RootDirectory = "Content";
 
 			// Ideal resolution for the XBox 360.
+            this._graphics.IsFullScreen = true;
 			this._graphics.PreferredBackBufferWidth = 1360;
 			this._graphics.PreferredBackBufferHeight = 768;
 			
