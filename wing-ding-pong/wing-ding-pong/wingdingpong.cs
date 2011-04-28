@@ -81,11 +81,9 @@ namespace wing_ding_pong
 
 			// Ideal resolution for the XBox 360.
             this._graphics.IsFullScreen = true;
-<<<<<<< HEAD
+
 			this._graphics.PreferredBackBufferWidth = 1360;
 			this._graphics.PreferredBackBufferHeight = 768;
-=======
->>>>>>> 036c6d8babe7cef9385ba1ae43e553d672212be4
 			
 			// Create the screen manager component.
 			//_screenManager = new ScreenManager(this);
@@ -169,9 +167,9 @@ namespace wing_ding_pong
 
             _rWallRect = new CollidableObjects.Rectangle(width, _center.Y, 50, height / 2);
 
-            _tWallRect = new CollidableObjects.Rectangle(_center.X, 0, width / 2, height / 2);
+            _tWallRect = new CollidableObjects.Rectangle(_center.X, 0, width / 2, 50);
 
-            _bWallRect = new CollidableObjects.Rectangle(height, _center.Y, width / 2, height / 2);
+            _bWallRect = new CollidableObjects.Rectangle(height, _center.Y, width / 2, 50);
             
             _pad1Rect = new CollidableObjects.Rectangle(40, _center.Y, _paddel1Texture.Width / 2, _paddel1Texture.Height / 2);
 
@@ -198,6 +196,10 @@ namespace wing_ding_pong
             _drawObjects.Add(_ball);
             _drawObjects.Add(_paddle1);
             _drawObjects.Add(_paddle2);
+            _drawObjects.Add(_leftWall);
+            _drawObjects.Add(_rightWall);
+            _drawObjects.Add(_topWall);
+            _drawObjects.Add(_bottomWall);
             InitBall();
 		}
 

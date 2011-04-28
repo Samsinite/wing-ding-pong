@@ -15,7 +15,7 @@ namespace CollisionTests
         double triangleMovementRange = 80;
         double triangleMovementLoc = 0;
         double triangleMovementDir = 1;
-        wing_ding_pong._2D.Speed _circleSpeed = new wing_ding_pong._2D.Speed(new wing_ding_pong._2D.Vector(2, 3), new TimeSpan(0,0,0,0, 80));
+        wing_ding_pong._2D.Speed _circleSpeed = new wing_ding_pong._2D.Speed(new wing_ding_pong._2D.Vector(100, 80), new TimeSpan(0,0,0,0, 5));
         wing_ding_pong.CollidableObjects.Circle _circle;
         wing_ding_pong.CollidableObjects.Circle _circle2;
         wing_ding_pong.CollidableObjects.Triangle _triangle;
@@ -36,10 +36,10 @@ namespace CollisionTests
             //_circle = new wing_ding_pong.CollidableObjects.Circle(ProjectFromFormX(this.Width / 2), ProjectFromFormY(this.Height / 2), 10);
             _circle = new wing_ding_pong.CollidableObjects.Circle(this.Width / 2 + 50, this.Height / 2, 10);
             _collidableObjects.Add(_circle);
-            _objectSpeeds.Add(new Speed(new Vector(14, 17), new TimeSpan(100)));
+            _objectSpeeds.Add(new Speed(new Vector(14, 17), new TimeSpan(40)));
             _circle2 = new wing_ding_pong.CollidableObjects.Circle(this.Width / 2, this.Height / 2, 10);
             _collidableObjects.Add(_circle2);
-            _objectSpeeds.Add(new Speed(new Vector(-15, 14), new TimeSpan(100)));
+            _objectSpeeds.Add(new Speed(new Vector(-15, 14), new TimeSpan(40)));
             _triangle = new wing_ding_pong.CollidableObjects.Triangle(wing_ding_pong.CollidableObjects.TriangleType.Triangle45DegPN,
                                                                         this.Width / 2 - 70,this.Height / 2, 25, 25);
             _collidableObjects.Add(_triangle);
