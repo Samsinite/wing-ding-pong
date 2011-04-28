@@ -179,22 +179,22 @@ namespace wing_ding_pong
             _center.Y = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
 
 			#if WINDOWS
-            lWallRect = new CollidableObjects.Rectangle(0.0, 0.0, 5.0, 
+            _lWallRect = new CollidableObjects.Rectangle(0.0, 0.0, 5.0, 
 			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
 
-            rWallRect = new CollidableObjects.Rectangle(794.0, 0.0, 5.0, 
+            _rWallRect = new CollidableObjects.Rectangle(794.0, 0.0, 5.0, 
 			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
 
-            tWallRect = new CollidableObjects.Rectangle(0.0, 0.0,
+            _tWallRect = new CollidableObjects.Rectangle(0.0, 0.0,
 			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
 
-            bWallRect = new CollidableObjects.Rectangle(0.0, 594.0,
+            _bWallRect = new CollidableObjects.Rectangle(0.0, 594.0,
 			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
 
-            pad1Rect = new CollidableObjects.Rectangle(40.0, 
+            _pad1Rect = new CollidableObjects.Rectangle(40.0, 
 			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900, 40.0, 150.0);
 
-            pad2Rect = new CollidableObjects.Rectangle(724.0, 
+            _pad2Rect = new CollidableObjects.Rectangle(724.0, 
 			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900, 40.0, 150.0);
 			#endif
 
