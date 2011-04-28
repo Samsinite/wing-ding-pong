@@ -59,8 +59,8 @@ namespace wing_ding_pong
         CollidableObjects.Rectangle _lWallRect, _rWallRect, _tWallRect, _bWallRect;
         CollidableObjects.Circle _ballCircle;
         CollidableObjects.Rectangle _pad1Rect, _pad2Rect;
-        Rules rules = new Rules();
-
+        Rules _rules = new Rules();
+        bool _isGameStarted = false;
 
         // Screens.
         //ControllerDetectScreen mControllerScreen;
@@ -195,7 +195,8 @@ namespace wing_ding_pong
             _drawObjects.Add(_paddle1);
             _drawObjects.Add(_paddle2);
 
-            
+            _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center));
+            _rules.RegisterRule<Paddle, Ball>(new Traits.PaddleBallArenaWallCollisionRules());
 
             InitBall();
 		}

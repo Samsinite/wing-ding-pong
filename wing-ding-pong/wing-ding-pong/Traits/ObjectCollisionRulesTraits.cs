@@ -14,7 +14,13 @@ namespace wing_ding_pong.Traits
 
     public class BallArenaWallCollisionRules : ObjectCollisionRulesTraits
     {
-        static Point _centerOfArena = null;
+        private Point _centerOfArena = null;
+
+        public BallArenaWallCollisionRules(Point centerOfArena)
+        {
+            _centerOfArena = centerOfArena;
+        }
+
         public void ResolveStaticObjectStaticObjectCollision(Collidable2DBase obj1, Collidable2DBase obj2, Vector obj1PosDp, Vector obj1CollDirection, Vector obj2PosDp, Vector obj2CollDirection)
         {
             Ball ball = (Ball)obj1;
