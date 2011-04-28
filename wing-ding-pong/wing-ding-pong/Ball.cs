@@ -6,16 +6,15 @@ using wing_ding_pong._2D;
 
 namespace wing_ding_pong
 {
-	public class Ball : Collidable2DBase, IDrawable, ICloneable
+	public class Ball : Collidable2DBase, IDrawable, ICloneable<Ball>
 	{
         private Texture2D _sprite;
-        private Speed _speed = new Speed(new Vector(0,0), new TimeSpan(0)); //distance over time
         private Circle _circle;
         private Player _owner = new Player();
 
         //sprite is expected to be circular
         public Ball(Texture2D sprite, Point center)
-            : base(new List<IObjectType>(){ new Circle(center, sprite.Width / 2) })
+            : base(new List<Tile>(){ new Circle(center.X, center.Y, sprite.Width / 2) })
         {
             _sprite = sprite;
             _circle = (Circle)CollidableObjects[0];
@@ -25,7 +24,7 @@ namespace wing_ding_pong
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_circle.Center.X, (int)_circle.Center.Y,
+                (int)_circle.Pos.X, (int)_circle.Pos.Y,
                 (int)_circle.Radius, (int)_circle.Radius),
                 Microsoft.Xna.Framework.Color.White);
         }
@@ -46,9 +45,13 @@ namespace wing_ding_pong
          * with association to time */
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            Vector dLoc = _speed.GetSpeed(gameTime.ElapsedGameTime);
-            _circle.Center.X += dLoc.X;
-            _circle.Center.Y += dLoc.Y;
+            Vector dLoc = this.Speed.GetVector(gameTime.ElapsedGameTime);
+            _circle.Move(dLoc.X, dLoc.Y);
+        }
+
+        Ball ICloneable<Ball>.Clone()
+        {
+            throw new NotImplementedException();
         }
     }
 }

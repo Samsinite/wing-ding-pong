@@ -4,17 +4,37 @@ using wing_ding_pong._2D;
 
 namespace wing_ding_pong.CollidableObjects
 {
-    class Triangle : IObjectType
+    public class InvalidTriangleException : Exception
+    {
+        public InvalidTriangleException()
+          : base()
+        {
+        }
+    }
+
+    public enum TriangleType
+    {
+        Triangle45DegPN = 0, //normal = (+ve, -ve)
+        Triangle45DegNN = 1, //normal = (+ve, +ve)
+        Triangle45DegNP = 2, //normal = (-ve, +ve)
+        Triangle45DegPP = 3 //normal = (-ve, -ve)
+    }
+
+    public class Triangle : Tile
     {
         private Point _p1;
         private Point _p2;
         private Point _p3;
+        private TriangleType _triangleType;
 
-        public Triangle(Point p1, Point p2, Point p3)
+        public Triangle(TriangleType triangleType, double x, double y, double xw, double yw)
+          : base(x, y, xw, yw)
         {
-            _p1 = p1;
-            _p2 = p2;
-            _p3 = p3;
+            if (triangleType != TriangleType.Triangle45DegPP && triangleType != TriangleType.Triangle45DegPN &&
+                triangleType != TriangleType.Triangle45DegNN && triangleType != TriangleType.Triangle45DegNP)
+              throw new InvalidTriangleException();
+
+            this.UpdateType(triangleType);
         }
 
         public Point[] Points
@@ -22,38 +42,37 @@ namespace wing_ding_pong.CollidableObjects
             get { return new Point[] { _p1, _p2, _p3 }; }
         }
 
-        public ObjectType GeometryType
+        public override string ObjectName
         {
-            get { return ObjectType.Triangle; }
+            get { return typeof(Triangle).Name; }
         }
 
-        public Rectangle BoundingBox
+        public void UpdateType(TriangleType triangleType)
         {
-            get
+            _triangleType = triangleType;
+            switch(_triangleType)
             {
-                double minX = _p1.X, minY = _p1.Y;
-                double maxX = _p1.X, maxY = _p1.Y;
-
-                if (minX > _p2.X)
-                    minX = _p2.X;
-                if (minY > _p2.Y)
-                    minY = _p2.Y;
-                if (minX > _p3.X)
-                    minX = _p3.X;
-                if (minY > _p3.Y)
-                    minY = _p3.Y;
-
-                if (maxX < _p2.X)
-                    maxX = _p2.X;
-                if (maxY < _p2.Y)
-                    maxY = _p2.Y;
-                if (maxX < _p3.X)
-                    maxX = _p3.X;
-                if (maxY < _p3.Y)
-                    maxY = _p3.Y;
-
-                return new Rectangle(minX, maxY, maxX, minY);
+            case TriangleType.Triangle45DegPP:
+                _signx = 1;
+                _signy = 1;
+                break;
+            case TriangleType.Triangle45DegPN:
+                _signx = 1;
+                _signy = -1;
+                break;
+            case TriangleType.Triangle45DegNN:
+                _signx = -1;
+                _signy = -1;
+                break;
+            case TriangleType.Triangle45DegNP:
+                _signx = -1;
+                _signy = 1;
+                break;
+            default:
+                  throw new InvalidTriangleException();
             }
+            _sx = _signx / Math.Sqrt(2);
+            _sy = _signy / Math.Sqrt(2);
         }
     }
 }

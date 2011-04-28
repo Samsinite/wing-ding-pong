@@ -99,12 +99,14 @@
     <Compile Include="Builder\SquareLevelBuilder.cs" />
     <Compile Include="Builder\GameDirector.cs" />
     <Compile Include="Builder\GameBuilder.cs" />
+    <Compile Include="CollidableObjects\AABB.cs" />
     <Compile Include="CollidableObjects\Circle.cs" />
     <Compile Include="CollidableObjects\Collidable2DBase.cs" />
-    <Compile Include="CollidableObjects\IObjectType.cs" />
     <Compile Include="CollidableObjects\Rectangle.cs" />
     <Compile Include="2D\Speed.cs" />
+    <Compile Include="CollidableObjects\Tile.cs" />
     <Compile Include="CollidableObjects\Triangle.cs" />
+    <Compile Include="CollisionDetection.cs" />
     <Compile Include="ICloneable.cs" />
     <Compile Include="IDrawable.cs" />
     <Compile Include="Player.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="Rules.cs" />
     <Compile Include="ScreenManager\ScreenManager.cs" />
     <Compile Include="Screens\TitleScreen.cs" />
+    <Compile Include="Traits\CollisionTraits.cs" />
     <Compile Include="wingdingpong.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,7 +131,9 @@
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="WingDingClassDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

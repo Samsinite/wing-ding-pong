@@ -16,13 +16,23 @@ namespace wing_ding_pong._2D
             _dTime = dTime;
         }
 
-        public Vector GetSpeed(TimeSpan elapsedTime)
+        public Vector GetVector(TimeSpan elapsedTime)
         {
-            long changeInTime;
+            double changeInTime;
             if (_dTime.Ticks == 0)
                 return new Vector(0, 0);
-            changeInTime = elapsedTime.Ticks / _dTime.Ticks; //unitless
+            changeInTime = ((double)elapsedTime.Ticks) / ((double)_dTime.Ticks); //unitless
             return new Vector(_distance.X * changeInTime, _distance.Y * changeInTime);
+        }
+
+        public Vector Distance
+        {
+            get { return _distance; }
+        }
+
+        public TimeSpan DTime
+        {
+            get { return _dTime; }
         }
     }
 }

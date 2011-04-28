@@ -5,8 +5,8 @@ using System.Text;
 
 namespace wing_ding_pong
 {
-    interface ICloneable
+    public interface ICloneable<T>
     {
-        void Clone();
+        T Clone();
     }
 }

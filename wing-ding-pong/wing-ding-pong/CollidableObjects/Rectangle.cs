@@ -4,59 +4,38 @@ using wing_ding_pong._2D;
 
 namespace wing_ding_pong.CollidableObjects
 {
-    public class Rectangle : IObjectType
+    public class Rectangle : Tile
     {
-        private Point _center;
-        private double _width;
-        private double _height;
 
         //Expected to be Normalized (right bigger than left, bottom less than top)
-        public Rectangle(double left, double top, double right, double bottom)
+        public Rectangle(double x, double y, double xw, double yw) //width = half width
+          : base(x, y, (xw / 2), (yw / 2))
         {
-            _center = new Point((right - left) / 2,
-            (top - bottom) / 2);
-            _width = right - left;
-            _height = top - bottom;
-        }
-
-        public ObjectType GeometryType
-        {
-            get { return ObjectType.Rectangle; }
-        }
-
-        public Point Center
-        {
-            set { _center = value; }
-            get { return _center; }
         }
 
         public double Width
         {
-            set { _width = value; }
-            get { return _width; }
+            get { return this.Max.X - this.Min.X; }
         }
 
         public double Height
         {
-            set { _height = value; } //used to change height for objects like the paddle
-            get { return _height; }
+            get { return this.Max.Y - this.Min.Y; }
         }
 
-        public Rectangle BoundingBox
+        public Point UpperLeft
         {
-            get { return this; }
+            get { return new Point(this.Min.X, this.Min.Y); }
         }
 
-        public bool Intersects(Rectangle other)
+        public Point LowerRight
         {
-            double thisHalfWidth = Width / 2, thisHalfHeight = Height / 2;
-            double otherHalfWidth = other.Width / 2, otherHalfHeight = other.Height / 2;
-
-            return ((Center.X - thisHalfWidth >= other.Center.X - otherHalfWidth) &&
-                (Center.X + thisHalfWidth < other.Center.X + otherHalfWidth) &&
-                (Center.Y - thisHalfHeight >= other.Center.Y - otherHalfHeight) &&
-                (Center.Y + thisHalfHeight < other.Center.Y + otherHalfHeight));
+            get { return new Point(this.Max.X, this.Max.Y); }
         }
 
+        public override string ObjectName
+        {
+            get { return typeof(Rectangle).Name; }
+        }
     }
 }

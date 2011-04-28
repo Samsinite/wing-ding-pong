@@ -14,7 +14,7 @@ namespace wing_ding_pong
         private Texture2D _sprite;
         private Rectangle _wall;
 
-        public ArenaWall(Texture2D sprite, Rectangle wallObj) : base(new List<IObjectType>() { wallObj })
+        public ArenaWall(Texture2D sprite, Rectangle wallObj) : base(new List<Tile>() { wallObj })
         {
             _sprite = sprite;
             _wall = (Rectangle)CollidableObjects[0];
@@ -35,8 +35,8 @@ namespace wing_ding_pong
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_wall.Center.X, (int)_wall.Center.Y,
-                (int)_wall.Width, (int)_wall.Height),
+                (int)_wall.Pos.X, (int)_wall.Pos.Y,
+                (int)_wall.XW, (int)_wall.YW),
                 Microsoft.Xna.Framework.Color.White);
         }
     }

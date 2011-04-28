@@ -5,7 +5,7 @@ using System.Text;
 
 namespace wing_ding_pong._2D
 {
-    public class Point
+    public class Point : ICloneable<Point>
     {
         private double _x = 0, _y = 0;
 
@@ -31,5 +31,9 @@ namespace wing_ding_pong._2D
 
         #endregion
 
+        public Point Clone()
+        {
+            return new Point(this.X, this.Y);
+        }
     }
 }

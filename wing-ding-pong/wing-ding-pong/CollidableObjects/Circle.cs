@@ -4,42 +4,24 @@ using wing_ding_pong._2D;
 
 namespace wing_ding_pong.CollidableObjects
 {
-    public class Circle : IObjectType
+    public class Circle : Tile
     {
-        private Point _center;
         private double _radius;
 
-        public Circle(double centerX, double centerY, double radius)
+        public Circle(double x, double y, double radius)
+          : base(x, y, Math.Abs(radius), Math.Abs(radius))
         {
-            _center = new Point(centerX, centerY);
-            _radius = radius;
+            _radius = Math.Abs(radius);
         }
 
-        public Circle(Point center, double radius)
+        public override string ObjectName
         {
-            _center = center;
-            _radius = radius;
-        }
-
-        public ObjectType GeometryType
-        {
-            get { return ObjectType.Circle; }
+            get { return typeof(Circle).Name; }
         }
 
         public double Radius
         {
             get { return _radius; }
-        }
-
-        public Point Center
-        {
-            get { return _center; }
-        }
-
-        public Rectangle BoundingBox
-        {
-            get { return new Rectangle(Center.X - Radius, 
-                Center.Y + Radius, Center.X + Radius, Center.Y - Radius); }
         }
     }
 }

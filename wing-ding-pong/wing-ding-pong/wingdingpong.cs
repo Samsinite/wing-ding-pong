@@ -21,6 +21,9 @@ namespace wing_ding_pong
     {
        #region ClassMemberData
 
+        IList<CollidableObjects.Collidable2DBase> _collidableObjects; //objects that can collide with each other will exist here
+        IList<IDrawable> _drawObjects; //Anything drawn on the screen will exist here
+
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		SpriteFont font;

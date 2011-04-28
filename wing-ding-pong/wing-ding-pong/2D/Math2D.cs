@@ -11,12 +11,13 @@ namespace wing_ding_pong._2D
         //returns the distance^2
         public static double DistanceSquared(Point p1, Point p2)
         {
-            return (p2.X - p1.X) * (p2.X = p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y);
+            double ret = (p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y);
+            return ret;
         }
 
         public static double DistanceSquared(Vector v)
         {
-            return (v.X * v.X) + (v.Y + v.Y);
+            return (v.X * v.X) + (v.Y * v.Y);
         }
 
         public static double DotProduct(Vector v1, Vector v2)
@@ -39,9 +40,26 @@ namespace wing_ding_pong._2D
             return (v.X * v.X) + (v.Y + v.Y);
         }
 
+        public static double NormSquared(Point p1, Point p2)
+        {
+            return (p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y);
+        }
+
         public static Vector UnitVector(Vector v)
         {
-            return new Vector((v.X / Math.Sqrt(DistanceSquared(v))), (v.Y / Math.Sqrt(DistanceSquared(v))));
+            if (DistanceSquared(v) != 0)
+            {
+                return new Vector((v.X / Math.Sqrt(DistanceSquared(v))), (v.Y / Math.Sqrt(DistanceSquared(v))));
+            }
+            else
+            {
+                return new Vector(0, 0);
+            }
+        }
+
+        public static double Determinate(_2D.Vector v1, _2D.Vector v2)
+        {
+            return v1.X * v2.Y - v1.Y * v2.X;
         }
 
         #endregion

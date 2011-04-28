@@ -6,14 +6,14 @@ using wing_ding_pong._2D;
 
 namespace wing_ding_pong
 {
-	public class Paddle : Collidable2DBase, IDrawable, ICloneable
+	public class Paddle : Collidable2DBase, IDrawable, ICloneable<Paddle>
 	{
         private Texture2D _sprite;
         private Rectangle _rec;
         private Player _owner = null;
 
         public Paddle(Texture2D sprite, Rectangle paddleObj)
-            : base(new List<IObjectType>() {paddleObj} )
+            : base(new List<Tile>() {paddleObj} )
         {
             _sprite = sprite;
             _rec = (Rectangle)CollidableObjects[0];
@@ -28,8 +28,8 @@ namespace wing_ding_pong
 
         public double RectangleSize
         {
-            set{ _rec.Height = value; }
-            get{ return this._rec.Height; }
+            set{ _rec.YW = value; }
+            get{ return this._rec.YW; }
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
@@ -46,9 +46,14 @@ namespace wing_ding_pong
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_rec.Center.X, (int)_rec.Center.Y,
-                (int)_rec.Width, (int)_rec.Height),
+                (int)_rec.Pos.X, (int)_rec.Pos.Y,
+                (int)_rec.XW, (int)_rec.YW),
                 Microsoft.Xna.Framework.Color.White);
+        }
+
+        Paddle ICloneable<Paddle>.Clone()
+        {
+            throw new NotImplementedException();
         }
     }
 }

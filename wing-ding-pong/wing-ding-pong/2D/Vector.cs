@@ -34,5 +34,10 @@ namespace wing_ding_pong._2D
             set { _y = value; }
         }
 
+        public void Mult(double scalar)
+        {
+            X = X * scalar;
+            Y = Y * scalar;
+        }
     }
 }
