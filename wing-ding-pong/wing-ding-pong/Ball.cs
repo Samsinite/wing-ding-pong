@@ -10,7 +10,7 @@ namespace wing_ding_pong
 	{
         private Texture2D _sprite;
         private Circle _circle;
-        private Player _owner = new Player();
+        private Player _owner;
 
         //sprite is expected to be circular
         public Ball(Texture2D sprite, Point center)

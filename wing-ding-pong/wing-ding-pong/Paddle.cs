@@ -17,7 +17,7 @@ namespace wing_ding_pong
         public Paddle(Texture2D sprite, Rectangle paddleObj, Player player)
             : base(new List<Tile>() {paddleObj} )
         {
-            _player = player;
+            _owner = player;
             _sprite = sprite;
             _rec = (Rectangle)CollidableObjects[0];
         }
