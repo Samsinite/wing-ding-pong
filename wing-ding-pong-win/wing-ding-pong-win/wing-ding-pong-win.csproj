@@ -223,6 +223,12 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\PlayerIndexEventArgs.cs">
       <Link>Screens\PlayerIndexEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Traits\CollisionTraits.cs">
+      <Link>Traits\CollisionTraits.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Traits\ObjectCollisionRulesTraits.cs">
+      <Link>Traits\ObjectCollisionRulesTraits.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\wingdingpong.cs">
       <Link>wingdingpong.cs</Link>
     </Compile>

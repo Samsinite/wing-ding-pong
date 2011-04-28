@@ -40,10 +40,16 @@ namespace wing_ding_pong
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
+            
+            spriteBatch.Draw(null, new Microsoft.Xna.Framework.Rectangle(
                 (int)_wall.Pos.X, (int)_wall.Pos.Y,
-                (int)_wall.XW, (int)_wall.YW),
+                (int)_wall.Width, (int)_wall.Height),
                 Microsoft.Xna.Framework.Color.White);
+        }
+
+        public override string ObjectName
+        {
+            get { return typeof(ArenaWall).Name; }
         }
     }
 }

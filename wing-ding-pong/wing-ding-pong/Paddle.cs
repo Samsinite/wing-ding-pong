@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using wing_ding_pong.CollidableObjects;
 using wing_ding_pong._2D;
+using Microsoft.Xna.Framework.Input;
 
 namespace wing_ding_pong
 {
@@ -54,8 +55,18 @@ namespace wing_ding_pong
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            //Add some controller logic here
-            throw new NotImplementedException();
+           if (GamePad.GetState(_owner.Player_Index).DPad.Up == ButtonState.Pressed
+                || GamePad.GetState(_owner.Player_Index).ThumbSticks.Left.Y >= 0.5f ||
+                Keyboard.GetState(_owner.Player_Index).IsKeyDown(Keys.Up))
+            {
+                this.Y -= 10;
+            }
+            else if (GamePad.GetState(_owner.Player_Index).DPad.Down == ButtonState.Pressed
+                || GamePad.GetState(_owner.Player_Index).ThumbSticks.Left.Y <= -0.5f ||
+                Keyboard.GetState(_owner.Player_Index).IsKeyDown(Keys.Down))
+            {
+                this.Y += 10;
+            }
         }
 
         public void Clone()
@@ -75,6 +86,11 @@ namespace wing_ding_pong
         Paddle ICloneable<Paddle>.Clone()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ObjectName
+        {
+            get { return typeof(Paddle).Name; }
         }
     }
 }

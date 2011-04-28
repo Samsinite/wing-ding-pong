@@ -33,8 +33,8 @@ namespace wing_ding_pong
           }
         }
 
-        public void ProcessCollsions(Collidable2DBase obj1, Collidable2DBase obj2, Vector obj1PosDp, Vector obj1CollDirection,
-                                                        Vector obj2PosDp, Vector obj2CollDirection)
+        public void ProcessCollsions(Collidable2DBase obj1, Collidable2DBase obj2, Vector obj1PosDp, 
+                                        Vector obj1CollDirection, Vector obj2PosDp, Vector obj2CollDirection)
         {
             ObjectCollisionRulesTraits ruleTrait;
 
