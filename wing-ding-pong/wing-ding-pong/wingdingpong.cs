@@ -24,7 +24,7 @@ namespace wing_ding_pong
 
 		static readonly string[] preloadAssets =
         {
-            "gradient",
+            @"Textures/gradient",
         };
 
         IList<CollidableObjects.Collidable2DBase> _collidableObjects; //objects that can collide with each other will exist here
@@ -82,13 +82,13 @@ namespace wing_ding_pong
 			this._graphics.PreferredBackBufferHeight = 768;
 			
 			// Create the screen manager component.
-			_screenManager = new ScreenManager(this);
+			//_screenManager = new ScreenManager(this);
 
-			Components.Add(_screenManager);
+			//Components.Add(_screenManager);
 
 			// Activate the first screens.
-			_screenManager.AddScreen(new BackgroundScreen(), null);
-			_screenManager.AddScreen(new MainMenuScreen(), null);
+			//_screenManager.AddScreen(new BackgroundScreen(), null);
+			//_screenManager.AddScreen(new MainMenuScreen(), null);
 		}
         //CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(1, GraphicsDevice.Viewport.Bounds.Height / 2, 80.0, 0.0);
 		#endregion
@@ -130,14 +130,7 @@ namespace wing_ding_pong
 			//mCurrentScreen = mControllerScreen;
 
 			// Walls for the arena.
-            _leftWall = new ArenaWall(_wallTexture, _lWallRect);
-            _rightWall = new ArenaWall(_wallTexture, _rWallRect);
-            _topWall = new ArenaWall(_wallTexture, _tWallRect);
-            _bottomWall = new ArenaWall(_wallTexture, _bWallRect);
-            _paddle1 = new Paddle(_grass, _pad1Rect);
-            _paddle2 = new Paddle(_grass, _pad1Rect);
-            _ball = new Ball(_ballTexture, _center);
-            InitBall();
+
 
             _gameScore = new Score(_font);
             _gameScore.RightScore = 0;
@@ -155,50 +148,37 @@ namespace wing_ding_pong
 		/// </summary>
 		protected override void Initialize()
 		{
-            
-            //ballCircle = new CollidableObjects.Circle(new _2D.Point(300.0, 300.0), 70);
-            //blueBar = new Rectangle(
-            //      32, // "X" coordinate of the upper left corner of our rectangle
-            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
-            //      32, // Width
-            //      128); // Height
-            //redBar = new Rectangle(
-            //      GraphicsDevice.Viewport.Bounds.Width - 64, // "X" coordinate of the upper left corner of our rectangle
-            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 64, // "Y" coordinate of the upper left corner
-            //      32, // Width
-            //      128); // Height
-            //ball = new Rectangle(
-            //      GraphicsDevice.Viewport.Bounds.Width / 2 - 16, // "X" coordinate of the upper left corner of our rectangle
-            //      GraphicsDevice.Viewport.Bounds.Height / 2 - 16, // "Y" coordinate of the upper left corner
-            //      32, // Width
-            //      32); // Height
-			
+			double width, height;
+            width = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            height = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
 			base.Initialize();
 
-            _center.X = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 2;
-            _center.Y = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 2;
+            _center.X = width / 2;
+            _center.Y = height / 2;
 
-			#if WINDOWS
-            lWallRect = new CollidableObjects.Rectangle(0.0, 0.0, 5.0, 
-			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+            _lWallRect = new CollidableObjects.Rectangle(0, _center.Y, 50, height / 2);
 
-            rWallRect = new CollidableObjects.Rectangle(794.0, 0.0, 5.0, 
-			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
+            _rWallRect = new CollidableObjects.Rectangle(width, _center.Y, 50, height / 2);
 
-            tWallRect = new CollidableObjects.Rectangle(0.0, 0.0,
-			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
+            _tWallRect = new CollidableObjects.Rectangle(_center.X, 0, width / 2, height / 2);
 
-            bWallRect = new CollidableObjects.Rectangle(0.0, 594.0,
-			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, 5.0);
+            _bWallRect = new CollidableObjects.Rectangle(height, _center.Y, width / 2, height / 2);
+            
+            _pad1Rect = new CollidableObjects.Rectangle(40.0, height + 40, 40.0 / 2, 150.0 / 2);
 
-            pad1Rect = new CollidableObjects.Rectangle(40.0, 
-			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900, 40.0, 150.0);
-
-            pad2Rect = new CollidableObjects.Rectangle(724.0, 
-			(double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height-900, 40.0, 150.0);
-			#endif
+            _pad2Rect = new CollidableObjects.Rectangle(724.0, 40, 40.0 / 2, 150.0 / 2);
 
             _ballCircle = new CollidableObjects.Circle(_center.X, _center.Y, 5.0);
+
+            _leftWall = new ArenaWall(_wallTexture, _lWallRect);
+            _rightWall = new ArenaWall(_wallTexture, _rWallRect);
+            _topWall = new ArenaWall(_wallTexture, _tWallRect);
+            _bottomWall = new ArenaWall(_wallTexture, _bWallRect);
+            _paddle1 = new Paddle(_grass, _pad1Rect);
+            _paddle2 = new Paddle(_grass, _pad1Rect);
+            _ball = new Ball(_ballTexture, _center);
+            InitBall();
 		}
 
 		#endregion
@@ -462,8 +442,8 @@ namespace wing_ding_pong
             }
 
             //// Initialize the ball to the center of the screen.
-            _ball.X = GraphicsDevice.Viewport.Bounds.Width / 2 - _ball.Radius / 2;
-            _ball.Y = GraphicsDevice.Viewport.Bounds.Height / 2 - _ball.Radius / 2;
+            _ball.X = _center.X;
+            _ball.Y = _center.Y;
 		}	// End "initball".
 
 		#endregion

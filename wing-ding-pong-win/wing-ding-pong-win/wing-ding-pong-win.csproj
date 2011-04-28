@@ -145,11 +145,11 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Collidable2DBase.cs">
       <Link>CollidableObject\Collidable2DBase.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\IObjectType.cs">
-      <Link>CollidableObject\IObjectType.cs</Link>
-    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Rectangle.cs">
       <Link>CollidableObject\Rectangle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Tile.cs">
+      <Link>CollidableObject\Tile.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\CollidableObjects\Triangle.cs">
       <Link>CollidableObject\Triangle.cs</Link>

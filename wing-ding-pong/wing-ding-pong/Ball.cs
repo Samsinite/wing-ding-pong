@@ -43,20 +43,20 @@ namespace wing_ding_pong
 
         public Speed BallSpeed
         {
-            set { _speed = value; }
-            get { return _speed; }
+            set { this.Speed = value; }
+            get { return this.Speed; }
         }
 
         public double X
         {
-            set { _circle.Center.X = value; }
-            get { return _circle.Center.X; }
+            set { _circle.Pos.X = value; }
+            get { return _circle.Pos.X; }
         }
 
         public double Y
         {
-            set { _circle.Center.Y = value; }
-            get { return _circle.Center.Y; }
+            set { _circle.Pos.Y = value; }
+            get { return _circle.Pos.Y; }
         }
 
         public double Radius

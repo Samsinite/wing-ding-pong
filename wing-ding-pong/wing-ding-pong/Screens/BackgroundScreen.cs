@@ -56,7 +56,7 @@ namespace wing_ding_pong
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            backgroundTexture = content.Load<Texture2D>("background");
+            backgroundTexture = content.Load<Texture2D>(@"Textures/background");
         }
 
 
