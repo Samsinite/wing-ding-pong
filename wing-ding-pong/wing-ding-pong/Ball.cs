@@ -41,6 +41,28 @@ namespace wing_ding_pong
 			get { return _owner; }
 		}
 
+        public Speed BallSpeed
+        {
+            set { _speed = value; }
+            get { return _speed; }
+        }
+
+        public double X
+        {
+            set { _circle.Center.X = value; }
+            get { return _circle.Center.X; }
+        }
+
+        public double Y
+        {
+            set { _circle.Center.Y = value; }
+            get { return _circle.Center.Y; }
+        }
+
+        public double Radius
+        {
+            get { return _circle.Radius; }
+        }
         /* Collision checking is not handled here... just anything that needs updated
          * with association to time */
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)

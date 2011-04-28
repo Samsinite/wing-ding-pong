@@ -12,7 +12,7 @@ namespace wing_ding_pong
         /*change the score if the wall is owned by someone otherwise it would
         bounce.  If the wall is owned by a player then it is a goal so we check
         */
-        public void changeScore(Player player, Ball ball, List<ArenaWall> walls)
+        public void ChangeScore(Player player, Ball ball, List<ArenaWall> walls)
         {
             foreach(ArenaWall wall in walls)
             {
@@ -28,64 +28,58 @@ namespace wing_ding_pong
             }
         }
 
-        //clone the ball and randomize the position, not the way we want to but
-        //throwing code in as a filler
-        public void multiball(Ball ball)
+        public void BallToWall(Ball ball, List<ArenaWall> walls)
         {
-            ball.Clone();
-            //ball.xCoord && ball.yCoord = rand();
-            ball.Clone();
-            //ball.xCoord && ball.yCoord = rand();
+            //ball collides off wall
         }
 
-        //get the paddle owners and change the size randomly 
-        public void resizePaddle(List<Paddle> paddles, Ball ball)
+        public void IncreasePaddleSize(List<Paddle> paddles, Ball ball)
         {
-            int paddleSizeVal = 0;
-
             foreach (Paddle paddle in paddles)
             {
                 if (paddle.Owner == ball.Owner)
                 {
-                    //rand between 1 and 2
-                    if (paddleSizeVal == 1)
-                    {
-                        paddle.RectangleSize += .5;
-                        
-                    }
-                    else
-                    {
-                        paddle.RectangleSize -= .5;
-                    }
+                    paddle.Height += .5;
                 }
             }
         }
 
+        public void DecreasePaddleSize(List<Paddle> paddles, Ball ball)
+        {
+            foreach (Paddle paddle in paddles)
+            {
+                if (paddle.Owner == ball.Owner)
+                {
+                    paddle.Height -= .5;
+                }
+            }
+        }
         //need to get the velocity of the wall to change it but have the increase/decrease
         //random
-        public void changeBallSpeed(Ball ball)
+        public void IncreaseBallSpeed(Ball ball)
         {
-            int ballRandVal = 0;
-            //rand() between 1 and 2
-            if (ballRandVal == 1)
-            {
-                //ball.velocity+=.5;
-            }
-            else
-            {
-                //ball.velocity-=.5;
-            }
+            //get speed and increase           
         }
 
-        public void boblBall(Ball ball)
+        public void DecreaseBallSpeed(Ball ball)
         {
-
+            //get speed and decrease
         }
 
-        public void boomBall(Ball ball)
+        public void BallToBallCollision(List<Ball> balls)
         {
-
+            //change ball directions
         }
+
+        public void RandomPowerup(List<Player> players, List<Ball> balls, List<IPowerupType> powerups)
+        {
+            //check owner of ball, randomize powerup, apply to ball and player if neccessary
+        }
+
+        public void RandomPowerupPostion(IPowerupType powerup)
+        {
+            //add powerup to stack
+        }   
 
 	}
 }

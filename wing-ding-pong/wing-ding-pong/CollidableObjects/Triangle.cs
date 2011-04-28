@@ -37,6 +37,7 @@ namespace wing_ding_pong.CollidableObjects
             this.UpdateType(triangleType);
         }
 
+        //Use these to draw if not drawing with an image, draw in order
         public Point[] Points
         {
             get { return new Point[] { _p1, _p2, _p3 }; }
@@ -47,6 +48,22 @@ namespace wing_ding_pong.CollidableObjects
             get { return typeof(Triangle).Name; }
         }
 
+        public override void Move(double dx, double dy)
+        {
+            this.OldPos = this.Pos;
+            this.Pos = new Point(this.Pos.X + dx, this.Pos.Y + dy);
+            this.Min.X += dx;
+            this.Max.X += dx;
+            this.Min.Y += dy;
+            this.Max.Y += dy;
+            _p1.X += dx;
+            _p1.Y += dy;
+            _p2.X += dx;
+            _p2.Y += dy;
+            _p3.X += dx;
+            _p3.Y += dy;
+        }
+
         public void UpdateType(TriangleType triangleType)
         {
             _triangleType = triangleType;
@@ -55,18 +72,30 @@ namespace wing_ding_pong.CollidableObjects
             case TriangleType.Triangle45DegPP:
                 _signx = 1;
                 _signy = 1;
+                _p1 = new Point(this.Min.X, this.Min.Y);
+                _p2 = new Point(this.Max.X, this.Min.Y);
+                _p3 = new Point(this.Min.X, this.Max.Y);
                 break;
             case TriangleType.Triangle45DegPN:
                 _signx = 1;
                 _signy = -1;
+                _p1 = new Point(this.Min.X, this.Min.Y);
+                _p2 = new Point(this.Max.X, this.Max.Y);
+                _p3 = new Point(this.Min.X, this.Max.Y);
                 break;
             case TriangleType.Triangle45DegNN:
                 _signx = -1;
                 _signy = -1;
+                _p1 = new Point(this.Max.X, this.Min.Y);
+                _p2 = new Point(this.Max.X, this.Max.Y);
+                _p3 = new Point(this.Min.X, this.Max.Y);
                 break;
             case TriangleType.Triangle45DegNP:
                 _signx = -1;
                 _signy = 1;
+                _p1 = new Point(this.Min.X, this.Min.Y);
+                _p2 = new Point(this.Max.X, this.Min.Y);
+                _p3 = new Point(this.Max.X, this.Max.Y);
                 break;
             default:
                   throw new InvalidTriangleException();

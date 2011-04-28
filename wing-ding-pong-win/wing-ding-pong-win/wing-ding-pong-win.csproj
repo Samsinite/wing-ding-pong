@@ -160,6 +160,9 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\IDrawable.cs">
       <Link>IDrawable.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\IPowerupType.cs">
+      <Link>IPowerupType.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Paddle.cs">
       <Link>Paddle.cs</Link>
     </Compile>
@@ -169,20 +172,56 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Player.cs">
       <Link>Player.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Powerup.cs">
+      <Link>Powerup.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Rules.cs">
       <Link>Rules.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Score.cs">
+      <Link>Score.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\GameScreen.cs">
+      <Link>ScreenManager\GameScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\InputState.cs">
+      <Link>ScreenManager\InputState.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\ScreenManager.cs">
       <Link>ScreenManager\ScreenManager.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\ControllerDetectScreen.cs">
-      <Link>Screens\ControllerDetectScreen.cs</Link>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\BackgroundScreen.cs">
+      <Link>Screens\BackgroundScreen.cs</Link>
     </Compile>
-    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\TitleScreen.cs">
-      <Link>Screens\TitleScreen.cs</Link>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\GameplayScreen.cs">
+      <Link>Screens\GameplayScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\LoadingScreen.cs">
+      <Link>Screens\LoadingScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\MainMenuScreen.cs">
+      <Link>Screens\MainMenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\MenuEntry.cs">
+      <Link>Screens\MenuEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\MenuScreen.cs">
+      <Link>Screens\MenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\MessageBoxScreen.cs">
+      <Link>Screens\MessageBoxScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\OptionsMenuScreen.cs">
+      <Link>Screens\OptionsMenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\PauseMenuScreen.cs">
+      <Link>Screens\PauseMenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\PlayerIndexEventArgs.cs">
+      <Link>Screens\PlayerIndexEventArgs.cs</Link>
     </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\wingdingpong.cs">
       <Link>wingdingpong.cs</Link>
