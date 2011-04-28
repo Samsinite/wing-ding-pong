@@ -28,11 +28,11 @@ namespace CollisionTests
         public Form1()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.DoubleBuffered = true;
             //_circle = new wing_ding_pong.CollidableObjects.Circle(ProjectFromFormX(this.Width / 2), ProjectFromFormY(this.Height / 2), 10);
             _circle = new wing_ding_pong.CollidableObjects.Circle(this.Width / 2 + 50, this.Height / 2, 10);
             _collidableObjects.Add(_circle);
@@ -162,10 +162,10 @@ namespace CollisionTests
                         _collidableObjects[i].MoveNoOldUpdate(obj1Dp.X, obj1Dp.Y);
                         _objectSpeeds[i].Distance.X = obj1Direction.X * movementDistance;
                         _objectSpeeds[i].Distance.Y = obj1Direction.Y * movementDistance;
-                        _collidableObjects[j].MoveNoOldUpdate(obj2Dp.X, obj2Dp.Y);
+                        /*_collidableObjects[j].MoveNoOldUpdate(obj2Dp.X, obj2Dp.Y);
                         movementDistance = Math.Sqrt(wing_ding_pong._2D.Math2D.DistanceSquared(_objectSpeeds[j].Distance));
                         _objectSpeeds[j].Distance.X = obj2Direction.X * movementDistance;
-                        _objectSpeeds[j].Distance.Y = obj2Direction.Y * movementDistance;
+                        _objectSpeeds[j].Distance.Y = obj2Direction.Y * movementDistance;*/
                     }
                 }
                 _collidableObjects[i].Move(_objectSpeeds[i].GetVector(dT).X, _objectSpeeds[i].GetVector(dT).Y);

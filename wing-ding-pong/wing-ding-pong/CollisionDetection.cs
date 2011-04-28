@@ -80,6 +80,63 @@ namespace wing_ding_pong
             return false;
         }
 
+        public static bool ProjRecRec(Rectangle obj1, Rectangle obj2, double x, double y, double gridHorz, double gridVert,
+                                out Vector obj1PosDp, out Vector obj1CollDirection,
+                                out Vector obj2PosDp, out Vector obj2CollDirection)
+        {
+            double dx, dy, vx, vy, len, penX, penY;
+            vx = obj2.Pos.X + (gridHorz * obj2.XW);
+            vy = obj2.Pos.Y + (gridVert * obj2.YW);
+
+            dx = obj1.Pos.X - vx;
+            dy = obj1.Pos.Y - vy;
+
+            len = Math.Sqrt(dx * dx + dy * dy);
+            penX = obj1.XW - len;
+            penY = obj1.YW - len;
+
+            if (0 < penX)
+            {
+                if (len == 0)
+                {
+                    dx = gridHorz / Math.Sqrt(2);
+                    dy = gridVert / Math.Sqrt(2);
+                }
+                else
+                {
+                    dx /= len;
+                    dy /= len;
+                }
+
+                CollisionVsWorldObj(obj1, obj2, dx * penX, dy * penX, dx, dy, out obj1PosDp,
+                                out obj1CollDirection, out obj2PosDp, out obj2CollDirection);
+                return true;
+            }
+            else if (0 < penY)
+            {
+                if (len == 0)
+                {
+                    dx = gridHorz / Math.Sqrt(2);
+                    dy = gridVert / Math.Sqrt(2);
+                }
+                else
+                {
+                    dx /= len;
+                    dy /= len;
+                }
+
+                CollisionVsWorldObj(obj1, obj2, dx * penY, dy * penY, dx, dy, out obj1PosDp,
+                                out obj1CollDirection, out obj2PosDp, out obj2CollDirection);
+                return true;
+            }
+
+            obj1PosDp = null;
+            obj1CollDirection = null;
+            obj2PosDp = null;
+            obj2CollDirection = null;
+            return false;
+        }
+
         public static bool ProjCircleCircle(Circle obj1, Circle obj2, double x, double y, double gridHorz, double gridVert,
                                 out Vector obj1PosDp, out Vector obj1CollDirection,
                                 out Vector obj2PosDp, out Vector obj2CollDirection)
@@ -413,9 +470,9 @@ namespace wing_ding_pong
             obj1CollDirection = new Vector(tx - nx, ty - ny);
             obj1CollDirection = _2D.Math2D.UnitVector(obj1CollDirection);
 
-            //world obj, not moving anywhere
-            obj2PosDp = new Vector(0, 0);
-            obj2CollDirection = new Vector(vx2, vy2);
+            //moving world obj
+            obj2PosDp = new Vector((-1 * px), (-1 * py));
+            obj2CollDirection = new Vector(-1 * (tx - nx), -1 * (ty - ny));
             obj2CollDirection = _2D.Math2D.UnitVector(obj2CollDirection);
         }
     }
