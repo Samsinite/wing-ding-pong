@@ -193,6 +193,36 @@
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\ScreenManager\ScreenManager.cs">
       <Link>ScreenManager\ScreenManager.cs</Link>
     </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\BackgroundScreen.cs">
+      <Link>Screens\BackgroundScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\GameplayScreen.cs">
+      <Link>Screens\GameplayScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\LoadingScreen.cs">
+      <Link>Screens\LoadingScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\MainMenuScreen.cs">
+      <Link>Screens\MainMenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\MenuEntry.cs">
+      <Link>Screens\MenuEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\MenuScreen.cs">
+      <Link>Screens\MenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\MessageBoxScreen.cs">
+      <Link>Screens\MessageBoxScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\OptionsMenuScreen.cs">
+      <Link>Screens\OptionsMenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\PauseMenuScreen.cs">
+      <Link>Screens\PauseMenuScreen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\wing-ding-pong\wing-ding-pong\Screens\PlayerIndexEventArgs.cs">
+      <Link>Screens\PlayerIndexEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\..\wing-ding-pong\wing-ding-pong\wingdingpong.cs">
       <Link>wingdingpong.cs</Link>
     </Compile>
@@ -232,9 +262,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Screens\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

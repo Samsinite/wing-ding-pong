@@ -15,8 +15,8 @@ namespace wing_ding_pong
     public class Score : IDrawable
     {
         private Player _owner;
-        private Texture2D _sprite;
-        GraphicsDevice _graphicsDevice;
+        //private Texture2D _sprite;
+        //GraphicsDevice _graphicsDevice;
         SpriteFont _font ;
         int _rightScore;
         int _leftScore;

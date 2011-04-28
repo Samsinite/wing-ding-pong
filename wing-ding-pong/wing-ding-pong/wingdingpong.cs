@@ -22,6 +22,11 @@ namespace wing_ding_pong
     {
 		#region ClassMemberData
 
+		static readonly string[] preloadAssets =
+        {
+            "gradient",
+        };
+
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		SpriteFont font;
@@ -29,11 +34,6 @@ namespace wing_ding_pong
         // Scores.
         Score gameScore;
 
-        //// Pong entities.
-        //Rectangle blueBar;
-        //Rectangle redBar;
-        //Rectangle ball; // Since there’s no "circle" class in XNA, simulate it with a bounding rectangle box.
-        ////Rectangle ball2;
         TimeSpan dTime;
         _2D.Vector ballVector;
         _2D.Speed ballSpeed;
@@ -56,34 +56,10 @@ namespace wing_ding_pong
         CollidableObjects.Rectangle pad1Rect, pad2Rect;
 
 
-        //CollidableObjects.Rectangle rWallRect;
-		// Screens.
+        // Screens.
         //ControllerDetectScreen mControllerScreen;
         //TitleScreen mTitleScreen;
-        ScreenManager mCurrentScreen;
-
-		// Ball speed.
-		//Vector2 ballVelocity = Vector2.Zero;
-
-		//creating wall object
-        
-
-        //// Source rectangles of our graphics.
-        //Rectangle blueSrcRect = new Rectangle( // Blue bar source rectangle.
-        //      0,	// Upper-left corner x-coordinate of the blue bar inside the spriteSheet
-        //      0,	// Upper-left corner y-coordinate
-        //      42,	// Width (original: 32)
-        //      115); // Height (original: 128)
-        //Rectangle redSrcRect = new Rectangle( // Red bar source rectangle.
-        //      42,	// Upper-left corner x-coordinate of the red bar inside the spriteSheet (original: 32)
-        //      0,
-        //      42,
-        //      115);
-        //Rectangle ballSrcRect = new Rectangle( // Ball source rectangle.
-        //      84,	// Upper-left corner x-coordinate of the ball inside the spriteSheet (original: 64)
-        //      0,
-        //      32,
-        //      32);
+        ScreenManager screenManager;
 
 		#endregion
 
@@ -101,6 +77,15 @@ namespace wing_ding_pong
 			// Ideal resolution for the XBox 360.
 			this.graphics.PreferredBackBufferWidth = 1360;
 			this.graphics.PreferredBackBufferHeight = 768;
+			
+			// Create the screen manager component.
+			screenManager = new ScreenManager(this);
+
+			Components.Add(screenManager);
+
+			// Activate the first screens.
+			screenManager.AddScreen(new BackgroundScreen(), null);
+			screenManager.AddScreen(new MainMenuScreen(), null);
 		}
         //CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(1, GraphicsDevice.Viewport.Bounds.Height / 2, 80.0, 0.0);
 		#endregion
@@ -113,6 +98,11 @@ namespace wing_ding_pong
 		/// </summary>
 		protected override void LoadContent()
 		{
+			foreach (string asset in preloadAssets)
+			{
+				Content.Load<object>(asset);
+			}
+
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -276,7 +266,7 @@ namespace wing_ding_pong
                 paddle1.Y += 10;
             }
 
-            //// Player two controls (red).
+            // Player two controls (red).
             if (GamePad.GetState(PlayerIndex.Two).DPad.Up == ButtonState.Pressed
                 || GamePad.GetState(PlayerIndex.Two).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(PlayerIndex.Two).IsKeyDown(Keys.Up))
@@ -290,7 +280,7 @@ namespace wing_ding_pong
                 paddle2.Y += 10;
             }
 
-            //// Limit the bars' movement to the screen bounds.
+            // Limit the bars' movement to the screen bounds.
             if (paddle2.Y < 0) // Upper bound.
             {
                 paddle2.Y = 0; // Limit.
@@ -313,9 +303,7 @@ namespace wing_ding_pong
 
             //ballVector = new _2D.Vector(-5.0, 5.0);
 
-            //// Move the ball.
-            //ball.X += ballVector.X;
-            //ball.Y += ballVector.Y;
+            // Move the ball.
             ball.Update(gameTime);
 
             // Handling ball initialization; use Navigation Button to reset.
@@ -391,25 +379,7 @@ namespace wing_ding_pong
             //      Color.White);
             //spriteBatch.End();
             
-			// Draw the score.
-			// The position of this code is important; if it were done
-			// before the background is drawn, the background would
-			// cover up the score. Due to this, we draw the score on top
-			// of the background by putting this code after the background
-			// code.
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-
-            //spriteBatch.DrawString( // draw our score string
-            //      font, // Score font.
-            //      blueScore.ToString() + " - " + redScore.ToString(), // Build the string.
-            //      new Vector2( // Text position.
-            //      GraphicsDevice.Viewport.Bounds.Width / 2 - 25, // Half the screen and a little to the left.
-            //      10.0f),
-            //      Color.Yellow); // Text color.
-
-            //spriteBatch.End();
-
-            //leftWall = new ArenaWall(grass, lWallRect);
+			//leftWall = new ArenaWall(grass, lWallRect);
             //rightWall = new ArenaWall(grass, rWallRect);
             //topWall = new ArenaWall(grass, tWallRect);
             //bottomWall = new ArenaWall(grass, bWallRect);
@@ -435,26 +405,7 @@ namespace wing_ding_pong
             /*****************************/
             spriteBatch.End();
 
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            //gameScore.Draw(gameTime, spriteBatch);
-            //spriteBatch.End();
-            // Draw the entities (bars and ball).
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend); // Setup alpha-blend to support transparency.
-            //// Draw the red bar.
-            //spriteBatch.Draw(
-            //      spriteSheet,	// Use the sprites texture.
-            //      redBar,		// The rectangle where to draw the bar on the screen.
-            //      redSrcRect,	// The source rectangle of the bar inside the sprite sheet.
-            //      Color.White);
-
-            //// Draw the blue bar.
-            //spriteBatch.Draw(spriteSheet, blueBar, blueSrcRect, Color.White);
-
-            //// Draw the ball.
-            //spriteBatch.Draw(spriteSheet, ball, ballSrcRect, Color.White);
-            ////spriteBatch.Draw(spriteSheet, ball2, ballSrcRect, Color.White);
-
-            //spriteBatch.End();
+            
 
 			base.Draw(gameTime);
 		}	// End "draw".
