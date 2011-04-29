@@ -81,7 +81,6 @@ namespace wing_ding_pong
             Content.RootDirectory = "Content";
 
 			// Ideal resolution for the XBox 360.
-            //this._graphics.IsFullScreen = true;
 
             this._graphics.PreferredBackBufferWidth = 800;
             this._graphics.PreferredBackBufferHeight = 600;
@@ -155,8 +154,10 @@ namespace wing_ding_pong
 		protected override void Initialize()
 		{
 			double width, height;
-            width = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            height = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            //width = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //height = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            width = 800;
+            height = 600;
 
 			base.Initialize();
 
@@ -196,6 +197,7 @@ namespace wing_ding_pong
             _drawObjects.Add(_ball);
             _drawObjects.Add(_paddle1);
             _drawObjects.Add(_paddle2);
+            _drawObjects.Add(_leftWall);
             _drawObjects.Add(_rightWall);
             _drawObjects.Add(_topWall);
             _drawObjects.Add(_bottomWall);
