@@ -16,7 +16,7 @@ namespace wing_ding_pong
     {
         private Player _owner;
         //private Texture2D _sprite;
-        //GraphicsDevice _graphicsDevice;
+        GraphicsDevice _graphicsDevice;
         SpriteFont _font ;
         int _rightScore;
         int _leftScore;
@@ -50,7 +50,7 @@ namespace wing_ding_pong
                    _font, // Score font.
                    _leftScore.ToString() + " - " + _rightScore.ToString(), // Build the string.
                    new Vector2( // Text position.
-                    GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width - 650,
+                    GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 5,
                    //_graphicsDevice.Viewport.Bounds.Width / 2 - 25, //,Half the screen and a little to the left.
                    10.0f),
                    Color.Yellow); // Text color.

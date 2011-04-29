@@ -43,7 +43,8 @@ namespace wing_ding_pong
         ArenaWall _leftWall, _rightWall, _topWall, _bottomWall; // Creating the walls.
         Ball _ball;
         Paddle _paddle1, _paddle2;
-
+        List<Paddle> paddles;
+        List<ArenaWall> walls;
 		// Clone textures.
 		Texture2D _grass;		// Texture used for whatever.
 		Texture2D _wallTexture;	// Texture used for walls.
@@ -188,9 +189,21 @@ namespace wing_ding_pong
             _paddle2 = new Paddle(_paddel2Texture, _pad2Rect, new Player(PlayerIndex.Two));
             _leftWall.Owner = _paddle1.Owner;
             _rightWall.Owner = _paddle2.Owner;
+            _topWall.Owner = null;
+            _bottomWall.Owner = null;
             _ballVector = new _2D.Vector(20.0, 40.0);
             _dTime = new TimeSpan(1000000);
             _ball = new Ball(_ballTexture, _center, new _2D.Speed(_ballVector, _dTime));
+
+            paddles = new List<Paddle>();
+            paddles.Add(_paddle1);
+            paddles.Add(_paddle2);
+
+            walls = new List<ArenaWall>();
+            walls.Add(_leftWall);
+            walls.Add(_rightWall);
+            walls.Add(_topWall);
+            walls.Add(_bottomWall);
 
             _collidableObjects.Add(_leftWall);
             _collidableObjects.Add(_rightWall);
@@ -207,7 +220,7 @@ namespace wing_ding_pong
             _drawObjects.Add(_rightWall);
             _drawObjects.Add(_topWall);
             _drawObjects.Add(_bottomWall);
-
+            _drawObjects.Add(_gameScore);
             wing_ding_pong.CollisionDetection.RegisterCollisionTrait<wing_ding_pong.CollidableObjects.Circle,
                                                                     wing_ding_pong.CollidableObjects.Rectangle>
                                                                     (new wing_ding_pong.Traits.CircleRecCollisionCheckTraits());
@@ -224,7 +237,7 @@ namespace wing_ding_pong
             _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center));
             _rules.RegisterRule<Ball, Paddle>(new Traits.BallPaddleCollisionRules());
             _rules.RegisterRule<Paddle, ArenaWall>(new Traits.PaddleArenaWallCollisionRules());
-
+            _rules.ChangeScore(paddles, _ball, walls); //changes the scores of the player
             //InitBall();
 		}
 
@@ -286,6 +299,11 @@ namespace wing_ding_pong
                 {
                     obj.Update(gameTime);
                 }
+
+                
+                //Updates the scores for both players
+                _gameScore.RightScore = _paddle1.Owner.Score;
+                _gameScore.LeftScore = _paddle2.Owner.Score;
             }
             base.Update(gameTime);
         }	// End "update".
