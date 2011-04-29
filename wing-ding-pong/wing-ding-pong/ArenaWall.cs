@@ -39,12 +39,18 @@ namespace wing_ding_pong
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
             
+<<<<<<< HEAD
             
+=======
+>>>>>>> d2d46349a37b20a21a54b6cf80ec7250be93b163
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
                 (int)_wall.Pos.X, (int)_wall.Pos.Y,
                 (int)_wall.Width, (int)_wall.Height),
                 Microsoft.Xna.Framework.Color.White);
+<<<<<<< HEAD
             
+=======
+>>>>>>> d2d46349a37b20a21a54b6cf80ec7250be93b163
         }
 
         public override string ObjectName
