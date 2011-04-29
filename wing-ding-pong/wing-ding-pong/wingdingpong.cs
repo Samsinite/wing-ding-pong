@@ -201,6 +201,19 @@ namespace wing_ding_pong
             _drawObjects.Add(_topWall);
             _drawObjects.Add(_bottomWall);
 
+            wing_ding_pong.CollisionDetection.RegisterCollisionTrait<wing_ding_pong.CollidableObjects.Circle,
+                                                                    wing_ding_pong.CollidableObjects.Rectangle>
+                                                                    (new wing_ding_pong.Traits.CircleRecCollisionCheckTraits());
+            wing_ding_pong.CollisionDetection.RegisterCollisionTrait<wing_ding_pong.CollidableObjects.Circle,
+                                                                    wing_ding_pong.CollidableObjects.Circle>
+                                                                    (new wing_ding_pong.Traits.CircleCircleCollisionCheckTraits());
+            wing_ding_pong.CollisionDetection.RegisterCollisionTrait<wing_ding_pong.CollidableObjects.Circle,
+                                                                    wing_ding_pong.CollidableObjects.Triangle>
+                                                                    (new wing_ding_pong.Traits.CircleTriangleCollisionCheckTraits());
+            wing_ding_pong.CollisionDetection.RegisterCollisionTrait<wing_ding_pong.CollidableObjects.Rectangle,
+                                                                    wing_ding_pong.CollidableObjects.Rectangle>
+                                                                    (new wing_ding_pong.Traits.RecRecCollisionCheckTraits());
+            
             _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center));
             _rules.RegisterRule<Paddle, Ball>(new Traits.PaddleBallArenaWallCollisionRules());
 
@@ -241,6 +254,26 @@ namespace wing_ding_pong
            }
             if (_isGameStarted)
             {
+                for (int i = 0; i < _collidableObjects.Count; i++)
+                {
+                    for (int j = i + 1; j < _collidableObjects.Count; j++)
+                    {
+                        wing_ding_pong._2D.Vector obj1PosDp;
+                        wing_ding_pong._2D.Vector obj2PosDp;
+                        wing_ding_pong._2D.Vector obj1CollDirection;
+                        wing_ding_pong._2D.Vector obj2CollDirection;
+                        if (CollisionDetection.isCollision(_collidableObjects[i].CollidableObjects.ToArray(),
+                                                            _collidableObjects[i].Speed.GetVector(gameTime.ElapsedGameTime),
+                                                            _collidableObjects[j].CollidableObjects.ToArray(),
+                                                            _collidableObjects[j].Speed.GetVector(gameTime.ElapsedGameTime),
+                                                            out obj1PosDp, out obj1CollDirection, out obj2PosDp,
+                                                            out obj2CollDirection))
+                        {
+                            _rules.ProcessCollsions(_collidableObjects[i], _collidableObjects[j], obj1PosDp, obj1CollDirection,
+                                                    obj2PosDp, obj2CollDirection);
+                        }
+                    }
+                }
                 foreach (CollidableObjects.Collidable2DBase obj in _collidableObjects)
                 {
                     obj.Update(gameTime);

@@ -31,6 +31,27 @@ namespace wing_ding_pong
           }
         }
 
+        public static bool isCollision(Tile[] objs1, Vector obj1Vel, Tile[] objs2, Vector obj2Vel, out Vector obj1PosDp,
+            out Vector obj1CollDirection, out Vector obj2PosDp, out Vector obj2CollDirection)
+        {
+            for (int i = 0; i < objs1.Length; i++)
+            {
+                for (int j = 0; j < objs2.Length; j++)
+                {
+                    if (StaticTileStaticTileCollision(objs1[i], objs2[j], out obj1PosDp, out obj1CollDirection, out obj2PosDp,
+                                                      out obj2CollDirection))
+                    {
+                        return true;
+                    }
+                }
+            }
+            obj1PosDp = null;
+            obj1CollDirection = null;
+            obj2PosDp = null;
+            obj2CollDirection = null;
+            return false;
+        }
+
         public static bool isCollision(Tile obj1, Vector obj1Vel, Tile obj2, Vector obj2Vel, out Vector obj1PosDp,
             out Vector obj1CollDirection, out Vector obj2PosDp, out Vector obj2CollDirection)
         {
