@@ -19,6 +19,7 @@ namespace wing_ding_pong.CollidableObjects
         public Tile(double x, double y, double xw, double yw)
         {
             this.Pos = new Point(x, y);
+            this.OldPos = this.Pos.Clone();
             this.XW = xw;
             this.YW = yw;
             this.Min = new Point(this.Pos.X - this.XW, this.Pos.Y - this.YW);

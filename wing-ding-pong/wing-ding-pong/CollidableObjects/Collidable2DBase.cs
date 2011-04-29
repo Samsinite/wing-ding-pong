@@ -27,7 +27,7 @@ namespace wing_ding_pong.CollidableObjects
         public _2D.Speed Speed
         {
             get { return _speed; }
-            set { _speed = Speed; }
+            set { _speed = value; }
         }
 
         public virtual void Move(double dx, double dy)

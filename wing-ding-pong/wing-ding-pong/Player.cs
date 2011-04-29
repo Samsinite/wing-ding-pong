@@ -12,6 +12,7 @@ namespace wing_ding_pong
 		// Constructor.
 		public Player(PlayerIndex playerIndex)
 		{
+            _score = 0;
             _playerIndex = playerIndex;
 		}
 

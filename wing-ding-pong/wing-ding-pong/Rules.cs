@@ -47,7 +47,7 @@ namespace wing_ding_pong
             ruleTrait = this.GetRule(obj2.ObjectName, obj1.ObjectName);
             if (ruleTrait != null)
             {
-                ruleTrait.ResolveStaticObjectStaticObjectCollision(obj1, obj2, obj1PosDp, obj1CollDirection,
+                ruleTrait.ResolveStaticObjectStaticObjectCollision(obj2, obj1, obj1PosDp, obj1CollDirection,
                                                                     obj2PosDp, obj2CollDirection);
             }
         }

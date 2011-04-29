@@ -13,11 +13,12 @@ namespace wing_ding_pong
         private Player _owner;
 
         //sprite is expected to be circular
-        public Ball(Texture2D sprite, Point center)
+        public Ball(Texture2D sprite, Point center, Speed speed)
             : base(new List<Tile>(){ new Circle(center.X, center.Y, sprite.Width / 2) })
         {
             _sprite = sprite;
             _circle = (Circle)CollidableObjects[0];
+            this.Speed = speed;
         }
 
 

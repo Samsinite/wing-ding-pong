@@ -86,13 +86,13 @@ namespace wing_ding_pong
             this._graphics.PreferredBackBufferHeight = 600;
 			
 			// Create the screen manager component.
-			//_screenManager = new ScreenManager(this);
+			_screenManager = new ScreenManager(this);
 
-			//Components.Add(_screenManager);
+			Components.Add(_screenManager);
 
 			// Activate the first screens.
-			//_screenManager.AddScreen(new BackgroundScreen(), null);
-			//_screenManager.AddScreen(new MainMenuScreen(), null);
+			_screenManager.AddScreen(new BackgroundScreen(), null);
+			_screenManager.AddScreen(new MainMenuScreen(), null);
 		}
 		#endregion
 
@@ -164,17 +164,17 @@ namespace wing_ding_pong
             _center.X = width / 2;
             _center.Y = height / 2;
 
-            _lWallRect = new CollidableObjects.Rectangle(0, _center.Y, 50, height / 2);
+            _lWallRect = new CollidableObjects.Rectangle(0, _center.Y, 25, height / 2);
 
-            _rWallRect = new CollidableObjects.Rectangle(width, _center.Y, 50, height / 2);
+            _rWallRect = new CollidableObjects.Rectangle(width, _center.Y, 25, height / 2);
 
-            _tWallRect = new CollidableObjects.Rectangle(_center.X, 0, width / 2, 50);
+            _tWallRect = new CollidableObjects.Rectangle(_center.X, 0, width / 2, 25);
 
-            _bWallRect = new CollidableObjects.Rectangle(height, _center.Y, width / 2, 50);
+            _bWallRect = new CollidableObjects.Rectangle(height, _center.Y, width / 2, 25);
             
-            _pad1Rect = new CollidableObjects.Rectangle(40, _center.Y, _paddel1Texture.Width / 2, _paddel1Texture.Height / 2);
+            _pad1Rect = new CollidableObjects.Rectangle(100, _center.Y, _paddel1Texture.Width / 2, _paddel1Texture.Height / 2);
 
-            _pad2Rect = new CollidableObjects.Rectangle(width - 40, _center.Y, _paddel2Texture.Width / 2, _paddel2Texture.Height / 2);
+            _pad2Rect = new CollidableObjects.Rectangle(width - 100, _center.Y, _paddel2Texture.Width / 2, _paddel2Texture.Height / 2);
 
             _ballCircle = new CollidableObjects.Circle(_center.X, _center.Y, 5.0);
 
@@ -184,7 +184,9 @@ namespace wing_ding_pong
             _bottomWall = new ArenaWall(_wallTexture, _bWallRect);
             _paddle1 = new Paddle(_paddel1Texture, _pad1Rect, new Player(PlayerIndex.One));
             _paddle2 = new Paddle(_paddel2Texture, _pad2Rect, new Player(PlayerIndex.Two));
-            _ball = new Ball(_ballTexture, _center);
+            _ballVector = new _2D.Vector(5.0, 10.0);
+            _dTime = new TimeSpan(1000);
+            _ball = new Ball(_ballTexture, _center, new _2D.Speed(_ballVector, _dTime));
 
             _collidableObjects.Add(_leftWall);
             _collidableObjects.Add(_rightWall);
@@ -216,9 +218,10 @@ namespace wing_ding_pong
                                                                     (new wing_ding_pong.Traits.RecRecCollisionCheckTraits());
             
             _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center));
-            _rules.RegisterRule<Paddle, Ball>(new Traits.PaddleBallArenaWallCollisionRules());
+            _rules.RegisterRule<Ball, Paddle>(new Traits.BallPaddleCollisionRules());
+            //_rules.RegisterRule<Paddle, ArenaWall>(new Traits.PaddleArenaWallCollisionRules());
 
-            InitBall();
+            //InitBall();
 		}
 
 		#endregion
@@ -303,8 +306,6 @@ namespace wing_ding_pong
             /*****************************/
             _spriteBatch.End();
 
-            
-
 			base.Draw(gameTime);
 		}	// End "draw".
 
@@ -320,11 +321,9 @@ namespace wing_ding_pong
 		{
             int speed = 5;	// Default velocity.
             Random rand = new Random();
-            _ballVector = new _2D.Vector(5.0, 100.0);
-            _dTime = new TimeSpan(100000);
             
             //// Randomize the ball orientation.
-            switch (rand.Next(4))
+            /*switch (rand.Next(4))
             {
                 case 0: 
                     _ballSpeed = new _2D.Speed(_ballVector, _dTime);
@@ -350,11 +349,11 @@ namespace wing_ding_pong
                     _ballSpeed = new _2D.Speed(_ballVector, _dTime);
                     _ball.BallSpeed = _ballSpeed;
                     break;
-            }
+            }*/
 
             //// Initialize the ball to the center of the screen.
-            _ball.X = _center.X;
-            _ball.Y = _center.Y;
+            //_ball.X = _center.X;
+            //_ball.Y = _center.Y;
 		}	// End "initball".
 
 		#endregion
