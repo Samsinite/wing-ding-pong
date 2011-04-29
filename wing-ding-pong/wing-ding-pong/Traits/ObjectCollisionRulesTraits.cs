@@ -66,7 +66,7 @@ namespace wing_ding_pong.Traits
             Paddle paddle = (Paddle)obj1;
             ArenaWall wall = (ArenaWall)obj2;
 
-            paddle.MoveNoOldPosUpdate(obj1PosDp.X, obj1PosDp.Y);
+            paddle.MoveNoOldPosUpdate(0, obj1PosDp.Y);
         }
     }
 

@@ -59,13 +59,13 @@ namespace wing_ding_pong
                 || GamePad.GetState(_owner.Player_Index).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(_owner.Player_Index).IsKeyDown(Keys.Up))
             {
-                this.Y -= 10;
+                this.Move(0, -10);
             }
             else if (GamePad.GetState(_owner.Player_Index).DPad.Down == ButtonState.Pressed
                 || GamePad.GetState(_owner.Player_Index).ThumbSticks.Left.Y <= -0.5f ||
                 Keyboard.GetState(_owner.Player_Index).IsKeyDown(Keys.Down))
             {
-                this.Y += 10;
+                this.Move(0, 10);
             }
         }
 
@@ -78,7 +78,7 @@ namespace wing_ding_pong
         {
 
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_rec.Pos.X, (int)_rec.Pos.Y,
+                (int)_rec.Min.X, (int)_rec.Min.Y,
                 (int)this.Width, (int)this.Height),
                 Microsoft.Xna.Framework.Color.White);
         }

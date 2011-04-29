@@ -70,7 +70,7 @@ namespace wing_ding_pong.Traits
           
             double gridVert = 0;
             double gridHorz = 0;
-    
+
             if (dx < (obj2.XW * -1))
             {
                 gridHorz = -1; //circle1 is on left side of circle2
