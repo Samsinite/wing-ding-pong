@@ -59,8 +59,8 @@ namespace wing_ding_pong
         CollidableObjects.Rectangle _lWallRect, _rWallRect, _tWallRect, _bWallRect;
         CollidableObjects.Circle _ballCircle;
         CollidableObjects.Rectangle _pad1Rect, _pad2Rect;
-        Rules rules = new Rules();
-
+        Rules _rules = new Rules();
+        bool _isGameStarted = false;
 
         // Screens.
         //ControllerDetectScreen mControllerScreen;
@@ -202,6 +202,9 @@ namespace wing_ding_pong
             _drawObjects.Add(_topWall);
             _drawObjects.Add(_bottomWall);
 
+            _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center));
+            _rules.RegisterRule<Paddle, Ball>(new Traits.PaddleBallArenaWallCollisionRules());
+
             InitBall();
 		}
 
@@ -231,9 +234,18 @@ namespace wing_ding_pong
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            foreach (CollidableObjects.Collidable2DBase obj in _collidableObjects)
+            
+           if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed
+                || Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
+           {
+               _isGameStarted = !_isGameStarted;
+           }
+            if (_isGameStarted)
             {
-                obj.Update(gameTime);   
+                foreach (CollidableObjects.Collidable2DBase obj in _collidableObjects)
+                {
+                    obj.Update(gameTime);
+                }
             }
             base.Update(gameTime);
         }	// End "update".
