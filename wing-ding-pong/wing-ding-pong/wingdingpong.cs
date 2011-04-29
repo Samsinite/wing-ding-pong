@@ -197,16 +197,11 @@ namespace wing_ding_pong
             _drawObjects.Add(_ball);
             _drawObjects.Add(_paddle1);
             _drawObjects.Add(_paddle2);
-<<<<<<< HEAD
             _drawObjects.Add(_leftWall);
             _drawObjects.Add(_rightWall);
             _drawObjects.Add(_topWall);
             _drawObjects.Add(_bottomWall);
-=======
 
-            
-
->>>>>>> ea9fde661cf3b7693f62bdade1871a7ca4ae04b2
             InitBall();
 		}
 
