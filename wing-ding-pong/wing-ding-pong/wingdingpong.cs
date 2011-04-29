@@ -81,10 +81,10 @@ namespace wing_ding_pong
             Content.RootDirectory = "Content";
 
 			// Ideal resolution for the XBox 360.
-            this._graphics.IsFullScreen = true;
+            this._graphics.IsFullScreen = false;
 
-			this._graphics.PreferredBackBufferWidth = 1360;
-			this._graphics.PreferredBackBufferHeight = 768;
+			this._graphics.PreferredBackBufferWidth = 800;
+			this._graphics.PreferredBackBufferHeight = 600;
 			
 			// Create the screen manager component.
 			//_screenManager = new ScreenManager(this);
@@ -156,8 +156,10 @@ namespace wing_ding_pong
 		protected override void Initialize()
 		{
 			double width, height;
-            width = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            height = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            //width = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            //height = (double)GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            width = 800;
+            height = 600;
 
 			base.Initialize();
 

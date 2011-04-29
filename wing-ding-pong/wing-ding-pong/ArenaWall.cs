@@ -35,7 +35,6 @@ namespace wing_ding_pong
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             //Add some controller logic here
-            throw new NotImplementedException();
         }
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
