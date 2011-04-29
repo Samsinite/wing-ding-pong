@@ -81,10 +81,10 @@ namespace wing_ding_pong
             Content.RootDirectory = "Content";
 
 			// Ideal resolution for the XBox 360.
-            this._graphics.IsFullScreen = true;
+            //this._graphics.IsFullScreen = true;
 
-			this._graphics.PreferredBackBufferWidth = 1360;
-			this._graphics.PreferredBackBufferHeight = 768;
+            this._graphics.PreferredBackBufferWidth = 800;
+            this._graphics.PreferredBackBufferHeight = 600;
 			
 			// Create the screen manager component.
 			//_screenManager = new ScreenManager(this);
@@ -95,7 +95,6 @@ namespace wing_ding_pong
 			//_screenManager.AddScreen(new BackgroundScreen(), null);
 			//_screenManager.AddScreen(new MainMenuScreen(), null);
 		}
-        //CollidableObjects.Rectangle wallRect = new CollidableObjects.Rectangle(1, GraphicsDevice.Viewport.Bounds.Height / 2, 80.0, 0.0);
 		#endregion
 
 		#region LoadContent
@@ -291,7 +290,7 @@ namespace wing_ding_pong
 		/// </summary>
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
-		{
+		     {
 			GraphicsDevice.Clear(Color.Black);
             _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             

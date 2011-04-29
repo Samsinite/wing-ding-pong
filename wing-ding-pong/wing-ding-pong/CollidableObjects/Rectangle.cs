@@ -8,7 +8,7 @@ namespace wing_ding_pong.CollidableObjects
     {
         //Expected to be Normalized (right bigger than left, bottom less than top)
         public Rectangle(double x, double y, double xw, double yw) //width = half width
-          : base(x, y, (xw / 2), (yw / 2))
+          : base(x, y, xw, yw)
         {
         }
 
