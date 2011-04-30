@@ -39,11 +39,10 @@ namespace wing_ding_pong
 
         TimeSpan _dTime;
         _2D.Vector _ballVector;
-        _2D.Speed _ballSpeed;
         ArenaWall _leftWall, _rightWall, _topWall, _bottomWall; // Creating the walls.
         Ball _ball;
+        IList<Player> _players;
         Paddle _paddle1, _paddle2;
-        List<Paddle> paddles;
         List<ArenaWall> walls;
 		// Clone textures.
 		Texture2D _grass;		// Texture used for whatever.
@@ -140,9 +139,6 @@ namespace wing_ding_pong
 			// Walls for the arena.
 
 
-            _gameScore = new Score(_font);
-            _gameScore.RightScore = 0;
-            _gameScore.LeftScore = 0;
 		}
 
 		#endregion
@@ -159,9 +155,6 @@ namespace wing_ding_pong
 			double width, height;
             width = (double)GraphicsDevice.Viewport.Bounds.Width;
             height = (double)GraphicsDevice.Viewport.Bounds.Height;
-            //width = 800;
-            //height = 600;
-
 			base.Initialize();
 
             _center.X = width / 2;
@@ -185,8 +178,9 @@ namespace wing_ding_pong
             _rightWall = new ArenaWall(_wallTexture, _rWallRect);
             _topWall = new ArenaWall(_wallTexture, _tWallRect);
             _bottomWall = new ArenaWall(_wallTexture, _bWallRect);
-            _paddle1 = new Paddle(_paddel1Texture, _pad1Rect, new Player(PlayerIndex.One));
-            _paddle2 = new Paddle(_paddel2Texture, _pad2Rect, new Player(PlayerIndex.Two));
+            _players = new List<Player>() {new Player(PlayerIndex.One), new Player(PlayerIndex.Two)};
+            _paddle1 = new Paddle(_paddel1Texture, _pad1Rect, _players[0]);
+            _paddle2 = new Paddle(_paddel2Texture, _pad2Rect, _players[1]);
             _leftWall.Owner = _paddle1.Owner;
             _rightWall.Owner = _paddle2.Owner;
             _topWall.Owner = null;
@@ -195,9 +189,9 @@ namespace wing_ding_pong
             _dTime = new TimeSpan(1000000);
             _ball = new Ball(_ballTexture, _center, new _2D.Speed(_ballVector, _dTime));
 
-            paddles = new List<Paddle>();
+            /*paddles = new List<Paddle>();
             paddles.Add(_paddle1);
-            paddles.Add(_paddle2);
+            paddles.Add(_paddle2);*/
 
             walls = new List<ArenaWall>();
             walls.Add(_leftWall);
@@ -205,6 +199,7 @@ namespace wing_ding_pong
             walls.Add(_topWall);
             walls.Add(_bottomWall);
 
+            _gameScore = new Score(_font, _players);
             _collidableObjects.Add(_leftWall);
             _collidableObjects.Add(_rightWall);
             _collidableObjects.Add(_topWall);
@@ -237,8 +232,6 @@ namespace wing_ding_pong
             _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center));
             _rules.RegisterRule<Ball, Paddle>(new Traits.BallPaddleCollisionRules());
             _rules.RegisterRule<Paddle, ArenaWall>(new Traits.PaddleArenaWallCollisionRules());
-            _rules.ChangeScore(paddles, _ball, walls); //changes the scores of the player
-            //InitBall();
 		}
 
 		#endregion
@@ -251,7 +244,7 @@ namespace wing_ding_pong
 		/// </summary>
 		protected override void UnloadContent()
 		{
-			// TODO: Unload any non ContentManager content here
+            Content.Unload();
 		}
 
 		#endregion
@@ -299,11 +292,6 @@ namespace wing_ding_pong
                 {
                     obj.Update(gameTime);
                 }
-
-                
-                //Updates the scores for both players
-                _gameScore.RightScore = _paddle1.Owner.Score;
-                _gameScore.LeftScore = _paddle2.Owner.Score;
             }
             base.Update(gameTime);
         }	// End "update".
@@ -330,53 +318,6 @@ namespace wing_ding_pong
 
 			base.Draw(gameTime);
 		}	// End "draw".
-
-		#endregion
-
-		#region InitBall
-
-		/// <summary>
-		///		Initializes the ball; called when the game starts and
-		///		when points are scored.
-		/// </summary>
-		private void InitBall()
-		{
-            int speed = 5;	// Default velocity.
-            Random rand = new Random();
-            
-            //// Randomize the ball orientation.
-            /*switch (rand.Next(4))
-            {
-                case 0: 
-                    _ballSpeed = new _2D.Speed(_ballVector, _dTime);
-                    _ballVector.X = speed;
-                    _ballVector.Y = speed;
-                    _ball.BallSpeed = _ballSpeed;
-                    break;
-                case 1: 
-                    _ballVector.X = -speed; 
-                    _ballVector.Y = speed;
-                    _ballSpeed = new _2D.Speed(_ballVector, _dTime);
-                    _ball.BallSpeed = _ballSpeed;
-                    break;
-                case 2: 
-                    _ballVector.X = speed; 
-                    _ballVector.Y = -speed;
-                    _ballSpeed = new _2D.Speed(_ballVector, _dTime);
-                    _ball.BallSpeed = _ballSpeed;
-                    break;
-                case 3: 
-                    _ballVector.X = -speed;
-                    _ballVector.Y = -speed;
-                    _ballSpeed = new _2D.Speed(_ballVector, _dTime);
-                    _ball.BallSpeed = _ballSpeed;
-                    break;
-            }*/
-
-            //// Initialize the ball to the center of the screen.
-            //_ball.X = _center.X;
-            //_ball.Y = _center.Y;
-		}	// End "initball".
 
 		#endregion
 

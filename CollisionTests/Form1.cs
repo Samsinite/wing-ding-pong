@@ -45,19 +45,19 @@ namespace CollisionTests
             _collidableObjects.Add(_triangle);
             _objectSpeeds.Add(new Speed(new Vector(0, 0), new TimeSpan(1000)));
             //_wall1 = new wing_ding_pong.CollidableObjects.Rectangle(ProjectFromFormX(0), ProjectFromFormY(this.Height / 2), 50, this.Height - 52);
-            _wall1 = new wing_ding_pong.CollidableObjects.Rectangle(0,this.Height / 2, 50, this.Height - 50);
+            _wall1 = new wing_ding_pong.CollidableObjects.Rectangle(0, this.Height / 2, 50, (this.Height / 2) - 50);
             _collidableObjects.Add(_wall1);
             _objectSpeeds.Add(new Speed(new Vector(0, 0), new TimeSpan(1000)));
             //_wall2 = new wing_ding_pong.CollidableObjects.Rectangle(ProjectFromFormX(this.Width / 2), ProjectFromFormY(0), this.Width - 52, 50);
-            _wall2 = new wing_ding_pong.CollidableObjects.Rectangle(this.Width / 2, 0, this.Width - 50, 50);
+            _wall2 = new wing_ding_pong.CollidableObjects.Rectangle(this.Width / 2, 0, (this.Width / 2) - 50, 50);
             _collidableObjects.Add(_wall2);
             _objectSpeeds.Add(new Speed(new Vector(0, 0), new TimeSpan(1000)));
             //_wall3 = new wing_ding_pong.CollidableObjects.Rectangle(ProjectFromFormX(this.Width), ProjectFromFormY(this.Height / 2), 50, this.Height - 52);
-            _wall3 = new wing_ding_pong.CollidableObjects.Rectangle(this.Width, this.Height / 2, 50, this.Height - 50);
+            _wall3 = new wing_ding_pong.CollidableObjects.Rectangle(this.Width, this.Height / 2, 50, (this.Height / 2) - 50);
             _collidableObjects.Add(_wall3);
             _objectSpeeds.Add(new Speed(new Vector(0, 0), new TimeSpan(1000)));
             //_wall4 = new wing_ding_pong.CollidableObjects.Rectangle(ProjectFromFormX(this.Width / 2), ProjectFromFormY(this.Height - 40), this.Width - 52, 50);
-            _wall4 = new wing_ding_pong.CollidableObjects.Rectangle(this.Width / 2, this.Height - 40, this.Width - 50, 50);
+            _wall4 = new wing_ding_pong.CollidableObjects.Rectangle(this.Width / 2, this.Height, (this.Width / 2) - 50, 50);
             _collidableObjects.Add(_wall4);
             _objectSpeeds.Add(new Speed(new Vector(0, 0), new TimeSpan(1000)));
             wing_ding_pong.CollisionDetection.RegisterCollisionTrait<wing_ding_pong.CollidableObjects.Circle,
@@ -103,9 +103,14 @@ namespace CollisionTests
             double prjX, prjY;
             Pen circlePen = new Pen(Color.Black);
             Pen recPen;
+            Pen darkLine = new Pen(Color.Black, 5);
             Pen triPen = new Pen(Color.Black);
             Graphics g = this.CreateGraphics();
             g.Clear(Color.LightGray);
+            g.DrawLine(darkLine, new PointF(50, 0), new PointF(50, this.Height));
+            g.DrawLine(darkLine, new PointF(this.Width - 50, 0), new PointF(this.Width - 50, this.Height));
+            g.DrawLine(darkLine, new PointF(0, 50), new PointF(this.Width, 50));
+            g.DrawLine(darkLine, new PointF(0, this.Height - 50), new PointF(this.Width, this.Height - 50));
             //prjX = ProjectToFormX(_circle.Pos.X);
             //prjY = ProjectToFormY(_circle.Pos.Y);
             prjX = _circle.Pos.X;
@@ -162,10 +167,10 @@ namespace CollisionTests
                         _collidableObjects[i].MoveNoOldPosUpdate(obj1Dp.X, obj1Dp.Y);
                         _objectSpeeds[i].Distance.X = obj1Direction.X * movementDistance;
                         _objectSpeeds[i].Distance.Y = obj1Direction.Y * movementDistance;
-                        /*_collidableObjects[j].MoveNoOldUpdate(obj2Dp.X, obj2Dp.Y);
+                        _collidableObjects[j].MoveNoOldPosUpdate(obj2Dp.X, obj2Dp.Y);
                         movementDistance = Math.Sqrt(wing_ding_pong._2D.Math2D.DistanceSquared(_objectSpeeds[j].Distance));
                         _objectSpeeds[j].Distance.X = obj2Direction.X * movementDistance;
-                        _objectSpeeds[j].Distance.Y = obj2Direction.Y * movementDistance;*/
+                        _objectSpeeds[j].Distance.Y = obj2Direction.Y * movementDistance;
                     }
                 }
                 _collidableObjects[i].Move(_objectSpeeds[i].GetVector(dT).X, _objectSpeeds[i].GetVector(dT).Y);

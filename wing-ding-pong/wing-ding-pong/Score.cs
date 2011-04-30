@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -14,44 +14,35 @@ namespace wing_ding_pong
 {
     public class Score : IDrawable
     {
-        private Player _owner;
+        private IList<Player> _players;
         //private Texture2D _sprite;
-        GraphicsDevice _graphicsDevice;
         SpriteFont _font ;
-        int _rightScore;
-        int _leftScore;
 
-        public Score(SpriteFont font)
+        public Score(SpriteFont font, IList<Player> players)
         {
             _font = font;
+            _players = players;
         }
 
-        public Player Owner
+        public IList<Player> Players
         {
-            set { _owner = value; }
-            get { return _owner; }
+            get { return _players; }
         }
         
-        public int RightScore
-        {
-            set { _rightScore = value; }
-            get { return _rightScore; }
-        }
-
-        public int LeftScore
-        {
-            set { _leftScore = value; }
-            get { return _leftScore; }
-        }
-
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
+            StringBuilder scoreStrBuilder = new StringBuilder();
+            foreach (Player player in this.Players)
+            {
+                scoreStrBuilder.Append(String.Format("Player {0}: {1} -- ",
+                    (int)player.Player_Index + 1, player.Score));
+            }
+            scoreStrBuilder.Remove(scoreStrBuilder.Length - 4, 3);
             spriteBatch.DrawString( // draw our score string
                    _font, // Score font.
-                   _leftScore.ToString() + " - " + _rightScore.ToString(), // Build the string.
+                   scoreStrBuilder.ToString(), // Build the string.
                    new Vector2( // Text position.
                     GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 5,
-                   //_graphicsDevice.Viewport.Bounds.Width / 2 - 25, //,Half the screen and a little to the left.
                    10.0f),
                    Color.Yellow); // Text color.
 
