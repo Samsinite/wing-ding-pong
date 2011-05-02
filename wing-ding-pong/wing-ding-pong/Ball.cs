@@ -32,11 +32,6 @@ namespace wing_ding_pong
                 Microsoft.Xna.Framework.Color.Yellow);
         }
 
-        public void Clone()
-        {
-            this.MemberwiseClone();
-        }
-
         //to know who hit the ball last
 		public Player Owner
 		{

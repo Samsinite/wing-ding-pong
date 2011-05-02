@@ -7,22 +7,26 @@ using wing_ding_pong.CollidableObjects;
 using wing_ding_pong._2D;
 namespace wing_ding_pong
 {
+    public enum PowerupType
+    {
+        SmallerPaddle = 0,
+        LargerPaddle = 1,
+        MultiBall = 2
+    }
+
     class Powerup : Collidable2DBase, IDrawable, ICloneable<Powerup>
     {
         private Triangle _triangle;
         private Texture2D _sprite;
         private Speed _speed = new Speed(new Vector(0, 0), new TimeSpan(0)); //distance over time
+        private PowerupType _powerupType;
 
-        public Powerup(Texture2D sprite, Point center, double width, double height)
+        public Powerup(Texture2D sprite, PowerupType type, Point center, double width, double height)
             : base(new List<Tile>(){ new Triangle(TriangleType.Triangle45DegNN, center.X, center.Y, width / 2, height / 2)})
         {
             _sprite = sprite;
             _triangle = (Triangle)CollidableObjects[0];
-        }
-
-        public void Clone()
-        {
-            this.MemberwiseClone();
+            _powerupType = type;
         }
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)

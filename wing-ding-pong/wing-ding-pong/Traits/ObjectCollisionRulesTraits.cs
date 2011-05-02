@@ -57,7 +57,7 @@ namespace wing_ding_pong.Traits
             if (wall.HasOwner)
             {
                 _pointScoredSound.Play();
-                wall.Owner.Score += 1;
+                ball.Owner.Score += 1;
                 ball.MoveAbsolute(_centerOfArena.X, _centerOfArena.Y);
             }
             else
