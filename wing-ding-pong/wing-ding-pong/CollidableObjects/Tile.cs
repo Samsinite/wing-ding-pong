@@ -86,9 +86,22 @@ namespace wing_ding_pong.CollidableObjects
             get { return _sy; }
         }
 
+        public void MoveAbsolute(double x, double y)
+        {
+            this.OldPos = this.Pos.Clone();
+            this.Pos.X = x;
+            this.Pos.Y = y;
+            this.Min.X = x - this.XW;
+            this.Max.X = x + this.XW;
+            this.Min.Y = y - this.YW;
+            this.Max.Y = y + this.YW;
+        }
+
+
         public void MoveNoOldPosUpdate(double dx, double dy)
         {
-            this.Pos = new Point(this.Pos.X + dx, this.Pos.Y + dy);
+            this.Pos.X += dx;
+            this.Pos.Y += dy;
             this.Min.X += dx;
             this.Max.X += dx;
             this.Min.Y += dy;
@@ -97,8 +110,9 @@ namespace wing_ding_pong.CollidableObjects
     
         public virtual void Move(double dx, double dy)
         {
-            this.OldPos = this.Pos;
-            this.Pos = new Point(this.Pos.X + dx, this.Pos.Y + dy);
+            this.OldPos = this.Pos.Clone();
+            this.Pos.X += dx;
+            this.Pos.Y += dy;
             this.Min.X += dx;
             this.Max.X += dx;
             this.Min.Y += dy;

@@ -13,10 +13,10 @@ namespace wing_ding_pong.CollidableObjects
 
         public double Width
         {
-            get { return this.Max.X - this.Min.X; }
+            get { return this.XW * 2.0; }
             set
             {
-                this.XW = value / 2;
+                this.XW = value / 2.0;
                 this.Min.X = this.Pos.X - this.XW;
                 this.Max.X = this.Pos.X + this.XW;
             }
@@ -24,10 +24,10 @@ namespace wing_ding_pong.CollidableObjects
 
         public double Height
         {
-            get { return this.Max.Y - this.Min.Y; }
+            get { return this.YW * 2.0; }
             set
             {
-                this.YW = value / 2;
+                this.YW = value / 2.0;
                 this.Min.Y = this.Pos.Y - this.YW;
                 this.Max.Y = this.Pos.Y + this.YW;
             }

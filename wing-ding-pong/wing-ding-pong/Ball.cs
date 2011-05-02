@@ -19,15 +19,17 @@ namespace wing_ding_pong
             _sprite = sprite;
             _circle = (Circle)CollidableObjects[0];
             this.Speed = speed;
+            this.AddDrawBounds();
+            this.AddDrawBounds();
         }
 
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_circle.Pos.X, (int)_circle.Pos.Y,
-                (int)_circle.Radius, (int)_circle.Radius),
-                Microsoft.Xna.Framework.Color.White);
+                (int)_circle.Min.X, (int)_circle.Min.Y,
+                (int)_circle.Radius * 2, (int)_circle.Radius * 2),
+                Microsoft.Xna.Framework.Color.Yellow);
         }
 
         public void Clone()

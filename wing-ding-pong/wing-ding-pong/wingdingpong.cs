@@ -20,7 +20,7 @@ namespace wing_ding_pong
     /// </summary>
     public class wingdingpong : Microsoft.Xna.Framework.Game
     {
-		#region ClassMemberData
+		#region MemberData
 
 		static readonly string[] preloadAssets =
         {
@@ -46,11 +46,11 @@ namespace wing_ding_pong
         List<ArenaWall> walls;
 		// Clone textures.
 		Texture2D _grass;		// Texture used for whatever.
-		Texture2D _wallTexture;	// Texture used for walls.
+		IList<Texture2D> _vertWallTextures;	// Texture used for walls.
+		IList<Texture2D> _horzWallTextures;	// Texture used for walls.
 		Texture2D _ballTexture;	// Texture used for the ball.
-		Texture2D _spriteSheet;	// General texture sheet.
-        Texture2D _paddel1Texture;
-        Texture2D _paddel2Texture;
+        Texture2D _paddle1Texture;
+        Texture2D _paddle2Texture;
         _2D.Point _center = new _2D.Point(375.0, 225.0);
 
 		// Sound effects.
@@ -113,14 +113,15 @@ namespace wing_ding_pong
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			// Load textures from the Content Pipeline
-			_grass = Content.Load<Texture2D>(@"Textures/Funky");
-			//_wallTexture = Content.Load<Texture2D>(@"Textures/stonewall");
-            _wallTexture = new Texture2D(GraphicsDevice, 1, 1);
-            _wallTexture.SetData(new Color[] {Color.Gray});
+			//_grass = Content.Load<Texture2D>(@"Textures/Funky");
+            _horzWallTextures = new List<Texture2D>();
+            _horzWallTextures.Add(Content.Load<Texture2D>(@"Textures/wall_tile_horz"));
+            _vertWallTextures = new List<Texture2D>();
+            _vertWallTextures.Add(Content.Load<Texture2D>(@"Textures/wall_tile_vert"));
 			_ballTexture = Content.Load<Texture2D>(@"Textures/Ball1");
-			_spriteSheet = Content.Load<Texture2D>(@"Textures/Objects");
-            _paddel1Texture = Content.Load<Texture2D>(@"Textures/paddle_red");
-            _paddel2Texture = Content.Load<Texture2D>(@"Textures/paddle_blue");
+			//_spriteSheet = Content.Load<Texture2D>(@"Textures/Objects");
+            _paddle1Texture = Content.Load<Texture2D>(@"Textures/paddle_red");
+            _paddle2Texture = Content.Load<Texture2D>(@"Textures/paddle_blue");
 
 			// Load sound effects from the Content Pipeline
 			_ballBounce = Content.Load<SoundEffect>(@"Sounds/Bounce");
@@ -160,27 +161,27 @@ namespace wing_ding_pong
             _center.X = width / 2;
             _center.Y = height / 2;
 
-            _lWallRect = new CollidableObjects.Rectangle(0, _center.Y, 5, height / 2);
+            _lWallRect = new CollidableObjects.Rectangle(0, _center.Y, _horzWallTextures[0].Width / 2, height / 2);
 
-            _rWallRect = new CollidableObjects.Rectangle(width, _center.Y, 5, height / 2);
+            _rWallRect = new CollidableObjects.Rectangle(width, _center.Y, _horzWallTextures[0].Width / 2, height / 2);
 
-            _tWallRect = new CollidableObjects.Rectangle(_center.X, 0, width / 2, 5);
+            _tWallRect = new CollidableObjects.Rectangle(_center.X, 0, width / 2, _vertWallTextures[0].Height / 2);
 
-            _bWallRect = new CollidableObjects.Rectangle(_center.X, height, width / 2, 5);
+            _bWallRect = new CollidableObjects.Rectangle(_center.X, height, width / 2, _vertWallTextures[0].Height / 2);
             
-            _pad1Rect = new CollidableObjects.Rectangle(60, _center.Y, (_paddel1Texture.Width - 10) / 2.0, _paddel1Texture.Height / 2.0);
+            _pad1Rect = new CollidableObjects.Rectangle(60, _center.Y, _paddle1Texture.Width / 2.0, _paddle1Texture.Height / 2.0);
 
-            _pad2Rect = new CollidableObjects.Rectangle(width - 60, _center.Y, (_paddel2Texture.Width - 10) / 2.0, _paddel2Texture.Height / 2.0);
+            _pad2Rect = new CollidableObjects.Rectangle(width - 60, _center.Y, _paddle2Texture.Width / 2.0, _paddle2Texture.Height / 2.0);
 
             _ballCircle = new CollidableObjects.Circle(_center.X, _center.Y, 5.0);
 
-            _leftWall = new ArenaWall(_wallTexture, _lWallRect);
-            _rightWall = new ArenaWall(_wallTexture, _rWallRect);
-            _topWall = new ArenaWall(_wallTexture, _tWallRect);
-            _bottomWall = new ArenaWall(_wallTexture, _bWallRect);
+            _leftWall = new ArenaWall(_horzWallTextures, _lWallRect);
+            _rightWall = new ArenaWall(_horzWallTextures, _rWallRect);
+            _topWall = new ArenaWall(_vertWallTextures, _tWallRect);
+            _bottomWall = new ArenaWall(_vertWallTextures, _bWallRect);
             _players = new List<Player>() {new Player(PlayerIndex.One), new Player(PlayerIndex.Two)};
-            _paddle1 = new Paddle(_paddel1Texture, _pad1Rect, _players[0]);
-            _paddle2 = new Paddle(_paddel2Texture, _pad2Rect, _players[1]);
+            _paddle1 = new Paddle(_paddle1Texture, _pad1Rect, _players[0]);
+            _paddle2 = new Paddle(_paddle2Texture, _pad2Rect, _players[1]);
             _leftWall.Owner = _paddle1.Owner;
             _rightWall.Owner = _paddle2.Owner;
             _topWall.Owner = null;
@@ -229,8 +230,8 @@ namespace wing_ding_pong
                                                                     wing_ding_pong.CollidableObjects.Rectangle>
                                                                     (new wing_ding_pong.Traits.RecRecCollisionCheckTraits());
             
-            _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center));
-            _rules.RegisterRule<Ball, Paddle>(new Traits.BallPaddleCollisionRules());
+            _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center, _ballBounce, _playerScored));
+            _rules.RegisterRule<Ball, Paddle>(new Traits.BallPaddleCollisionRules(_ballBounce));
             _rules.RegisterRule<Paddle, ArenaWall>(new Traits.PaddleArenaWallCollisionRules());
 		}
 
@@ -260,13 +261,13 @@ namespace wing_ding_pong
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            
-           if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed
-                || Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
-           {
-               _isGameStarted = !_isGameStarted;
-           }
-            if (true /*_isGameStarted*/)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed
+                 || Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
+            {
+                _isGameStarted = !_isGameStarted;
+            }
+
+            if (true)
             {
                 for (int i = 0; i < _collidableObjects.Count; i++)
                 {
@@ -305,9 +306,12 @@ namespace wing_ding_pong
 		/// </summary>
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
-		     {
+	    {
 			GraphicsDevice.Clear(Color.Black);
-            _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            
+            //_spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Opaque, SamplerState.LinearWrap,
+                DepthStencilState.Default, RasterizerState.CullNone);
             
             foreach (IDrawable item in _drawObjects)
             {

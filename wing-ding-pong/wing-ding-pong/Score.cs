@@ -29,7 +29,7 @@ namespace wing_ding_pong
             get { return _players; }
         }
         
-        public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             StringBuilder scoreStrBuilder = new StringBuilder();
             foreach (Player player in this.Players)

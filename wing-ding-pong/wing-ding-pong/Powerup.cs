@@ -27,12 +27,10 @@ namespace wing_ding_pong
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
-         
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-           
         }
 
         Powerup ICloneable<Powerup>.Clone()

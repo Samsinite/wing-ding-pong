@@ -59,13 +59,13 @@ namespace wing_ding_pong
                 || GamePad.GetState(_owner.Player_Index).ThumbSticks.Left.Y >= 0.5f ||
                 Keyboard.GetState(_owner.Player_Index).IsKeyDown(Keys.Up))
             {
-                this.Move(0, -10);
+                this.Move(0, -5);
             }
             else if (GamePad.GetState(_owner.Player_Index).DPad.Down == ButtonState.Pressed
                 || GamePad.GetState(_owner.Player_Index).ThumbSticks.Left.Y <= -0.5f ||
                 Keyboard.GetState(_owner.Player_Index).IsKeyDown(Keys.Down))
             {
-                this.Move(0, 10);
+                this.Move(0, 5);
             }
         }
 

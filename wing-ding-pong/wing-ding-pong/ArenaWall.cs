@@ -11,13 +11,13 @@ namespace wing_ding_pong
     public class ArenaWall : Collidable2DBase, IDrawable
     {
         private Player _wallOwner = null;
-        private Texture2D _sprite;
+        private IList<Texture2D> _sprites;
         private Rectangle _wall;
 
-        public ArenaWall(Texture2D sprite, Rectangle wallObj)
+        public ArenaWall(IList<Texture2D> sprites, Rectangle wallObj)
             : base(new List<Tile>() { wallObj })
         {
-            _sprite = sprite;
+            _sprites = sprites;
             _wall = (Rectangle)CollidableObjects[0];
         }
 
@@ -38,10 +38,10 @@ namespace wing_ding_pong
 
         public void Draw(Microsoft.Xna.Framework.GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_sprite, new Microsoft.Xna.Framework.Rectangle(
-                (int)_wall.Min.X, (int)_wall.Min.Y,
-                (int)_wall.Width, (int)_wall.Height),
-                Microsoft.Xna.Framework.Color.White);}
+            spriteBatch.Draw(_sprites[0], new Microsoft.Xna.Framework.Vector2((float)_wall.Min.X, (float)_wall.Min.Y),
+                new Microsoft.Xna.Framework.Rectangle(0, 0, (int)_wall.Width, (int)_wall.Height),
+                Microsoft.Xna.Framework.Color.White, 0, Microsoft.Xna.Framework.Vector2.Zero, 1, SpriteEffects.None, 0);
+        }
 
         public override string ObjectName
         {
