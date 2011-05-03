@@ -19,8 +19,6 @@ namespace wing_ding_pong
             _sprite = sprite;
             _circle = (Circle)CollidableObjects[0];
             this.Speed = speed;
-            this.AddDrawBounds();
-            this.AddDrawBounds();
         }
 
 
