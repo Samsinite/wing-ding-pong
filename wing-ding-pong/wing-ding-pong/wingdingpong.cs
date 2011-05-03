@@ -41,6 +41,7 @@ namespace wing_ding_pong
         _2D.Vector _ballVector;
         ArenaWall _leftWall, _rightWall, _topWall, _bottomWall; // Creating the walls.
         Ball _ball;
+        wing_ding_pong._2D.Speed _ballSpeed;
         IList<Player> _players;
         Paddle _paddle1, _paddle2;
         List<ArenaWall> walls;
@@ -186,7 +187,7 @@ namespace wing_ding_pong
             _rightWall.Owner = _paddle2.Owner;
             _topWall.Owner = null;
             _bottomWall.Owner = null;
-            _ballVector = new _2D.Vector(20.0, 40.0);
+            _ballVector = new _2D.Vector(50.0, 0);
             _dTime = new TimeSpan(1000000);
             _ball = new Ball(_ballTexture, _center, new _2D.Speed(_ballVector, _dTime));
 
@@ -230,9 +231,10 @@ namespace wing_ding_pong
                                                                     wing_ding_pong.CollidableObjects.Rectangle>
                                                                     (new wing_ding_pong.Traits.RecRecCollisionCheckTraits());
             
-            _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center, _ballBounce, _playerScored));
+            _rules.RegisterRule<Ball, ArenaWall>(new Traits.BallArenaWallCollisionRules(_center, _ballVector.Clone(), _ballBounce, _playerScored));
             _rules.RegisterRule<Ball, Paddle>(new Traits.BallPaddleCollisionRules(_ballBounce));
             _rules.RegisterRule<Paddle, ArenaWall>(new Traits.PaddleArenaWallCollisionRules());
+            _rules.RegisterRule<Ball, Powerup>(new Traits.BallPowerupCollisionRules());
 		}
 
 		#endregion

@@ -110,8 +110,8 @@
     <Compile Include="CollisionDetection.cs" />
     <Compile Include="ICloneable.cs" />
     <Compile Include="IDrawable.cs" />
-    <Compile Include="IPowerupType.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Powerups.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
     <Compile Include="ScreenManager\InputState.cs" />

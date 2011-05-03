@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace wing_ding_pong._2D
 {
-    public class Vector
+    public class Vector : ICloneable<Vector>
     {
         double _x = 0, _y = 0;
 
@@ -38,6 +38,11 @@ namespace wing_ding_pong._2D
         {
             X = X * scalar;
             Y = Y * scalar;
+        }
+
+        public Vector Clone()
+        {
+            return new Vector(this.X, this.Y);
         }
     }
 }

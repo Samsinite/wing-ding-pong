@@ -28,6 +28,7 @@ namespace wing_ding_pong._2D
         public Vector Distance
         {
             get { return _distance; }
+            set { _distance = value; }
         }
 
         public TimeSpan DTime

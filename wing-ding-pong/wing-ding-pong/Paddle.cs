@@ -18,6 +18,7 @@ namespace wing_ding_pong
             : base(new List<Tile>() {paddleObj} )
         {
             _owner = player;
+            _owner.Paddle = this;
             _sprite = sprite;
             _rec = (Rectangle)CollidableObjects[0];
         }

@@ -69,9 +69,9 @@ namespace wing_ding_pong
             _circle.Move(dLoc.X, dLoc.Y);
         }
 
-        Ball ICloneable<Ball>.Clone()
+        public Ball Clone()
         {
-            throw new NotImplementedException();
+            return new Ball(_sprite, _circle.Pos.Clone(), new Speed(this.Speed.Distance.Clone(), this.Speed.DTime));
         }
 
         public override string ObjectName

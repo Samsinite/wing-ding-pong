@@ -28,23 +28,27 @@ namespace wing_ding_pong.Traits
             Paddle paddle = (Paddle)obj2;
             ball.Owner = paddle.Owner;
             double movementDistance;
+            double ballCollisionPaddleCenterDistance;
             movementDistance = Math.Sqrt(Math2D.DistanceSquared(ball.Speed.Distance));
             ball.MoveNoOldPosUpdate(obj1PosDp.X, obj1PosDp.Y);
+            ballCollisionPaddleCenterDistance = paddle.Y - ball.Y;
             ball.Speed.Distance.X = obj1CollDirection.X * movementDistance;
-            ball.Speed.Distance.Y = obj1CollDirection.Y * movementDistance;
+            ball.Speed.Distance.Y = (obj1CollDirection.Y - ballCollisionPaddleCenterDistance / paddle.Height ) * movementDistance;
             _ballBounceSound.Play();
         }
     }
 
     public class BallArenaWallCollisionRules : ObjectCollisionRulesTraits
     {
+        private Vector _ballStartVel;
         private SoundEffect _pointScoredSound;
         private SoundEffect _ballBounceSound;
         private Point _centerOfArena = null;
 
-        public BallArenaWallCollisionRules(Point centerOfArena, SoundEffect ballBounceSound, SoundEffect pointScoredSound)
+        public BallArenaWallCollisionRules(Point centerOfArena, Vector ballStartVel, SoundEffect ballBounceSound, SoundEffect pointScoredSound)
         {
             _centerOfArena = centerOfArena;
+            _ballStartVel = ballStartVel;   
             _pointScoredSound = pointScoredSound;
             _ballBounceSound = ballBounceSound;
         }
@@ -58,6 +62,9 @@ namespace wing_ding_pong.Traits
             {
                 _pointScoredSound.Play();
                 ball.Owner.Score += 1;
+                ball.Speed.Distance = _ballStartVel.Clone();
+                ball.Speed.Distance.X = ((_centerOfArena.X - ball.Owner.Paddle.X) / Math.Abs(_centerOfArena.X - ball.Owner.Paddle.X)) *
+                    Math.Abs(ball.Speed.Distance.X);
                 ball.MoveAbsolute(_centerOfArena.X, _centerOfArena.Y);
             }
             else
@@ -79,6 +86,17 @@ namespace wing_ding_pong.Traits
             ArenaWall wall = (ArenaWall)obj2;
 
             paddle.MoveNoOldPosUpdate(0, obj1PosDp.Y);
+        }
+    }
+
+    public class BallPowerupCollisionRules : ObjectCollisionRulesTraits
+    {
+        public void ResolveStaticObjectStaticObjectCollision(Collidable2DBase obj1, Collidable2DBase obj2, Vector obj1PosDp, Vector obj1CollDirection, Vector obj2PosDp, Vector obj2CollDirection)
+        {
+            Ball ball = (Ball)obj1;
+            Powerup powerup = (Powerup)obj2;
+
+            powerup.Activate(ball);
         }
     }
 
